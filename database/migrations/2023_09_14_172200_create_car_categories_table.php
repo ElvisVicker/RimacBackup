@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->text('description')->nullable();
-            $table->float('rent_price')->default(1);
+            $table->double('rent_price', 15, 2)->default(1);
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

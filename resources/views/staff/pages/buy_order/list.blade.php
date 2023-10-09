@@ -19,17 +19,17 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">ID</th>
+                                <th scope="col">Order ID</th>
                                 <th scope="col">Buyer ID</th>
 
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
+                                <th scope="col">Customer First Name</th>
 
                                 <th scope="col">Car ID</th>
                                 <th scope="col">Car Name</th>
+                                <th scope="col">Car Price</th>
 
                                 <th scope="col">Staff ID</th>
-                                <th scope="col">Staff Name</th>
+                                <th scope="col">Staff First Name</th>
 
                                 <th scope="col">Action</th>
                             </tr>
@@ -41,16 +41,18 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $buy_order->id }}</td>
                                     <td>{{ $buy_order->buyer_id }}</td>
-                                    <td>{{ $buy_order->first_name }}</td>
-                                    <td>{{ $buy_order->last_name }}</td>
+                                    <td>{{ $buy_order->cus_first_name }}</td>
+
                                     <td>{{ $buy_order->car_id }}</td>
                                     <td>{{ $buy_order->car_name }}</td>
+                                    <td>{{ $buy_order->car_price }}</td>
+
                                     <td>{{ $buy_order->staff_id }}</td>
-                                    <td>{{ $buy_order->staff_name }}</td>
+                                    <td>{{ $buy_order->staff_first_name }}</td>
 
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
-                                            href="{{ route('staff.buy_order.show', ['buy_order' => $buy_order->id]) }}">Edit
+                                            href="{{ route('staff.buy_order.show', ['buy_order' => $buy_order->id]) }}">Detail
                                         </a>
                                     </td>
                                 </tr>

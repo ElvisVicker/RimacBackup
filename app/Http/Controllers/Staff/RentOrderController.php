@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RentOrderController extends Controller
 {
@@ -12,7 +13,40 @@ class RentOrderController extends Controller
      */
     public function index()
     {
-        //
+        $rent_orders = DB::table('rent_orders')
+            ->select(
+                'rent_orders.id as id',
+                'rent_orders.created_at',
+                'buyers.id as buyer_id',
+                'buyers.first_name as cus_first_name',
+                'buyers.last_name as cus_last_name',
+                'cars.id as car_id',
+                'cars.name as car_name',
+                'car_categories.rent_price as car_rent_price',
+                'users.id as staff_id',
+                'users.name as staff_first_name',
+                'users.last_name as staff_last_name',
+            )
+            ->join('cars', 'cars.id', '=', 'car_id')
+            ->join('buyers', 'buyers.id', '=', 'buyer_id')
+            ->join('users', 'users.id', '=', 'staff_id')
+            ->join('car_categories', 'car_categories.id', '=', 'cars.car_category_id')
+
+
+
+
+
+
+            // ->orderBy('created_at', 'desc')
+            // // ->paginate(10);
+            ->get();
+
+
+
+
+        // ->paginate(10);
+
+        dd($rent_orders);
     }
 
     /**

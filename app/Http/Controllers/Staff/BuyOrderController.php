@@ -14,17 +14,43 @@ class BuyOrderController extends Controller
      */
     public function index()
     {
-        // $buyers = DB::table('buyers')
-        //     ->select('buyers.*', 'cars.name as car_name', 'cars.price as price')
-        //     ->join('cars', 'cars.id', '=', 'car_id')
-        //     ->where('type', '=', '1')
-        //     ->orderBy('created_at', 'desc')
-        //     // ->paginate(10);
-        //     ->get();
+        $buy_orders = DB::table('buy_orders')
+            ->select(
+                'buy_orders.id as id',
+                'buy_orders.created_at',
+                'buyers.id as buyer_id',
+                'buyers.first_name as cus_first_name',
+                'buyers.last_name as cus_last_name',
+                'cars.id as car_id',
+                'cars.name as car_name',
+                'cars.price as car_price',
+                'users.id as staff_id',
+                'users.name as staff_first_name',
+                'users.last_name as staff_last_name',
+            )
+            ->join('cars', 'cars.id', '=', 'car_id')
+            ->join('buyers', 'buyers.id', '=', 'buyer_id')
+            ->join('users', 'users.id', '=', 'staff_id')
+
+
+            // ->orderBy('created_at', 'desc')
+            // // ->paginate(10);
+            // ->get();
+
+            ->paginate(10);
+        // dd($buy_orders);
 
 
 
-        // dd($buyers);
+        // <td>{{ $loop->iteration }}</td>
+        // <td>{{ $buy_order->id }}</td>
+        // <td>{{ $buy_order->buyer_id }}</td>
+        // <td>{{ $buy_order->cus_first_name }}</td>
+        // <td>{{ $buy_order->cus_last_name }}</td>
+        // <td>{{ $buy_order->car_id }}</td>
+        // <td>{{ $buy_order->car_name }}</td>
+        // <td>{{ $buy_order->staff_id }}</td>
+        // <td>{{ $buy_order->staff_first_name }}</td>
 
 
         // foreach ($buyers as $buyer) {
@@ -47,8 +73,8 @@ class BuyOrderController extends Controller
 
 
 
-        $buy_orders = DB::table('buy_orders')
-            ->paginate(10);
+        // $buy_orders = DB::table('buy_orders')
+        //     ->paginate(10);
 
         // dd($buy_orders);
 
@@ -68,21 +94,21 @@ class BuyOrderController extends Controller
      */
     public function store(Request $request)
     {
-        $check = DB::table('buyers')->insert([
-            "first_name" => $request->first_name,
-            "middle_name" => $request->middle_name,
-            "last_name" => $request->last_name,
-            "email" => $request->email,
-            "phone_number" => $request->phone_number,
-            "gender" => $request->gender,
-            "status" => $request->status,
-            "type" => $request->type,
-            "created_at" => Carbon::now(),
-            "updated_at" => Carbon::now()
-        ]);
+        // $check = DB::table('buyers')->insert([
+        //     "first_name" => $request->first_name,
+        //     "middle_name" => $request->middle_name,
+        //     "last_name" => $request->last_name,
+        //     "email" => $request->email,
+        //     "phone_number" => $request->phone_number,
+        //     "gender" => $request->gender,
+        //     "status" => $request->status,
+        //     "type" => $request->type,
+        //     "created_at" => Carbon::now(),
+        //     "updated_at" => Carbon::now()
+        // ]);
 
-        $message = $check ? 'Created successfully' : 'Create failure';
-        return redirect()->route('staff.buy_order.index')->with('message', $message);
+        // $message = $check ? 'Created successfully' : 'Create failure';
+        // return redirect()->route('staff.buy_order.index')->with('message', $message);
     }
 
     /**
@@ -90,9 +116,24 @@ class BuyOrderController extends Controller
      */
     public function show(string $id)
     {
-        $buy_order = DB::table('buy_orders')->find($id);
+        // $buy_order = DB::table('buy_orders')
 
-        return view('staff.pages.buy_order.detail', ['buy_order' => $buy_order]);
+        // dd($id);
+
+        $buy_order = DB::table('buy_orders')->where('id', $id)->get();
+        $buyer = DB::table('buyers')->where('id', '=', $buy_order[0]->buyer_id)->get();
+        $car = DB::table('cars')->where('id', '=', $buy_order[0]->car_id)->get();
+        $user = DB::table('users')->where('id', '=', $buy_order[0]->staff_id)->get();
+
+        return view(
+            'staff.pages.buy_order.detail',
+            [
+                'buy_order' => $buy_order,
+                'buyer' => $buyer,
+                'car' => $car,
+                'user' => $user
+            ]
+        );
     }
 
     /**
@@ -113,7 +154,7 @@ class BuyOrderController extends Controller
         // ]);
 
         // $message = $check ? 'Tao san pham thanh cong' : 'Tao san pham that bai';
-        // return redirect()->route('staff.buy_order.index')->with('message', $message);
+        return redirect()->route('staff.buy_order.index');
     }
 
     /**
@@ -121,8 +162,8 @@ class BuyOrderController extends Controller
      */
     public function destroy(string $id)
     {
-        $result = DB::table('buyers')->delete($id);
-        $message = $result ? 'Deleted successfully' : 'Delete failure';
-        return redirect()->route('staff.buy_order.index')->with('message', $message);
+        // $result = DB::table('buyers')->delete($id);
+        // $message = $result ? 'Deleted successfully' : 'Delete failure';
+        // return redirect()->route('staff.buy_order.index')->with('message', $message);
     }
 }

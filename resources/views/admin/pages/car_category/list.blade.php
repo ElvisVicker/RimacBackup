@@ -19,39 +19,62 @@
 
                     <table class="table table-hover">
                         <thead>
-                            <tr>
+                            <tr name="sortBy">
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Description</th>
+                                {{-- <th scope="col">Description</th> --}}
                                 <th scope="col">Rent Price</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
 
+
+
+
+
+
+
                         <tbody>
                             @forelse ($carCategories as $carCategory)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $carCategory->name }}</td>
-                                    <td>{!! $carCategory->description !!}</td>
+                                    {{-- <td>{!! $carCategory->description !!}</td> --}}
                                     <td>{{ $carCategory->rent_price }}</td>
-                                    <td>{{ $carCategory->status }}</td>
+                                    <td>
+
+                                        <div
+                                            class="{{ $carCategory->status ? 'btn btn-success m-2 Show' : 'btn btn-danger m-2 Hide' }}">
+                                            {{ $carCategory->status ? 'Show' : 'Hide' }}</div>
+                                    </td>
 
 
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
                                             href="{{ route('admin.car_category.show', ['car_category' => $carCategory->id]) }}">Edit</a>
-                                        <form
-                                            action="{{ route('admin.car_category.destroy', ['car_category' => $carCategory->id]) }}"
-                                            method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-danger m-2" type="submit" name="delete"
-                                                onclick="return confirm('Are you sure?')">
-                                                Delete
-                                            </button>
-                                        </form>
+
+
+
+
+                                        @if (is_null($carCategory->deleted_at))
+                                            <form
+                                                action="{{ route('admin.car_category.destroy', ['car_category' => $carCategory->id]) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger m-2" type="submit" name="delete"
+                                                    onclick="return confirm('Are you sure?')">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        @endif
+
+
+                                        @if (!is_null($carCategory->deleted_at))
+                                            <a href="{{ route('admin.car_category.restore', ['car_category' => $carCategory->id]) }}"
+                                                class="btn btn-success m-2">Restore</a>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty

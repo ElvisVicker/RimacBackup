@@ -37,10 +37,14 @@ class BuyerController extends Controller
             "first_name" => $request->first_name,
             "middle_name" => $request->middle_name,
             "last_name" => $request->last_name,
+            "address" => $request->address,
             "email" => $request->email,
             "phone_number" => $request->phone_number,
             "gender" => $request->gender,
             "status" => $request->status,
+
+
+
 
             // 1 = Buy, 2 = Rent
             "type" => $request->type,
@@ -77,6 +81,7 @@ class BuyerController extends Controller
             "first_name" => $request->first_name,
             "middle_name" => $request->middle_name,
             "last_name" => $request->last_name,
+            "address" => $request->address,
             "email" => $request->email,
             "phone_number" => $request->phone_number,
             "gender" => $request->gender,

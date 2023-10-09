@@ -53,7 +53,25 @@
                                             srcset="" style="width: auto; height: 50px">
                                     </td>
                                     <td>{{ $car->year }}</td>
-                                    <td>{{ $car->status }}</td>
+                                    <td>
+                                        {{-- {{ $car->status }} --}}
+
+
+                                        <div
+                                            class="{{ $car->status ? 'btn btn-success m-2 Show' : 'btn btn-danger m-2 Hide' }}">
+                                            {{ $car->status ? 'Show' : 'Hide' }}</div>
+
+
+
+
+
+
+
+                                    </td>
+
+
+
+
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
                                             href="{{ route('admin.car.show', ['car' => $car->id]) }}">Edit</a>

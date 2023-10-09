@@ -5,18 +5,26 @@
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
                 <form form class="bg-secondary rounded h-100 p-4" method="post"
-                    action="{{ route('staff.buy_order.update', ['buy_order' => $buy_order->id]) }}"
+                    action="{{ route('staff.buy_order.update', ['buy_order' => $buy_order[0]->id]) }}"
                     enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <h6 class="mb-4">Edit Buyer</h6>
-                    {{-- {{ dd($buy_order) }} --}}
 
 
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="buyer_id" name="buyer_id"
-                            value="{{ $buy_order->buyer_id }}" placeholder="buyer_id">
+                        <input type="text" class="form-control" id="id" name="id" readonly
+                            value="{{ $buy_order[0]->id }}" placeholder="id">
+                        <label for="floatingInput">Order ID</label>
+                    </div>
+                    @error('id')
+                        <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                    @enderror
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="buyer_id" name="buyer_id" readonly
+                            value="{{ $buyer[0]->id }}" placeholder="buyer_id">
                         <label for="floatingInput">Buyer ID</label>
                     </div>
                     @error('buyer_id')
@@ -25,8 +33,8 @@
 
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="first_name" name="first_name"
-                            value="{{ $buy_order->first_name }}" placeholder="name@first_name.com">
+                        <input type="text" class="form-control" id="first_name" name="first_name" readonly
+                            value="{{ $buyer[0]->first_name }}" placeholder="name@first_name.com">
                         <label for="floatingInput">First Name</label>
                     </div>
                     @error('first_name')
@@ -37,7 +45,7 @@
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="last_name" name="last_name" placeholder="last_name"
-                            value="{{ $buy_order->last_name }}">
+                            readonly value="{{ $buyer[0]->last_name }}">
                         <label for="floatingInput">Last Name</label>
                     </div>
                     @error('last_name')
@@ -46,8 +54,8 @@
 
 
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="email" name="email"
-                            value="{{ $buy_order->email }}" placeholder="email@example.com">
+                        <input type="email" class="form-control" id="email" name="email" readonly
+                            value="{{ $buyer[0]->email }}" placeholder="email@example.com">
                         <label for="floatingInput">Email Address</label>
                     </div>
                     @error('email')
@@ -55,8 +63,8 @@
                     @enderror
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="phone_number" name="phone_number"
-                            value="{{ $buy_order->phone_number }}" placeholder="phone_number">
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" readonly
+                            value="{{ $buyer[0]->phone_number }}" placeholder="phone_number">
                         <label for="floatingInput">Phone Number</label>
                     </div>
                     @error('phone_number')
@@ -64,53 +72,72 @@
                     @enderror
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="car_id" name="car_id"
-                            value="{{ $buy_order->car_id }}" placeholder="car_id">
-                        <label for="floatingInput">Phone Number</label>
+                        <input type="text" class="form-control" id="address" name="address" readonly
+                            value="{{ $buyer[0]->address }}" placeholder="address">
+                        <label for="floatingInput">Address</label>
+                    </div>
+                    @error('address')
+                        <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                    @enderror
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="car_id" name="car_id" readonly
+                            value="{{ $car[0]->id }}" placeholder="car_id">
+                        <label for="floatingInput">Car ID</label>
                     </div>
                     @error('car_id')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="car_name" name="car_name"
-                            value="{{ $buy_order->car_name }}" placeholder="car_name">
-                        <label for="floatingInput">Phone Number</label>
+                        <input type="text" class="form-control" id="car_name" name="car_name" readonly
+                            value="{{ $car[0]->name }}" placeholder="car_name">
+                        <label for="floatingInput">Car Name</label>
                     </div>
                     @error('car_name')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="price" name="price"
-                            value="{{ $buy_order->price }}" placeholder="price">
-                        <label for="floatingInput">Phone Number</label>
+                        <input type="text" class="form-control" id="price" name="price" readonly
+                            value="{{ $car[0]->price }}" placeholder="price">
+                        <label for="floatingInput">Car Price</label>
                     </div>
                     @error('price')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="staff_id" name="staff_id"
-                            value="{{ $buy_order->staff_id }}" placeholder="staff_id">
-                        <label for="floatingInput">Phone Number</label>
+                        <input type="text" class="form-control" id="staff_id" name="staff_id" readonly
+                            value="{{ $user[0]->id }}" placeholder="staff_id">
+                        <label for="floatingInput">Staff ID</label>
                     </div>
                     @error('staff_id')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="staff_name" name="staff_name"
-                            value="{{ $buy_order->staff_name }}" placeholder="staff_name">
-                        <label for="floatingInput">Phone Number</label>
+                        <input type="text" class="form-control" id="staff_name" name="staff_name" readonly
+                            value="{{ $user[0]->name }}" placeholder="staff_name">
+                        <label for="floatingInput">Staff First Name</label>
                     </div>
                     @error('staff_name')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
                     <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="last_name" name="last_name" readonly
+                            value="{{ $user[0]->last_name }}" placeholder="last_name">
+                        <label for="floatingInput">Staff Last Name</label>
+                    </div>
+                    @error('last_name')
+                        <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                    @enderror
+
+
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="created_at" name="created_at"
-                            value="{{ $buy_order->created_at }}" placeholder="created_at" disabled>
+                            value="{{ $buy_order[0]->created_at }}" placeholder="created_at" readonly>
                         <label for="floatingInput">Created At</label>
                     </div>
                     @error('created_at')
@@ -119,14 +146,14 @@
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="updated_at" name="updated_at"
-                            value="{{ $buy_order->updated_at }}" placeholder="updated_at" readonly>
+                            value="{{ $buy_order[0]->updated_at }}" placeholder="updated_at" readonly>
                         <label for="floatingInput">Updated At</label>
                     </div>
                     @error('updated_at')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
-                    <input class="btn btn-primary m-2" type="submit" value="Submit">
+                    <input class="btn btn-primary m-2" type="submit" value="Back to list">
                 </form>
             </div>
         </div>

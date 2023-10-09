@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBrandRequest;
+use App\Models\Brand;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -107,14 +108,35 @@ class BrandController extends Controller
      */
     public function destroy(string $id)
     {
-        $account = DB::table('brands')->find($id);
-        $image = $account->image;
-        if (!is_null($image) && file_exists('images/' . $image)) {
-            unlink('images/' . $image);
-        }
+        // $account = DB::table('brands')->find($id);
+        // $image = $account->image;
+        // if (!is_null($image) && file_exists('images/' . $image)) {
+        //     unlink('images/' . $image);
+        // }
 
-        $result = DB::table('brands')->delete($id);
-        $message = $result ? 'Deleted successfully' : 'Delete failure';
-        return redirect()->route('admin.brand.index')->with('message', $message);
+        // $result = DB::table('brands')->delete($id);
+        // $message = $result ? 'Deleted successfully' : 'Delete failure';
+        // return redirect()->route('admin.brand.index')->with('message', $message);
+
+
+        $carCategoryData = Brand::find($id);
+        $carCategoryData->delete();
+        return redirect()->route('admin.brand.index')->with('message', 'xoa san pham thanh cong');
+    }
+
+
+
+
+
+    public function restore(string $id)
+    {
+        //Eloquent
+        $brandData = Brand::withTrashed()->find($id);
+        // dd($id);
+
+
+        $brandData->restore();
+
+        return redirect()->route('admin.brand.index')->with('message', 'khoi phuc san pham thanh cong');
     }
 }

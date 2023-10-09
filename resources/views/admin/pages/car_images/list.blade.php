@@ -12,7 +12,7 @@
                         </div>
                     @endif
                     <div class="d-flex justify-content-between">
-                        <h6 class="mb-4 ">Car List</h6>
+                        <h6 class="mb-4 ">Car Images List</h6>
 
                         <a class="btn btn-success p-2" href="{{ route('admin.car_images.create') }}">Create Car Images</a>
                     </div>

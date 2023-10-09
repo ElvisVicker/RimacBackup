@@ -531,6 +531,17 @@
                                                         id="phone_number" placeholder="Phone Number" required="">
                                                 </fieldset>
                                             </div>
+
+
+                                            <div class="col-md-12 col-sm-12 mb-4">
+                                                <fieldset>
+                                                    <input class="buyInput" name="address" type="address" id="address"
+                                                        placeholder="Address" required="">
+                                                </fieldset>
+                                            </div>
+
+
+
                                             <div class="col-md-12 col-sm-12 mb-4">
                                                 <fieldset>
                                                     <input class="buyInput" name="email" type="email" id="email"

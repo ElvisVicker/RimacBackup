@@ -52,6 +52,16 @@
                     @enderror
 
                     <div class="form-floating mb-3">
+                        <input type="address" class="form-control" id="address" name="address"
+                            value="{{ old('address') }}" placeholder="address@example.com">
+                        <label for="floatingInput">Address</label>
+                    </div>
+                    @error('address')
+                        <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                    @enderror
+
+
+                    <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="email" name="email"
                             value="{{ old('email') }}" placeholder="email@example.com">
                         <label for="floatingInput">Email Address</label>

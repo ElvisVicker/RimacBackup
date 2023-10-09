@@ -23,7 +23,7 @@ class StoreCarRequest extends FormRequest
     {
         return [
             'name' => 'required|min:1|max:255',
-            'price' => 'required|Integer|min:1|max:9999999999',
+            'price' => 'required|numeric|min:1|max:9999999999',
 
             'qty' => 'required|Integer|min:1|max:9999999999',
             'model' => 'required',

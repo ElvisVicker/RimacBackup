@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->float('price');
+            $table->double('price', 15, 2);
             $table->text('description')->nullable();
             $table->integer('qty')->default(1);
             $table->string('model');

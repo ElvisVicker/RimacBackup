@@ -16,6 +16,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Staff\BuyerController as StaffBuyerController;
 use App\Http\Controllers\Staff\BuyOrderController;
 use App\Http\Controllers\Staff\ContactController as StaffContactController;
+use App\Http\Controllers\Staff\RentOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,9 +74,12 @@ Route::prefix('admin')->middleware('auth.admin')->name('admin.')->group(function
 
     // Car Category
     Route::resource('car_category', CarCategoryController::class);
+    Route::get('car_category/{car_category}/restore', [CarCategoryController::class, 'restore'])->name('car_category.restore');
+
 
     // Brand
     Route::resource('brand', BrandController::class);
+    Route::get('brand/{brand}/restore', [BrandController::class, 'restore'])->name('brand.restore');
 
     // Buyer
     Route::resource('buyer', BuyerController::class);
@@ -96,8 +100,10 @@ Route::prefix('admin')->middleware('auth.admin')->name('admin.')->group(function
 
 Route::prefix('staff')->name('staff.')->group(function () {
     Route::resource('buyer', StaffBuyerController::class);
+    Route::get('buyer/send_to_order/{id}', [StaffBuyerController::class, 'sendToOrder'])->name('buyer.send_to_order');
     Route::resource('contact', StaffContactController::class);
     Route::resource('buy_order', BuyOrderController::class);
+    Route::resource('rent_order', RentOrderController::class);
 });
 
 

@@ -13,6 +13,7 @@
                     @endif
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-4 ">Buyer List</h6>
+                        <a class="btn btn-success p-2" href="{{ route('staff.buyer.create') }}">Create Account</a>
                     </div>
 
                     <table class="table table-hover">
@@ -49,6 +50,25 @@
                                         <a class="btn btn-info m-2"
                                             href="{{ route('staff.buyer.show', ['buyer' => $buyer->id]) }}">Edit
                                         </a>
+                                        <form action="{{ route('staff.buyer.destroy', ['buyer' => $buyer->id]) }}"
+                                            method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger m-2" type="submit" name="delete"
+                                                onclick="return confirm('Are you sure?')">
+                                                Delete
+                                            </button>
+                                        </form>
+                                        {{-- {{ dd(route('staff.buyer.send_to_order', ['id' => $buyer->id])) }} --}}
+
+                                        @if ($buyer->send === 0)
+                                            <a class="btn btn-info m-2"
+                                                href="{{ route('staff.buyer.send_to_order', ['id' => $buyer->id]) }}">Send
+                                                to order
+                                            </a>
+                                        @endif
+
+
                                     </td>
                                 </tr>
                             @empty

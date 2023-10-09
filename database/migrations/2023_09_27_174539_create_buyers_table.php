@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('last_name');
             $table->boolean('gender');
             $table->string('email');
+            $table->string('address');
             $table->string('phone_number');
             $table->boolean('status')->default(0);
+            $table->boolean('send')->default(0);
             $table->boolean('type');
             $table->unsignedBigInteger('car_id');
             $table->foreign('car_id')->references('id')->on('cars');
-            $table->string('staff_id')->nullable();
-            $table->string('staff_name')->nullable();
             $table->timestamps();
         });
     }

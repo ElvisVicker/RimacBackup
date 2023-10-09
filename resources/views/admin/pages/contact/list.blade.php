@@ -36,7 +36,14 @@
                                     <td>{{ $contact->name }}</td>
                                     <td>{{ $contact->email }}</td>
                                     <td>{!! $contact->message !!}</td>
-                                    <td>{{ $contact->status }}</td>
+                                    <td>
+
+
+                                        <div
+                                            class="{{ $contact->status ? 'btn btn-success m-2 Show' : 'btn btn-danger m-2 Hide' }}">
+                                            {{ $contact->status ? 'Show' : 'Hide' }}</div>
+
+                                    </td>
 
 
                                     <td style="display: flex;">

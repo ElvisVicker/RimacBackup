@@ -17,14 +17,26 @@ class CarController extends Controller
     public function index()
     {
         $cars = DB::table('cars')
-            ->select('cars.*', 'car_categories.name as car_category_name', 'car_categories.rent_price as car_category_rent_price', 'brands.name as brand_name', 'brands.image as brand_image', 'car_images.name as car_image')
+            ->select(
+                'cars.*',
+                'car_categories.name as car_category_name',
+                'car_categories.rent_price as car_category_rent_price',
+                'brands.name as brand_name',
+                'brands.image as brand_image',
+                'car_images.name as car_image'
+            )
             ->join('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
             ->join('brands', 'cars.brand_id', '=', 'brands.id')
             ->leftJoin('car_images', 'car_images.car_id', '=', 'cars.id')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
-        // $cars = DB::table('cars')->get();
 
+
+
+
+
+        // $cars = DB::table('cars')->get();
+        // dd($cars);
 
         // dd($cars);
 
@@ -44,12 +56,10 @@ class CarController extends Controller
      */
     public function create()
     {
-        $carCategories = DB::select('select * from car_categories where status = 1');
-        $brands = DB::select('select * from brands where status = 1');
+        $carCategories = DB::table('car_categories')->whereNull('deleted_at')->where('status', '=', 1)->get();
+        $brands = DB::table('brands')->whereNull('deleted_at')->where('status', '=', 1)->get();
+
         return view('admin.pages.car.create', ['carCategories' => $carCategories, 'brands' => $brands]);
-
-
-        // return view('admin.pages.car.create');
     }
 
     /**
@@ -108,8 +118,10 @@ class CarController extends Controller
     public function show(string $id)
     {
         $car = DB::table('cars')->find($id);
-        $carCategories = DB::table('car_categories')->where('status', '=', 1)->get();
-        $brands = DB::table('brands')->where('status', '=', 1)->get();
+        $carCategories = DB::table('car_categories')->whereNull('deleted_at')->where('status', '=', 1)->get();
+
+        $brands = DB::table('brands')->whereNull('deleted_at')->where('status', '=', 1)->get();
+
         return view('admin.pages.car.detail', ['car' => $car, 'carCategories' => $carCategories, 'brands' => $brands]);
     }
 

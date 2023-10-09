@@ -48,10 +48,18 @@
                                     </td>
                                     <td>{{ $account->name }}</td>
                                     <td>{{ $account->last_name }}</td>
-                                    <td>{{ $account->role }}</td>
+                                    <td>{{ $account->role ? 'Admin' : 'Staff' }}</td>
                                     <td>{{ $account->email }}</td>
                                     <td>{{ $account->phone_number }}</td>
-                                    <td>{{ $account->status }}</td>
+                                    <td>
+                                        {{-- {{ $account->status }} --}}
+                                        <div
+                                            class="{{ $account->status ? 'btn btn-success m-2 Show' : 'btn btn-danger m-2 Hide' }}">
+                                            {{ $account->status ? 'Show' : 'Hide' }}</div>
+                                    </td>
+
+
+
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
                                             href="{{ route('admin.account.show', ['account' => $account->id]) }}">Edit</a>

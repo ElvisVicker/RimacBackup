@@ -45,12 +45,12 @@
                     <div class="form-floating mb-3">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="gender" id="gender" value="1"
-                                {{ $account->gender == 'Male' ? 'checked' : '' }}>
+                                {{ $account->gender == '1' ? 'checked' : '' }}>
                             <label class="form-check-label" for="inlineRadio1">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="gender" id="gender" value="0"
-                                {{ $account->gender == 'Female' ? 'checked' : '' }}>
+                                {{ $account->gender == '0' ? 'checked' : '' }}>
                             <label class="form-check-label" for="inlineRadio2">Female</label>
                         </div>
                     </div>
@@ -111,12 +111,12 @@
                     <div class="form-floating mb-3">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="role" id="role" value="1"
-                                {{ $account->role == 'Admin' ? 'checked' : '' }}>
+                                {{ $account->role == '1' ? 'checked' : '' }}>
                             <label class="form-check-label" for="inlineRadio1">Admin</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="role" id="role" value="0"
-                                {{ $account->role == 'Staff' ? 'checked' : '' }}>
+                                {{ $account->role == '0' ? 'checked' : '' }}>
                             <label class="form-check-label" for="inlineRadio2">Staff</label>
                         </div>
                     </div>

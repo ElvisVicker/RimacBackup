@@ -1,18 +1,16 @@
-@extends('admin.layout.master')
+@extends('staff.layout.master')
 
 @section('content')
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
-                <form form class="bg-secondary rounded h-100 p-4" method="post"
-                    action="{{ route('admin.buyer.update', ['buyer' => $buyer->id]) }}" enctype="multipart/form-data">
+                <form form class="bg-secondary rounded h-100 p-4" method="post" action="{{ route('staff.buyer.store') }}">
                     @csrf
-                    @method('put')
                     <h6 class="mb-4">Create Buyer</h6>
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="first_name" name="first_name"
-                            value="{{ $buyer->first_name }}" placeholder="name@first_name.com">
+                            value="{{ old('first_name') }}" placeholder="first_name">
                         <label for="floatingInput">First Name</label>
                     </div>
                     @error('first_name')
@@ -21,7 +19,7 @@
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="middle_name" name="middle_name"
-                            value="{{ $buyer->middle_name }}" placeholder="middle_name">
+                            value="{{ old('middle_name') }}" placeholder="middle_name">
                         <label for="floatingInput">Middle Name</label>
                     </div>
                     @error('middle_name')
@@ -30,7 +28,7 @@
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="last_name" name="last_name" placeholder="last_name"
-                            value="{{ $buyer->last_name }}">
+                            value="{{ old('last_name') }}">
                         <label for="floatingInput">Last Name</label>
                     </div>
                     @error('last_name')
@@ -40,12 +38,12 @@
                     <div class="form-floating mb-3">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="gender" id="gender" value="1"
-                                {{ $buyer->gender == '1' ? 'checked' : '' }}>
+                                {{ old('gender') == '1' ? 'checked' : '' }}>
                             <label class="form-check-label" for="inlineRadio1">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="gender" id="gender" value="0"
-                                {{ $buyer->gender == '0' ? 'checked' : '' }}>
+                                {{ old('gender') == '0' ? 'checked' : '' }}>
                             <label class="form-check-label" for="inlineRadio2">Female</label>
                         </div>
                     </div>
@@ -64,7 +62,7 @@
 
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="email" name="email"
-                            value="{{ $buyer->email }}" placeholder="email@example.com">
+                            value="{{ old('email') }}" placeholder="email@example.com">
                         <label for="floatingInput">Email Address</label>
                     </div>
                     @error('email')
@@ -73,64 +71,28 @@
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="phone_number" name="phone_number"
-                            value="{{ $buyer->phone_number }}" placeholder="phone_number">
+                            value="{{ old('phone_number') }}" placeholder="phone_number">
                         <label for="floatingInput">Phone Number</label>
                     </div>
                     @error('phone_number')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
-
                     <div class="form-floating mb-3">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="type" id="type" value="1"
-                                {{ $buyer->type == '1' ? 'checked' : '' }}>
+                                {{ old('type') == '1' ? 'checked' : '' }}>
                             <label class="form-check-label" for="inlineRadio1">Buy</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="type" id="type" value="0"
-                                {{ $buyer->type == '0' ? 'checked' : '' }}>
+                                {{ old('type') == '0' ? 'checked' : '' }}>
                             <label class="form-check-label" for="inlineRadio2">Rent</label>
                         </div>
                     </div>
                     @error('type')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
-
-                    <div class="form-floating mb-3">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="status" value="1"
-                                {{ $buyer->status == '1' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="inlineRadio1">Show</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="status" value="0"
-                                {{ $buyer->status == '0' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="inlineRadio2">Hide</label>
-                        </div>
-                    </div>
-                    @error('status')
-                        <div class="p-2 mb-2 bg-danger text-white">{{ $message }}</div>
-                    @enderror
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="created_at" name="created_at"
-                            value="{{ $buyer->created_at }}" placeholder="created_at" disabled>
-                        <label for="floatingInput">Created At</label>
-                    </div>
-                    @error('created_at')
-                        <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                    @enderror
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="updated_at" name="updated_at"
-                            value="{{ $buyer->updated_at }}" placeholder="updated_at" disabled>
-                        <label for="floatingInput">Updated At</label>
-                    </div>
-                    @error('updated_at')
-                        <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                    @enderror
-
                     <input class="btn btn-primary m-2" type="submit" value="Submit">
                 </form>
             </div>

@@ -39,12 +39,21 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $buyer->first_name }}</td>
                                     <td>{{ $buyer->last_name }}</td>
-                                    <td>{{ $buyer->gender }}</td>
+                                    <td>{{ $buyer->gender ? 'Male' : 'Female' }}</td>
                                     <td>{{ $buyer->email }}</td>
                                     <td>{{ $buyer->phone_number }}</td>
                                     <td>{{ $buyer->created_at }}</td>
-                                    <td>{{ $buyer->type }}</td>
-                                    <td>{{ $buyer->status }}</td>
+                                    <td>{{ $buyer->type ? 'Buy' : 'Rent' }}</td>
+                                    <td>
+
+
+
+
+                                        <div
+                                            class="{{ $buyer->status ? 'btn btn-success m-2 Show' : 'btn btn-danger m-2 Hide' }}">
+                                            {{ $buyer->status ? 'Show' : 'Hide' }}</div>
+
+                                    </td>
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
                                             href="{{ route('admin.buyer.show', ['buyer' => $buyer->id]) }}">Edit</a>
