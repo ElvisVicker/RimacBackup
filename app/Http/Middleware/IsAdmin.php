@@ -18,9 +18,17 @@ class IsAdmin
     {
         // return $next($request);
 
-        if (Auth::check() && Auth::user()->role) {
+        // if (Auth::check() && Auth::user()->role) {
+        //     return $next($request);
+        // }
+
+        if (Auth::check() && Auth::user()->role === 1) {
             return $next($request);
         }
+        if (Auth::check() && Auth::user()->role === 0) {
+            return $next($request);
+        }
+
         return redirect()->route('login');
     }
 }

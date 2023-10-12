@@ -21,7 +21,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">Image</th>
                                 <th scope="col">Car Name</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -35,7 +35,14 @@
                                 {{-- {{ dd($carImage) }} --}}
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $carImage->name }}</td>
+
+                                    <td>
+                                        @foreach (explode(', ', $carImage->name) as $image)
+                                            <img src="{{ asset('images/' . $image) }}" alt="" height="50px"
+                                                width="auto">
+                                        @endforeach
+                                    </td>
+
                                     <td>{{ $carImage->car_name }}</td>
 
                                     <td style="display: flex;">

@@ -17,7 +17,7 @@ class BuyerController extends Controller
         $buyers = DB::table('buyers')
             ->select('buyers.*', 'cars.name as car_name', 'cars.price as price', 'car_categories.rent_price as rent_price')
             ->join('cars', 'cars.id', '=', 'car_id')
-            ->join('car_categories', 'cars.id', '=', 'car_categories.id')
+            ->join('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
         // ->get();
@@ -106,14 +106,13 @@ class BuyerController extends Controller
         //     ->join('cars', 'cars.id', '=', 'car_id')
         //     ->join('car_categories', 'cars.id', '=', 'car_categories.id')
         //     ->get();
-
+        // ================================
         $buyer = DB::table('buyers')->where('buyers.id', '=', $id)
             ->select('buyers.*', 'cars.name as car_name', 'cars.price as price', 'car_categories.rent_price as rent_price')
             ->join('cars', 'cars.id', '=', 'car_id')
-            ->join('car_categories', 'cars.id', '=', 'car_categories.id')
+            ->join('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
             ->get();
-
-
+        // ==================================
 
         // $table->unsignedBigInteger('buyer_id');
         // $table->foreign('buyer_id')->references('id')->on('buyers');
@@ -123,17 +122,15 @@ class BuyerController extends Controller
         // $table->foreign('staff_id')->references('id')->on('users');
         // $table->timestamps();
 
-
+        // dd($buyer);
 
         if ($buyer[0]->status === 1) {
-
-
-
             if ($buyer[0]->type === 1) {
                 DB::table('buy_orders')->insert([
                     "buyer_id" => $buyer[0]->id,
                     "car_id" => $buyer[0]->car_id,
                     "staff_id" => auth()->user()->id,
+                    "total_price" => $buyer[0]->price + ((15 / 100) * $buyer[0]->price),
                     // 1 = Buy, 0 = Rent
                     "created_at" => Carbon::now(),
                     "updated_at" => Carbon::now()
@@ -149,6 +146,7 @@ class BuyerController extends Controller
                     "buyer_id" => $buyer[0]->id,
                     "car_id" => $buyer[0]->car_id,
                     "staff_id" => auth()->user()->id,
+                    "total_price" => $buyer[0]->day * $buyer[0]->rent_price,
                     // 1 = Buy, 0 = Rent
                     "created_at" => Carbon::now(),
                     "updated_at" => Carbon::now()

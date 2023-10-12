@@ -10,7 +10,7 @@
                     <div class="cta-content">
                         <br>
                         <br>
-                        <h2> <em>${{ $car[0]->price }}</em></h2>
+                        <h2> <em>${{ $car[0]->price + (15 / 100) * $car[0]->price }}</em></h2>
                     </div>
                 </div>
             </div>
@@ -153,6 +153,10 @@
                         border: 1px solid #bbbbbb;
                         color: #e7e7e7;
                         background-color: #ff5334;
+                    }
+
+                    .opacityCus {
+                        opacity: 0;
                     }
                 </style>
 
@@ -317,12 +321,6 @@
                                     <label> Color</label>
 
                                     <p>{{ $car[0]->color }}</p>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <label> Quantity</label>
-
-                                    <p>{{ $car[0]->qty }}</p>
                                 </div>
 
                                 <div class="col-sm-6">
@@ -553,12 +551,14 @@
                                             <div class="checkForm col-md-6 col-sm-12">
                                                 <div class="">
                                                     <input class="" type="radio" name="gender" id="gender"
-                                                        value="1" {{ old('gender') == '1' ? 'checked' : '' }}>
+                                                        required value="1"
+                                                        {{ old('gender') == '1' ? 'checked' : '' }}>
                                                     <label class="" for="">Male</label>
                                                 </div>
                                                 <div class="">
                                                     <input class="" type="radio" name="gender" id="gender"
-                                                        value="0" {{ old('gender') == '0' ? 'checked' : '' }}>
+                                                        required value="0"
+                                                        {{ old('gender') == '0' ? 'checked' : '' }}>
                                                     <label class="" for="">Female</label>
                                                 </div>
                                             </div>
@@ -566,45 +566,79 @@
 
                                             <div class="checkForm col-md-6 col-sm-12">
                                                 <div class="">
-                                                    <input class="" type="radio" name="type" id="type"
-                                                        value="1" {{ old('type') == '1' ? 'checked' : '' }}>
+                                                    <input class="btnCheck buyCheck" type="radio" name="type"
+                                                        required id="type" value="1"
+                                                        {{ old('type') == '1' ? 'checked' : '' }}>
                                                     <label class="" for="">Buy</label>
                                                 </div>
                                                 <div class="">
-                                                    <input class="" type="radio" name="type" id="type"
-                                                        value="0" {{ old('type') == '0' ? 'checked' : '' }}>
+                                                    <input class="btnCheck rentCheck" type="radio" name="type"
+                                                        required id="type" value="0"
+                                                        {{ old('type') == '0' ? 'checked' : '' }}>
                                                     <label class="" for="">Rent</label>
                                                 </div>
                                             </div>
 
 
+
+                                            <div class="checkForm col-md-6 col-sm-12 dayCus opacityCus">
+                                                <div class="">
+                                                    <input class="dayCheckInput" type="radio" name="day"
+                                                        id="" value="1"
+                                                        {{ old('day') == '1' ? 'checked' : '' }}>
+                                                    <label class="" for="">1</label>
+                                                </div>
+                                                <div class="">
+                                                    <input class="dayCheckInput" type="radio" name="day"
+                                                        id="" value="3"
+                                                        {{ old('day') == '3' ? 'checked' : '' }}>
+                                                    <label class="" for="">3</label>
+                                                </div>
+                                                <div class="">
+                                                    <input class="dayCheckInput" type="radio" name="day"
+                                                        id="" value="7"
+                                                        {{ old('day') == '7' ? 'checked' : '' }}>
+                                                    <label class="" for="">7</label>
+                                                </div>
+                                            </div>
                                             <div class="btnContainer">
                                                 <button type="submit" id="form-submit " class=" buySumbit">Submit
                                                 </button>
                                             </div>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </article>
                     </section>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        const dayCus = document.querySelector('.dayCus')
+        const dayCheckInput = document.querySelectorAll('.dayCheckInput')
+        const btnCheck = document.querySelectorAll('.btnCheck')
+        for (let i = 0; i < btnCheck.length; i++) {
+            btnCheck[i].addEventListener('click', function() {
+                if (this.value == 0) {
+                    dayCus.classList.remove('opacityCus')
+                    for (let i = 0; i < dayCheckInput.length; i++) {
+                        dayCheckInput[i].setAttribute('required', '');
+                    }
+                } else {
+                    dayCus.classList.add('opacityCus')
+                    for (let i = 0; i < dayCheckInput.length; i++) {
+                        dayCheckInput[i].removeAttribute('required');
+                        dayCheckInput[i].checked = false;
+                    }
+                }
+            });
+        }
+    </script>
+
     <!-- ***** Fleet Ends ***** -->
+@endsection
+
+@section('js-custom')
 @endsection

@@ -82,11 +82,11 @@ class CarController extends Controller
 
             ->when(!$request->price == null, function ($query) use ($request) {
                 if ($request->price == '1') {
-                    $query->where('price', '>', 0)->where('price', '<=', 50000);
+                    $query->where('price', '>', 0)->where('price', '<=', 43478);
                 } else if ($request->price == '2') {
-                    $query->where('price', '>', 50000)->where('price', '<=', 100000);
+                    $query->where('price', '>', 43478)->where('price', '<=', 86956);
                 } else {
-                    $query->where('price', '>', 100000);
+                    $query->where('price', '>', 86956);
                 }
             }, function ($query) {
                 $query->where('price', '<>', null);

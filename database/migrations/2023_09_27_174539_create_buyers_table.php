@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->boolean('status')->default(0);
             $table->boolean('send')->default(0);
+            $table->integer('day')->nullable();
             $table->boolean('type');
             $table->unsignedBigInteger('car_id');
             $table->foreign('car_id')->references('id')->on('cars');

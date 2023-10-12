@@ -25,6 +25,7 @@ class BuyController extends Controller
             "car_id" => $car[0]->id,
             // 1 = Buy, 2 = Rent
             "type" => $request->type,
+            "day" => $request->day ?? 0,
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now()
         ]);

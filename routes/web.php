@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\BuyerController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarImagesController;
+use App\Http\Controllers\Admin\ChartController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Client\BuyController;
 use App\Http\Controllers\Client\CarController as ClientCarController;
@@ -49,9 +50,9 @@ require __DIR__ . '/auth.php';
 
 
 
-Route::get('/admin', function () {
-    return view('admin/layout/master');
-});
+// Route::get('/admin', function () {
+//     return view('admin/layout/master');
+// });
 
 
 
@@ -93,12 +94,15 @@ Route::prefix('admin')->middleware('auth.admin')->name('admin.')->group(function
 
     // Contact
     Route::resource('contact', ContactController::class);
+
+    //Dashboard
+    Route::get('chart', [ChartController::class, 'index'])->name('chart');
 });
 
 
 
 
-Route::prefix('staff')->name('staff.')->group(function () {
+Route::prefix('staff')->middleware('auth.admin')->name('staff.')->group(function () {
     Route::resource('buyer', StaffBuyerController::class);
     Route::get('buyer/send_to_order/{id}', [StaffBuyerController::class, 'sendToOrder'])->name('buyer.send_to_order');
     Route::resource('contact', StaffContactController::class);
@@ -108,32 +112,15 @@ Route::prefix('staff')->name('staff.')->group(function () {
 
 
 Route::prefix('client')->name('client.')->group(function () {
-
     Route::get('home', [HomeController::class, 'index'])->name('home');
-
-
     // Route::get('cars', [ClientCarController::class, 'index'])->name('cars');
     // Route::post('cars/filteredIndex', [ClientCarController::class, 'filteredIndex'])->name('cars.filteredIndex');
-
     Route::get('cars', [ClientCarController::class, 'index'])->name('cars');
     Route::post('cars', [ClientCarController::class, 'index'])->name('cars');
-
-
-
     Route::get('detail/{id}', [ClientCarController::class, 'detail'])->name('detail');
-
     Route::post('detail/{id}/store', [BuyController::class, 'store'])->name('detail.store');
-
-
-
     Route::get('contact', [ClientContactController::class, 'index'])->name('contact');
-
-
     Route::post('contact', [ClientContactController::class, 'store'])->name('contact.store');
-
-
-
-
     Route::get('about', [PageController::class, 'toAbout'])->name('about');
     Route::get('blog', [PageController::class, 'toBlog'])->name('blog');
     Route::get('blog_detail', [PageController::class, 'toBlogDetail'])->name('blog_detail');

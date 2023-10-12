@@ -51,18 +51,8 @@
 
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="qty" name="qty" value="{{ $car->qty }}"
-                            placeholder="qty">
-                        <label for="floatingInput">Quantity</label>
-                    </div>
-                    @error('qty')
-                        <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                    @enderror
-
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="model" name="model"
-                            value="{{ $car->model }}" placeholder="model">
+                        <input type="text" class="form-control" id="model" name="model" value="{{ $car->model }}"
+                            placeholder="model">
                         <label for="floatingInput">Model</label>
                     </div>
                     @error('model')

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->double('rent_price', 15, 2)->default(1);
             $table->boolean('status')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('car_categories', function (Blueprint $table) {
-            $table->softDeletes();
+        Schema::table('rent_orders', function (Blueprint $table) {
+            $table->double('total_price', 15, 2);
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('car_categories', function (Blueprint $table) {
+        Schema::table('rent_orders', function (Blueprint $table) {
             //
         });
     }

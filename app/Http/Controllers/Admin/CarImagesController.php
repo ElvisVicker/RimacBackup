@@ -28,7 +28,23 @@ class CarImagesController extends Controller
      */
     public function create()
     {
-        $cars = DB::select('select * from cars where status = 1');
+
+
+        $carImage = DB::table('car_images')->get('car_id');
+
+
+
+        // dd($carImage);
+
+
+        // $cars = DB::select('select * from cars where status = 1');
+
+
+        $cars = DB::table('cars')->where('status', '=', 1)->get();
+
+
+
+
         return view('admin.pages.car_images.create', ['cars' => $cars]);
     }
 

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->double('price', 15, 2);
             $table->text('description')->nullable();
-            $table->integer('qty')->default(1);
+
             $table->string('model');
             $table->string('color');
             $table->string('fueltype');

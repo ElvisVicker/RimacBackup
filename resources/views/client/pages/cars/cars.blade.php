@@ -160,7 +160,7 @@
                             </div>
                             <div class="down-content">
                                 <span>
-                                    <sup>$</sup> {{ $car->price }}
+                                    <sup>$</sup> {{ $car->price + (15 / 100) * $car->price }}
                                 </span>
 
                                 <h4>{{ $car->name }}</h4>

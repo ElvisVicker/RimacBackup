@@ -16,10 +16,12 @@ class RentOrderController extends Controller
         $rent_orders = DB::table('rent_orders')
             ->select(
                 'rent_orders.id as id',
+                'rent_orders.total_price as total_price',
                 'rent_orders.created_at',
                 'buyers.id as buyer_id',
                 'buyers.first_name as cus_first_name',
                 'buyers.last_name as cus_last_name',
+                'buyers.day as rent_day',
                 'cars.id as car_id',
                 'cars.name as car_name',
                 'car_categories.rent_price as car_rent_price',
@@ -37,16 +39,18 @@ class RentOrderController extends Controller
 
 
 
-            // ->orderBy('created_at', 'desc')
-            // // ->paginate(10);
-            ->get();
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+        // ->get();
 
 
 
 
         // ->paginate(10);
 
-        dd($rent_orders);
+        // dd($rent_orders[0]->rent_day * $rent_orders[0]->car_rent_price);
+
+        return view('staff.pages.rent_order.list', ['rent_orders' => $rent_orders]);
     }
 
     /**
@@ -70,7 +74,24 @@ class RentOrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $rent_order = DB::table('rent_orders')->where('id', $id)->get();
+        $buyer = DB::table('buyers')->where('id', '=', $rent_order[0]->buyer_id)->get();
+        $car = DB::table('cars')
+            ->where('cars.id', '=', $rent_order[0]->car_id)
+            ->join('car_categories', 'car_categories.id', '=', 'cars.car_category_id')
+            ->get();
+        $user = DB::table('users')->where('id', '=', $rent_order[0]->staff_id)->get();
+
+        // dd($rent_order);
+        return view(
+            'staff.pages.rent_order.detail',
+            [
+                'rent_order' => $rent_order,
+                'buyer' => $buyer,
+                'car' => $car,
+                'user' => $user
+            ]
+        );
     }
 
     /**
@@ -86,7 +107,7 @@ class RentOrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return redirect()->route('staff.rent_order.index');
     }
 
     /**

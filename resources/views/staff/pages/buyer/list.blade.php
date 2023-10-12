@@ -43,9 +43,13 @@
 
                                     <td>{{ $buyer->car_id }}</td>
                                     <td>{{ $buyer->car_name }}</td>
-                                    <td>{{ $buyer->type }}</td>
+                                    <td>{{ $buyer->type ? 'Buy' : 'Rent' }}</td>
 
-                                    <td>{{ $buyer->status }}</td>
+                                    <td>
+                                        <div class="{{ $buyer->status ? 'btn btn-success m-2 ' : 'btn btn-danger m-2 ' }} ">
+                                            {{ $buyer->status ? 'Checked' : 'Uncheck' }}
+                                        </div>
+                                    </td>
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
                                             href="{{ route('staff.buyer.show', ['buyer' => $buyer->id]) }}">Edit

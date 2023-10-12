@@ -8,7 +8,7 @@
                     action="{{ route('staff.buyer.update', ['buyer' => $buyer->id]) }}" enctype="multipart/form-data">
                     @csrf
                     @method('put')
-                    <h6 class="mb-4">Edit Buyer</h6>
+                    <h6 class="mb-4">Buy Detail</h6>
                     {{-- {{ dd($buyer) }} --}}
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="first_name" name="first_name" disabled
@@ -82,6 +82,15 @@
 
 
                     <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="day" name="day" disabled
+                            value="{{ $buyer->type == '0' ? $buyer->day : 'None' }}" placeholder="day">
+                        <label for="floatingInput">Rental Days</label>
+                    </div>
+                    @error('day')
+                        <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                    @enderror
+
+                    <div class="form-floating mb-3">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="type" id="type" value="1"
                                 disabled {{ $buyer->type == '1' ? 'checked' : '' }}>
@@ -96,9 +105,6 @@
                     @error('type')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
-
-
-
 
                     @if ($buyer->send === 0)
                         <div class="form-floating mb-3">
@@ -134,11 +140,6 @@
                         @enderror
                     @endif
 
-
-
-
-
-
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="created_at" name="created_at"
                             value="{{ $buyer->created_at }}" placeholder="created_at" disabled>
@@ -157,7 +158,8 @@
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
-                    <input class="btn btn-primary m-2" type="submit" value="Submit">
+                    <input class="btn btn-primary m-2" type="submit"
+                        value="{{ $buyer->send == 1 ? 'Back to list' : 'Submit' }}">
                 </form>
             </div>
         </div>

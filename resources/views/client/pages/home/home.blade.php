@@ -58,10 +58,10 @@
                             </div>
                             <div class="down-content">
                                 <span>
-                                    <del><sup>$</sup>xxx</del> &nbsp; <sup>$</sup> {{ $car->price }}
+                                    &nbsp; <sup>$</sup> {{ $car->price + (15 / 100) * $car->price }}
                                 </span>
 
-                                <h4>{!! $car->description !!}</h4>
+                                <h4>{{ $car->name }}</h4>
 
                                 <p>
                                     <i class="fa fa-dashboard"></i>{{ $car->color }} &nbsp;&nbsp;&nbsp;

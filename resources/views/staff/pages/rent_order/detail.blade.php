@@ -13,17 +13,17 @@
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
                 <form form class="bg-secondary rounded h-100 p-4" method="post"
-                    action="{{ route('staff.buy_order.update', ['buy_order' => $buy_order[0]->id]) }}"
+                    action="{{ route('staff.rent_order.update', ['rent_order' => $rent_order[0]->id]) }}"
                     enctype="multipart/form-data">
                     @csrf
                     @method('put')
-                    <h6 class="mb-4">Edit Buyer</h6>
+                    <h6 class="mb-4">Rent Detail</h6>
 
 
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control blackText" id="id" name="id" readonly
-                            value="{{ $buy_order[0]->id }}" placeholder="id">
+                            value="{{ $rent_order[0]->id }}" placeholder="id">
                         <label for="floatingInput">Order ID</label>
                     </div>
                     @error('id')
@@ -88,6 +88,17 @@
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control blackText" id="day" name="day" readonly
+                            value="{{ $buyer[0]->day }}" placeholder="day">
+                        <label for="floatingInput">Rental Days</label>
+                    </div>
+                    @error('day')
+                        <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                    @enderror
+
+
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control blackText" id="car_id" name="car_id" readonly
                             value="{{ $car[0]->id }}" placeholder="car_id">
@@ -106,12 +117,12 @@
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control blackText" id="price" name="price" readonly
-                            value="{{ $buy_order[0]->total_price }}" placeholder="price">
-                        <label for="floatingInput">Total Price</label>
+                    <div class="form-floating mb-3 ">
+                        <input type="text" class="form-control blackText" id="rent_price" name="rent_price" readonly
+                            value="{{ $car[0]->rent_price }}" placeholder="rent_price">
+                        <label for="floatingInput">Price/day</label>
                     </div>
-                    @error('price')
+                    @error('rent_price')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
 
@@ -145,7 +156,7 @@
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control blackText" id="created_at" name="created_at"
-                            value="{{ $buy_order[0]->created_at }}" placeholder="created_at" readonly>
+                            value="{{ $rent_order[0]->created_at }}" placeholder="created_at" readonly>
                         <label for="floatingInput">Created At</label>
                     </div>
                     @error('created_at')
@@ -154,7 +165,7 @@
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control blackText" id="updated_at" name="updated_at"
-                            value="{{ $buy_order[0]->updated_at }}" placeholder="updated_at" readonly>
+                            value="{{ $rent_order[0]->updated_at }}" placeholder="updated_at" readonly>
                         <label for="floatingInput">Updated At</label>
                     </div>
                     @error('updated_at')

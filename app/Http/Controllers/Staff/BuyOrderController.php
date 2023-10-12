@@ -17,6 +17,7 @@ class BuyOrderController extends Controller
         $buy_orders = DB::table('buy_orders')
             ->select(
                 'buy_orders.id as id',
+                'buy_orders.total_price as total_price',
                 'buy_orders.created_at',
                 'buyers.id as buyer_id',
                 'buyers.first_name as cus_first_name',
