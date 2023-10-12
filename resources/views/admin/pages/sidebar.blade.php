@@ -2,10 +2,16 @@
     <nav class="navbar bg-secondary navbar-dark">
 
 
+        <style>
+            .logoFilter {
+                filter: invert(50%);
+            }
+        </style>
 
         <a href="{{ route('admin.chart') }}" class="navbar-brand mx-4 mb-3">
-            <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+            <img src="{{ asset('images/logo.png') }}" height="50px" class="logoFilter" alt="" srcset="">
         </a>
+
 
 
 

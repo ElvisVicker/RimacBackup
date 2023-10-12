@@ -1,5 +1,22 @@
+<style>
+    .logoFilter {
+        /* filter: invert(50%); */
+
+        height: 60px;
+        margin-bottom: 30px;
+        width: auto;
+    }
+</style>
+
+
+{{-- fix link  ERROR --}}
+
+
 <x-app-layout>
     <x-slot name="header">
+        <a href="{{ url()->previous() }}" class="navbar-brand d-flex d-lg-none me-4">
+            <img src="{{ asset('images/logo.png') }}" height="50px" class="logoFilter" alt="" srcset="">
+        </a>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
         </h2>

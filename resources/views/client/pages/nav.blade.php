@@ -9,17 +9,17 @@
 
 
                         <style>
-                            .testFilter {
+                            .logoFilter {
                                 filter: invert(100%);
                             }
 
-                            .background-header .testFilter {
+                            .background-header .logoFilter {
                                 filter: invert(0%);
                             }
                         </style>
 
                         {{-- Car Dealer<em> Website</em> --}}
-                        <img src="{{ asset('images/logo.png') }}" height="40px" class="testFilter" alt=""
+                        <img src="{{ asset('images/logo.png') }}" height="40px" class="logoFilter" alt=""
                             srcset="">
 
 
