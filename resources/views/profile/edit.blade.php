@@ -12,9 +12,12 @@
 {{-- fix link  ERROR --}}
 
 
+
+
 <x-app-layout>
     <x-slot name="header">
-        <a href="{{ url()->previous() }}" class="navbar-brand d-flex d-lg-none me-4">
+        <a href="{{ auth()->user()->role === 1 ? route('admin.chart') : route('staff.buyer.index') }}"
+            class="navbar-brand d-flex d-lg-none me-4">
             <img src="{{ asset('images/logo.png') }}" height="50px" class="logoFilter" alt="" srcset="">
         </a>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">

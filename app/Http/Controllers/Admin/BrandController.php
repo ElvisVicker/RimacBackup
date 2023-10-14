@@ -119,8 +119,8 @@ class BrandController extends Controller
         // return redirect()->route('admin.brand.index')->with('message', $message);
 
 
-        $carCategoryData = Brand::find($id);
-        $carCategoryData->delete();
+        $brandData = Brand::find($id);
+        $brandData->delete();
         return redirect()->route('admin.brand.index')->with('message', 'xoa san pham thanh cong');
     }
 

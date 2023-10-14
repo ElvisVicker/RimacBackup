@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBuyerRequest;
+use App\Models\Buyer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,15 @@ class BuyerController extends Controller
      */
     public function index()
     {
-        $buyers = DB::table('buyers')->orderBy('created_at', 'desc')->paginate(10);
+        $buyers = DB::table('buyers')
+            ->select('buyers.*', 'cars.name as car_name', 'cars.price as price', 'car_categories.rent_price as rent_price')
+            ->join('cars', 'cars.id', '=', 'car_id')
+            ->join('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+        // ->get();
+        // dd($buyers);
+
         return view('admin.pages.buyer.list', ['buyers' => $buyers]);
     }
 
@@ -24,7 +33,7 @@ class BuyerController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.buyer.create');
+        // return view('admin.pages.buyer.create');
     }
 
     /**
@@ -43,9 +52,6 @@ class BuyerController extends Controller
             "gender" => $request->gender,
             "status" => $request->status,
 
-
-
-
             // 1 = Buy, 2 = Rent
             "type" => $request->type,
             "created_at" => Carbon::now(),
@@ -61,6 +67,7 @@ class BuyerController extends Controller
     public function show(string $id)
     {
         $buyer = DB::table('buyers')->find($id);
+
         return view('admin.pages.buyer.detail', ['buyer' => $buyer]);
     }
 
@@ -77,16 +84,11 @@ class BuyerController extends Controller
      */
     public function update(StoreBuyerRequest $request, string $id)
     {
+        // StoreBuyerRequest
+        // dd($request->all());
         $check = DB::table('buyers')->where('id', '=', $id)->update([
-            "first_name" => $request->first_name,
-            "middle_name" => $request->middle_name,
-            "last_name" => $request->last_name,
-            "address" => $request->address,
-            "email" => $request->email,
-            "phone_number" => $request->phone_number,
-            "gender" => $request->gender,
-            "status" => $request->status,
-            "type" => $request->type,
+            "status" => $request->status === null ? 1 : $request->status,
+            // "status" => $request->status,
             "updated_at" => Carbon::now()
         ]);
 
@@ -100,8 +102,16 @@ class BuyerController extends Controller
      */
     public function destroy(string $id)
     {
-        $result = DB::table('buyers')->delete($id);
-        $message = $result ? 'Deleted successfully' : 'Delete failure';
-        return redirect()->route('admin.buyer.index')->with('message', $message);
+        $buyerData = Buyer::find($id);
+        $buyerData->delete();
+        return redirect()->route('admin.buyer.index')->with('message', 'xoa san pham thanh cong');
+    }
+
+    public function restore(string $id)
+    {
+        //Eloquent
+        $buyerData = Buyer::withTrashed()->find($id);
+        $buyerData->restore();
+        return redirect()->route('admin.buyer.index')->with('message', 'khoi phuc san pham thanh cong');
     }
 }

@@ -4,10 +4,12 @@ use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\CarCategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\BuyerController;
+use App\Http\Controllers\Admin\BuyOrderController as AdminBuyOrderController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarImagesController;
 use App\Http\Controllers\Admin\ChartController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\RentOrderController as AdminRentOrderController;
 use App\Http\Controllers\Client\BuyController;
 use App\Http\Controllers\Client\CarController as ClientCarController;
 use App\Http\Controllers\Client\ContactController as ClientContactController;
@@ -84,9 +86,11 @@ Route::prefix('admin')->middleware('auth.admin')->name('admin.')->group(function
 
     // Buyer
     Route::resource('buyer', BuyerController::class);
+    Route::get('buyer/{buyer}/restore', [BuyerController::class, 'restore'])->name('buyer.restore');
 
     // Car
     Route::resource('car', CarController::class);
+    Route::get('car/{car}/restore', [CarController::class, 'restore'])->name('car.restore');
     Route::post('car/slug', [CarController::class, 'createSlug'])->name('car.create.slug');
 
     // Car Images
@@ -95,14 +99,20 @@ Route::prefix('admin')->middleware('auth.admin')->name('admin.')->group(function
     // Contact
     Route::resource('contact', ContactController::class);
 
+    //Buy Order
+    Route::resource('buy_order', AdminBuyOrderController::class);
+
+    //Rent Order
+    Route::resource('rent_order', AdminRentOrderController::class);
+
     //Dashboard
     Route::get('chart', [ChartController::class, 'index'])->name('chart');
 });
 
 
+// ->middleware('auth.staff')
 
-
-Route::prefix('staff')->middleware('auth.admin')->name('staff.')->group(function () {
+Route::prefix('staff')->name('staff.')->group(function () {
     Route::resource('buyer', StaffBuyerController::class);
     Route::get('buyer/send_to_order/{id}', [StaffBuyerController::class, 'sendToOrder'])->name('buyer.send_to_order');
     Route::resource('contact', StaffContactController::class);

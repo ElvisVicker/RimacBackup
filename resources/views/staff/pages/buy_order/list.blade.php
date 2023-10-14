@@ -30,7 +30,7 @@
 
                                 <th scope="col">Staff ID</th>
                                 <th scope="col">Staff First Name</th>
-
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -50,10 +50,21 @@
                                     <td>{{ $buy_order->staff_id }}</td>
                                     <td>{{ $buy_order->staff_first_name }}</td>
 
+
+                                    <td>
+                                        <div
+                                            class="{{ $buy_order->car_status ? 'btn btn-success m-2 Show' : 'btn btn-danger m-2 Hide' }}">
+                                            {{ $buy_order->car_status ? 'In stored' : 'Sold' }}</div>
+                                    </td>
+
+
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
                                             href="{{ route('staff.buy_order.show', ['buy_order' => $buy_order->id]) }}">Detail
                                         </a>
+
+
+
                                     </td>
                                 </tr>
                             @empty

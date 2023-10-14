@@ -45,7 +45,7 @@ class CarController extends Controller
         $fueltypies = DB::table('cars')->distinct()->get('fueltype');
         $years = DB::table('cars')->distinct()->get('year');
 
-        $cars = DB::table('cars')
+        $cars = DB::table('cars')->where('cars.status', '=', 1)
             ->select('cars.*', 'car_categories.name as car_category_name', 'car_categories.rent_price as car_category_rent_price', 'brands.name as brand_name', 'brands.image as brand_image', 'car_images.name as car_image')
             ->join('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
             ->join('brands', 'cars.brand_id', '=', 'brands.id')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCarRequest;
+use App\Models\Car;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -177,9 +178,17 @@ class CarController extends Controller
      */
     public function destroy(string $id)
     {
-        $result = DB::table('cars')->delete($id);
-        $message = $result ? 'Xoa thanh cong' : 'Xoa that bai';
-        return redirect()->route('admin.car.index')->with('message', $message);
+        $carData = Car::find($id);
+        $carData->delete();
+        return redirect()->route('admin.car.index')->with('message', 'xoa san pham thanh cong');
+    }
+
+    public function restore(string $id)
+    {
+        //Eloquent
+        $carData = Car::withTrashed()->find($id);
+        $carData->restore();
+        return redirect()->route('admin.car.index')->with('message', 'khoi phuc san pham thanh cong');
     }
 
 

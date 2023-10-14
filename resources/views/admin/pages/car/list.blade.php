@@ -75,7 +75,27 @@
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
                                             href="{{ route('admin.car.show', ['car' => $car->id]) }}">Edit</a>
-                                        <form action="{{ route('admin.car.destroy', ['car' => $car->id]) }}"
+
+
+
+                                        @if (is_null($car->deleted_at))
+                                            <form action="{{ route('admin.car.destroy', ['car' => $car->id]) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger m-2" type="submit" name="delete"
+                                                    onclick="return confirm('Are you sure?')">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        @endif
+
+                                        @if (!is_null($car->deleted_at))
+                                            <a href="{{ route('admin.car.restore', ['car' => $car->id]) }}"
+                                                class="btn btn-success m-2">Restore</a>
+                                        @endif
+
+                                        {{-- <form action="{{ route('admin.car.destroy', ['car' => $car->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
@@ -83,7 +103,15 @@
                                                 onclick="return confirm('Are you sure?')">
                                                 Delete
                                             </button>
-                                        </form>
+                                        </form> --}}
+
+
+
+
+
+
+
+
                                     </td>
                                 </tr>
                             @empty

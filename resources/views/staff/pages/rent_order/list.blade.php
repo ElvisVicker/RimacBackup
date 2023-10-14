@@ -57,6 +57,8 @@
                                         <a class="btn btn-info m-2"
                                             href="{{ route('staff.rent_order.show', ['rent_order' => $rent_order->id]) }}">Detail
                                         </a>
+
+
                                     </td>
                                 </tr>
                             @empty

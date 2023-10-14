@@ -87,6 +87,10 @@ class BuyerController extends Controller
         ]);
 
 
+
+
+
+
         $message = $check ? 'Tao san pham thanh cong' : 'Tao san pham that bai';
         return redirect()->route('staff.buyer.index')->with('message', $message);
     }

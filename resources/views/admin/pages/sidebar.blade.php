@@ -37,6 +37,14 @@
                     class="fa fa-th me-2"></i>Account</a>
             <a href="{{ route('admin.brand.index') }}" class="nav-item nav-link "><i class="fa fa-th me-2"></i>Brand</a>
             <a href="{{ route('admin.buyer.index') }}" class="nav-item nav-link "><i class="fa fa-th me-2"></i>Buyer</a>
+
+            <a href="{{ route('admin.buy_order.index') }}" class="nav-item nav-link "><i class="fa fa-th me-2"></i>Buy
+                Order</a>
+            <a href="{{ route('admin.rent_order.index') }}" class="nav-item nav-link "><i class="fa fa-th me-2"></i>Rent
+                Order</a>
+
+
+
             <a href="{{ route('admin.car.index') }}" class="nav-item nav-link "><i class="fa fa-th me-2"></i>Car</a>
             <a href="{{ route('admin.car_category.index') }}" class="nav-item nav-link "><i
                     class="fa fa-th me-2"></i>Car

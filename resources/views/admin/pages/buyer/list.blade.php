@@ -13,21 +13,21 @@
                     @endif
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-4 ">Buyer List</h6>
-
-                        <a class="btn btn-success p-2" href="{{ route('admin.buyer.create') }}">Create Account</a>
+                        {{-- <a class="btn btn-success p-2" href="{{ route('admin.buyer.create') }}">Create Account</a> --}}
                     </div>
 
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">First Name</th>
                                 <th scope="col">Last Name</th>
-                                <th scope="col">Gender</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Created At</th>
+
+                                <th scope="col">Car ID</th>
+                                <th scope="col">Car Name</th>
                                 <th scope="col">Type</th>
+
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -37,27 +37,51 @@
                             @forelse ($buyers as $buyer)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $buyer->id }}</td>
                                     <td>{{ $buyer->first_name }}</td>
                                     <td>{{ $buyer->last_name }}</td>
-                                    <td>{{ $buyer->gender ? 'Male' : 'Female' }}</td>
-                                    <td>{{ $buyer->email }}</td>
-                                    <td>{{ $buyer->phone_number }}</td>
-                                    <td>{{ $buyer->created_at }}</td>
+
+                                    <td>{{ $buyer->car_id }}</td>
+                                    <td>{{ $buyer->car_name }}</td>
                                     <td>{{ $buyer->type ? 'Buy' : 'Rent' }}</td>
+
                                     <td>
-
-
-
-
-                                        <div
-                                            class="{{ $buyer->status ? 'btn btn-success m-2 Show' : 'btn btn-danger m-2 Hide' }}">
-                                            {{ $buyer->status ? 'Show' : 'Hide' }}</div>
-
+                                        <div class="{{ $buyer->status ? 'btn btn-success m-2 ' : 'btn btn-danger m-2 ' }} ">
+                                            {{ $buyer->status ? 'Checked' : 'Uncheck' }}
+                                        </div>
                                     </td>
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
-                                            href="{{ route('admin.buyer.show', ['buyer' => $buyer->id]) }}">Edit</a>
-                                        <form action="{{ route('admin.buyer.destroy', ['buyer' => $buyer->id]) }}"
+                                            href="{{ route('admin.buyer.show', ['buyer' => $buyer->id]) }}">Edit
+                                        </a>
+
+
+
+
+
+
+                                        @if (is_null($buyer->deleted_at))
+                                            <form action="{{ route('admin.buyer.destroy', ['buyer' => $buyer->id]) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger m-2" type="submit" name="delete"
+                                                    onclick="return confirm('Are you sure?')">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        @endif
+
+                                        @if (!is_null($buyer->deleted_at))
+                                            <a href="{{ route('admin.buyer.restore', ['buyer' => $buyer->id]) }}"
+                                                class="btn btn-success m-2">Restore</a>
+                                        @endif
+
+
+
+
+
+                                        {{-- <form action="{{ route('admin.buyer.destroy', ['buyer' => $buyer->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
@@ -65,7 +89,10 @@
                                                 onclick="return confirm('Are you sure?')">
                                                 Delete
                                             </button>
-                                        </form>
+                                        </form> --}}
+                                        {{-- {{ dd(route('admin.buyer.send_to_order', ['id' => $buyer->id])) }} --}}
+
+
                                     </td>
                                 </tr>
                             @empty

@@ -12,11 +12,6 @@ class ChartController extends Controller
 {
     public function index()
     {
-
-
-
-
-
         $accountNumber = DB::table('users')
             ->selectRaw('status, count(status) as number')
             ->groupBy('status')

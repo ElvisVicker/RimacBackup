@@ -1,4 +1,4 @@
-@extends('staff.layout.master')
+@extends('admin.layout.master')
 
 @section('content')
     <style>
@@ -13,7 +13,7 @@
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
                 <form form class="bg-secondary rounded h-100 p-4" method="post"
-                    action="{{ route('staff.buy_order.update', ['buy_order' => $buy_order[0]->id]) }}"
+                    action="{{ route('admin.buy_order.update', ['buy_order' => $buy_order[0]->id]) }}"
                     enctype="multipart/form-data">
                     @csrf
                     @method('put')
@@ -141,7 +141,6 @@
                     @error('last_name')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
                     @enderror
-
 
                     <div class="form-floating mb-3">
                         <div class="form-check form-check-inline">

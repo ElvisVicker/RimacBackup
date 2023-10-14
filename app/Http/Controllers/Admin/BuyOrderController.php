@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -81,7 +80,7 @@ class BuyOrderController extends Controller
         // dd($buy_orders);
 
         // dd($buyers);
-        return view('staff.pages.buy_order.list', ['buy_orders' => $buy_orders]);
+        return view('admin.pages.buy_order.list', ['buy_orders' => $buy_orders]);
     }
 
     /**
@@ -89,6 +88,7 @@ class BuyOrderController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -96,21 +96,7 @@ class BuyOrderController extends Controller
      */
     public function store(Request $request)
     {
-        // $check = DB::table('buyers')->insert([
-        //     "first_name" => $request->first_name,
-        //     "middle_name" => $request->middle_name,
-        //     "last_name" => $request->last_name,
-        //     "email" => $request->email,
-        //     "phone_number" => $request->phone_number,
-        //     "gender" => $request->gender,
-        //     "status" => $request->status,
-        //     "type" => $request->type,
-        //     "created_at" => Carbon::now(),
-        //     "updated_at" => Carbon::now()
-        // ]);
-
-        // $message = $check ? 'Created successfully' : 'Create failure';
-        // return redirect()->route('staff.buy_order.index')->with('message', $message);
+        //
     }
 
     /**
@@ -118,9 +104,6 @@ class BuyOrderController extends Controller
      */
     public function show(string $id)
     {
-        // $buy_order = DB::table('buy_orders')
-
-        // dd($id);
 
         $buy_order = DB::table('buy_orders')->where('id', $id)->get();
         $buyer = DB::table('buyers')->where('id', '=', $buy_order[0]->buyer_id)->get();
@@ -128,7 +111,7 @@ class BuyOrderController extends Controller
         $user = DB::table('users')->where('id', '=', $buy_order[0]->staff_id)->get();
 
         return view(
-            'staff.pages.buy_order.detail',
+            'admin.pages.buy_order.detail',
             [
                 'buy_order' => $buy_order,
                 'buyer' => $buyer,
@@ -151,15 +134,7 @@ class BuyOrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // dd($request->all());
-        // dd($request->all());
-        $check = DB::table('cars')->where('id', '=', $id)->update([
-            "status" => $request->status,
-            "updated_at" => Carbon::now()
-        ]);
-
-        // $message = $check ? 'Tao san pham thanh cong' : 'Tao san pham that bai';
-        return redirect()->route('staff.buy_order.index');
+        return redirect()->route('admin.buy_order.index');
     }
 
     /**
@@ -167,8 +142,8 @@ class BuyOrderController extends Controller
      */
     public function destroy(string $id)
     {
-        // $result = DB::table('buyers')->delete($id);
-        // $message = $result ? 'Deleted successfully' : 'Delete failure';
-        // return redirect()->route('staff.buy_order.index')->with('message', $message);
+        $result = DB::table('buy_orders')->delete($id);
+        $message = $result ? 'Deleted successfully' : 'Delete failure';
+        return redirect()->route('admin.buy_order.index')->with('message', $message);
     }
 }

@@ -1,4 +1,4 @@
-@extends('staff/layout/master')
+@extends('admin/layout/master')
 
 @section('content')
     <div class="container-fluid pt-4 px-4">
@@ -12,41 +12,58 @@
                         </div>
                     @endif
                     <div class="d-flex justify-content-between">
-                        <h6 class="mb-4 ">Contact List</h6>
+                        <h6 class="mb-4 ">Buy Order</h6>
                     </div>
 
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Message</th>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Buyer ID</th>
+
+                                <th scope="col">Customer First Name</th>
+
+                                <th scope="col">Car ID</th>
+                                <th scope="col">Car Name</th>
+                                <th scope="col">Total Price</th>
+
+                                <th scope="col">Staff ID</th>
+                                <th scope="col">Staff First Name</th>
                                 <th scope="col">Status</th>
+
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @forelse ($contacts as $contact)
+                            @forelse ($buy_orders as $buy_order)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $contact->name }}</td>
-                                    <td>{{ $contact->email }}</td>
-                                    <td>{!! $contact->message !!}</td>
+                                    <td>{{ $buy_order->id }}</td>
+                                    <td>{{ $buy_order->buyer_id }}</td>
+                                    <td>{{ $buy_order->cus_first_name }}</td>
+
+                                    <td>{{ $buy_order->car_id }}</td>
+                                    <td>{{ $buy_order->car_name }}</td>
+                                    <td>{{ $buy_order->total_price }}</td>
+
+                                    <td>{{ $buy_order->staff_id }}</td>
+                                    <td>{{ $buy_order->staff_first_name }}</td>
                                     <td>
-
-
                                         <div
-                                            class="{{ $contact->status ? 'btn btn-success m-2 Show' : 'btn btn-danger m-2 Hide' }}">
-                                            {{ $contact->status ? 'Show' : 'Hide' }}</div>
-
+                                            class="{{ $buy_order->car_status ? 'btn btn-success m-2 Show' : 'btn btn-danger m-2 Hide' }}">
+                                            {{ $buy_order->car_status ? 'In stored' : 'Sold' }}</div>
                                     </td>
 
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
-                                            href="{{ route('staff.contact.show', ['contact' => $contact->id]) }}">Edit</a>
-                                        <form action="{{ route('staff.contact.destroy', ['contact' => $contact->id]) }}"
+                                            href="{{ route('admin.buy_order.show', ['buy_order' => $buy_order->id]) }}">Detail
+                                        </a>
+
+
+                                        <form
+                                            action="{{ route('admin.buy_order.destroy', ['buy_order' => $buy_order->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
@@ -55,28 +72,21 @@
                                                 Delete
                                             </button>
                                         </form>
+
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6">No Data</td>
+                                    <td colspan="9">No Data</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
-
-
-                    <div class="me-4">
-                        {{ $contacts->links('pagination::bootstrap-5') }}
+                    <div class=" me-4">
+                        {{ $buy_orders->links('pagination::bootstrap-5') }}
                     </div>
-
                 </div>
-
-
             </div>
-
         </div>
-
-
     </div>
 @endsection

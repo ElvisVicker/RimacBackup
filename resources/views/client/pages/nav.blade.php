@@ -50,7 +50,18 @@
                             </div>
                         </li>
                         <li><a href="{{ route('client.contact') }}">Contact</a></li>
-                        <li><a href="{{ route('dashboard') }}">Login</a></li>
+
+                        @if (auth()->check() && auth()->user()->role === 1)
+                            <li><a href="{{ route('admin.chart') }}">Login</a></li>
+                        @elseif (auth()->check() && auth()->user()->role === 0)
+                            <li><a href="{{ route('staff.buyer.index') }}">Login</a></li>
+                        @else
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                        @endif
+
+
+
+
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
