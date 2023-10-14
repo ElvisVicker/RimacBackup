@@ -74,6 +74,7 @@ Route::prefix('admin')->middleware('auth.admin')->name('admin.')->group(function
     // Route::post('product/slug', [ProductController::class, 'createSlug'])->name('product.create.slug');
     // Account
     Route::resource('account', AccountController::class);
+    Route::get('account/{account}/restore', [AccountController::class, 'restore'])->name('account.restore');
 
     // Car Category
     Route::resource('car_category', CarCategoryController::class);

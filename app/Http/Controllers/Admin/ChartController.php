@@ -37,7 +37,7 @@ class ChartController extends Controller
 
         $labelArrayCategory = [];
         $dataArrayCategory = [];
-        $carDatasCategory = DB::table('cars')
+        $carDatasCategory = DB::table('cars')->where('cars.status', '=', 1)
             ->leftJoin('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
             ->selectRaw('car_categories.name, count(cars.car_category_id) as number ')
             ->groupBy('car_categories.name')
@@ -51,7 +51,7 @@ class ChartController extends Controller
 
         $labelArrayBrand = [];
         $dataArrayBrand = [];
-        $carDatasBrand = DB::table('cars')
+        $carDatasBrand = DB::table('cars')->where('cars.status', '=', 1)
             ->leftJoin('brands', 'cars.brand_id', '=', 'brands.id')
             ->selectRaw('brands.name, count(cars.brand_id) as number ')
             ->groupBy('brands.name')

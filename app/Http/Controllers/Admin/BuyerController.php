@@ -87,7 +87,8 @@ class BuyerController extends Controller
         // StoreBuyerRequest
         // dd($request->all());
         $check = DB::table('buyers')->where('id', '=', $id)->update([
-            "status" => $request->status === null ? 1 : $request->status,
+            "status" => $request->status,
+            "send" => $request->send,
             // "status" => $request->status,
             "updated_at" => Carbon::now()
         ]);

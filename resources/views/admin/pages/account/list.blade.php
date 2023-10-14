@@ -63,7 +63,7 @@
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
                                             href="{{ route('admin.account.show', ['account' => $account->id]) }}">Edit</a>
-                                        <form action="{{ route('admin.account.destroy', ['account' => $account->id]) }}"
+                                        {{-- <form action="{{ route('admin.account.destroy', ['account' => $account->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
@@ -72,6 +72,30 @@
                                                 Delete
                                             </button>
                                         </form>
+ --}}
+
+                                        @if (is_null($account->deleted_at))
+                                            <form
+                                                action="{{ route('admin.account.destroy', ['account' => $account->id]) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger m-2" type="submit" name="delete"
+                                                    onclick="return confirm('Are you sure?')">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        @endif
+
+                                        @if (!is_null($account->deleted_at))
+                                            <a href="{{ route('admin.account.restore', ['account' => $account->id]) }}"
+                                                class="btn btn-success m-2">Restore</a>
+                                        @endif
+
+
+
+
+
                                     </td>
                                 </tr>
                             @empty

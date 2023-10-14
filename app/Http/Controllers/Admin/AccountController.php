@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\StoreAccountRequest;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -136,8 +137,26 @@ class AccountController extends Controller
             unlink('images/' . $image);
         }
 
-        $result = DB::table('users')->delete($id);
-        $message = $result ? 'Deleted successfully' : 'Delete failure';
-        return redirect()->route('admin.account.index')->with('message', $message);
+        // $result = DB::table('users')->delete($id);
+        // $message = $result ? 'Deleted successfully' : 'Delete failure';
+        // return redirect()->route('admin.account.index')->with('message', $message);
+
+
+
+
+        $brandData = User::find($id);
+        $brandData->delete();
+        return redirect()->route('admin.account.index')->with('message', 'xoa san pham thanh cong');
+    }
+
+
+    public function restore(string $id)
+    {
+        //Eloquent
+        $brandData = User::withTrashed()->find($id);
+        // dd($id);
+        $brandData->restore();
+
+        return redirect()->route('admin.account.index')->with('message', 'khoi phuc san pham thanh cong');
     }
 }

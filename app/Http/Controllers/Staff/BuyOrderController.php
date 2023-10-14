@@ -153,7 +153,7 @@ class BuyOrderController extends Controller
     {
         // dd($request->all());
         // dd($request->all());
-        $check = DB::table('cars')->where('id', '=', $id)->update([
+        $check = DB::table('cars')->where('id', '=', $request->car_id)->update([
             "status" => $request->status,
             "updated_at" => Carbon::now()
         ]);

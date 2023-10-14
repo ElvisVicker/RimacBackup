@@ -111,12 +111,12 @@
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="status" id="status"
                                     value="1" {{ $buyer->status == '1' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="inlineRadio1">Show</label>
+                                <label class="form-check-label" for="inlineRadio1">Check</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="status" id="status"
                                     value="0" {{ $buyer->status == '0' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="inlineRadio2">Hide</label>
+                                <label class="form-check-label" for="inlineRadio2">Uncheck</label>
                             </div>
                         </div>
                         @error('status')

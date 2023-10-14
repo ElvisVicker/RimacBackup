@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -134,6 +135,12 @@ class BuyOrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // dd($id);
+        $check = DB::table('cars')->where('id', '=', $request->car_id)->update([
+            "status" => $request->status,
+            "updated_at" => Carbon::now()
+        ]);
+
         return redirect()->route('admin.buy_order.index');
     }
 

@@ -109,39 +109,45 @@
 
                     {{-- {{ dd($buyer->send) }} --}}
 
-                    @if ($buyer->send === 0)
-                        <div class="form-floating mb-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="status"
-                                    value="1" {{ $buyer->status == '1' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="inlineRadio1">Show</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="status"
-                                    value="0" {{ $buyer->status == '0' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="inlineRadio2">Hide</label>
-                            </div>
+                    <div class="form-floating mb-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="status" value="1"
+                                {{ $buyer->status == '1' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="inlineRadio1">Show</label>
                         </div>
-                        @error('status')
-                            <div class="p-2 mb-2 bg-danger text-white">{{ $message }}</div>
-                        @enderror
-                    @else
-                        <div class="form-floating mb-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="status" disabled
-                                    value="1" {{ $buyer->status == '1' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="inlineRadio1">Show</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="status" disabled
-                                    value="0" {{ $buyer->status == '0' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="inlineRadio2">Hide</label>
-                            </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="status" value="0"
+                                {{ $buyer->status == '0' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="inlineRadio2">Hide</label>
                         </div>
-                        @error('status')
-                            <div class="p-2 mb-2 bg-danger text-white">{{ $message }}</div>
-                        @enderror
-                    @endif
+                    </div>
+                    @error('status')
+                        <div class="p-2 mb-2 bg-danger text-white">{{ $message }}</div>
+                    @enderror
+
+
+
+
+                    <div class="form-floating mb-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="send" id="send" value="1"
+                                {{ $buyer->send == '1' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="inlineRadio1">Send</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="send" id="send" value="0"
+                                {{ $buyer->send == '0' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="inlineRadio2">Get Back</label>
+                        </div>
+                    </div>
+                    @error('send')
+                        <div class="p-2 mb-2 bg-danger text-white">{{ $message }}</div>
+                    @enderror
+
+
+
+
+
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="created_at" name="created_at"

@@ -13,7 +13,7 @@
                     @endif
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-4 ">Buyer List</h6>
-                        <a class="btn btn-success p-2" href="{{ route('staff.buyer.create') }}">Create Account</a>
+                        {{-- <a class="btn btn-success p-2" href="{{ route('staff.buyer.create') }}">Create Account</a> --}}
                     </div>
 
                     <table class="table table-hover">
@@ -54,7 +54,7 @@
                                         <a class="btn btn-info m-2"
                                             href="{{ route('staff.buyer.show', ['buyer' => $buyer->id]) }}">Edit
                                         </a>
-                                        <form action="{{ route('staff.buyer.destroy', ['buyer' => $buyer->id]) }}"
+                                        {{-- <form action="{{ route('staff.buyer.destroy', ['buyer' => $buyer->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
@@ -62,7 +62,7 @@
                                                 onclick="return confirm('Are you sure?')">
                                                 Delete
                                             </button>
-                                        </form>
+                                        </form> --}}
                                         {{-- {{ dd(route('staff.buyer.send_to_order', ['id' => $buyer->id])) }} --}}
 
                                         @if ($buyer->send === 0)
