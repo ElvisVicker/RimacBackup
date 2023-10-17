@@ -33,7 +33,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}"
                             placeholder="price">
-                        <label for="floatingInput">Price</label>
+                        <label for="floatingInput">Price (USD)</label>
                     </div>
                     @error('price')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -103,7 +103,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="sittingfor" name="sittingfor"
                             value="{{ old('sittingfor') }}" placeholder="sittingfor">
-                        <label for="floatingInput">Sitting For</label>
+                        <label for="floatingInput">Seats</label>
                     </div>
                     @error('sittingfor')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -123,7 +123,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="width" name="width"
                             value="{{ old('width') }}" placeholder="width">
-                        <label for="floatingInput">Width</label>
+                        <label for="floatingInput">Width (mm)</label>
                     </div>
                     @error('width')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -133,7 +133,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="height" name="height"
                             value="{{ old('height') }}" placeholder="height">
-                        <label for="floatingInput">Height</label>
+                        <label for="floatingInput">Height (mm)</label>
                     </div>
                     @error('height')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -143,7 +143,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="length" name="length"
                             value="{{ old('length') }}" placeholder="length">
-                        <label for="floatingInput">Length</label>
+                        <label for="floatingInput">Length (mm)</label>
                     </div>
                     @error('length')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -153,7 +153,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="wheelbase" name="wheelbase"
                             value="{{ old('wheelbase') }}" placeholder="wheelbase">
-                        <label for="floatingInput">Wheelbase</label>
+                        <label for="floatingInput">Wheelbase (mm)</label>
                     </div>
                     @error('wheelbase')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -163,7 +163,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="combined" name="combined"
                             value="{{ old('combined') }}" placeholder="combined">
-                        <label for="floatingInput">Combined</label>
+                        <label for="floatingInput">Combined (L/100km)</label>
                     </div>
                     @error('combined')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -173,7 +173,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="motorway" name="motorway"
                             value="{{ old('motorway') }}" placeholder="motorway">
-                        <label for="floatingInput">Motorway</label>
+                        <label for="floatingInput">Motorway (L/100km)</label>
                     </div>
                     @error('motorway')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -183,7 +183,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="urban" name="urban"
                             value="{{ old('urban') }}" placeholder="urban">
-                        <label for="floatingInput">Urban</label>
+                        <label for="floatingInput">Urban (L/100km)</label>
                     </div>
                     @error('urban')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -193,7 +193,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="emission_co2" name="emission_co2"
                             value="{{ old('emission_co2') }}" placeholder="emission_co2">
-                        <label for="floatingInput">Emission CO2</label>
+                        <label for="floatingInput">Emission CO2 (g/km)</label>
                     </div>
                     @error('emission_co2')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -203,7 +203,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="engine_size" name="engine_size"
                             value="{{ old('engine_size') }}" placeholder="engine_size">
-                        <label for="floatingInput">Engine Size</label>
+                        <label for="floatingInput">Engine Size (L)</label>
                     </div>
                     @error('engine_size')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -213,7 +213,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="maxKw" name="maxKw"
                             value="{{ old('maxKw') }}" placeholder="maxKw">
-                        <label for="floatingInput">MaxKw</label>
+                        <label for="floatingInput">MaxKw (Kw)</label>
                     </div>
                     @error('maxKw')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -223,7 +223,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="maxHp" name="maxHp"
                             value="{{ old('maxHp') }}" placeholder="maxHp">
-                        <label for="floatingInput">MaxHp</label>
+                        <label for="floatingInput">MaxHp (HP)</label>
                     </div>
                     @error('maxHp')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -233,7 +233,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="acceleration" name="acceleration"
                             value="{{ old('acceleration') }}" placeholder="acceleration">
-                        <label for="floatingInput">Acceleration</label>
+                        <label for="floatingInput">Acceleration (sec)</label>
                     </div>
                     @error('acceleration')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -261,7 +261,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="extra_equipment" name="extra_equipment"
                             value="{{ old('extra_equipment') }}" placeholder="extra_equipment">
-                        <label for="extra_equipment">Extra Equipment</label>
+                        <label for="extra_equipment">Extra Equipment (Object1, Object2, ...)</label>
                     </div>
                     @error('extra_equipment')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>

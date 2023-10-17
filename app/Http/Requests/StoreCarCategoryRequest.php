@@ -24,7 +24,7 @@ class StoreCarCategoryRequest extends FormRequest
         return [
             'name' => 'required|min:1|max:255',
             'status' => 'required',
-            'rent_price' => 'Integer|min:1|max:999999'
+            'rent_price' => 'required|numeric|min:1|max:10000'
         ];
     }
 }

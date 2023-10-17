@@ -10,7 +10,8 @@
                         <br>
                         <br>
                         <h2>Read our <em>Blog</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <p>For life. We want to provide you with the freedom to move in a personal, sustainable and safe
+                            way.</p>
                     </div>
                 </div>
             </div>
@@ -23,19 +24,19 @@
             <br>
             <br>
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <section class='tabs-content'>
                         <article>
                             <img src="  {{ asset('assets/client/images/blog-image-1-940x460.jpg') }}" alt="">
-                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
+                            <h4>Rimac has an award-winning brand, leadership team, and the best and
+                                brightest employees in the industry.</h4>
 
-                            <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020
+                            <p><i class="fa fa-user"></i> John Wick &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2023
                                 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i> 15 comments</p>
 
-                            <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend
-                                hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem
-                                tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut,
-                                accumsan diam.</p>
+                            <p>From the very outset Rimac Cars has been a brand for people who care about the world we live
+                                in and the people around us. We have made it our mission to make life easier, better and
+                                safer for everyone.</p>
                             <div class="main-button">
                                 <a href="{{ route('client.blog_detail') }}">Continue Reading</a>
                             </div>
@@ -46,13 +47,14 @@
 
                         <article>
                             <img src="  {{ asset('assets/client/images/blog-image-2-940x460.jpg') }}" alt="">
-                            <h4>Aspernatur excepturi magni, placeat rerum nobis magnam libero! Soluta.</h4>
-                            <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020
+                            <h4>Rimac is a leading digital marketplace and solutions provider for the
+                                automotive industry that connects car shoppers with sellers.</h4>
+                            <p><i class="fa fa-user"></i> Scott Wells &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
+                                28.07.2024
                                 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i> 15 comments</p>
-                            <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a
-                                velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh,
-                                ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque
-                                penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                            <p>We want to disrupt the auto industry and be a leader in safety, sustainability, online
+                                business and set a new global people standard. Our mid-decade ambitions set a clear path for
+                                us as we rise to meet our – and society’s – challenges.</p>
                             <div class="main-button">
                                 <a href="{{ route('client.blog_detail') }}">Continue Reading</a>
                             </div>
@@ -63,12 +65,16 @@
 
                         <article>
                             <img src="  {{ asset('assets/client/images/blog-image-3-940x460.jpg') }}" alt="">
-                            <h4>Sunt hic recusandae vitae explicabo quidem laudantium corrupti non adipisci nihil.</h4>
-                            <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020
+                            <h4>Rimac acquired Dealer Inspire®, an innovative technology company building
+                                solutions.</h4>
+                            <p><i class="fa fa-user"></i> Barry Allen &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
+                                07.09.2023
                                 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i> 15 comments</p>
-                            <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit
-                                amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque
-                                felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.
+                            <p>Since 2021, Rimac Cars has been publicly listed on the Nasdaq Stockholm stock exchange. Our
+                                group structure includes Rimac Cars, software company Zenseact and mobility company Rimac On
+                                Demand.
+
+
                             </p>
                             <div class="main-button">
                                 <a href="{{ route('client.blog_detail') }}">Continue Reading</a>
@@ -77,15 +83,8 @@
                     </section>
                 </div>
 
-                <div class="col-lg-4">
-                    {{-- <h5 class="h5">Search</h5> --}}
+                {{-- <div class="col-lg-4">
 
-                    {{-- <div class="contact-form">
-                        <form id="search_form" name="gs" method="GET" action="#">
-                            <input type="text" name="q" class="searchText" placeholder="type to search..."
-                                autocomplete="on">
-                        </form>
-                    </div> --}}
 
                     <h5 class="h5">Recent posts</h5>
 
@@ -117,7 +116,7 @@
                                 27.07.2020 10:10</small>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

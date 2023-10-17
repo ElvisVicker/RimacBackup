@@ -11,36 +11,25 @@ use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $brands = DB::table('brands')->orderBy('created_at', 'desc')->paginate(10);
         return view('admin.pages.brand.list', ['brands' => $brands]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.pages.brand.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreBrandRequest $request)
     {
-
         if ($request->hasFile('image')) {
             $fileOriginalName =  $request->file('image')->getClientOriginalName();
             $fileName = pathinfo($fileOriginalName, PATHINFO_FILENAME);
             $fileName .= '_' . time() . '.' . $request->file('image')->getClientOriginalExtension();
             $request->file('image')->move(public_path('images'),  $fileName);
         }
-
 
         $check = DB::table('brands')->insert([
             "name" => $request->name,
@@ -51,30 +40,21 @@ class BrandController extends Controller
             "updated_at" => Carbon::now()
         ]);
 
-        $message = $check ? 'Created successfully' : 'Create failure';
+        $message = $check ? 'Created Brand Success' : 'Created Brand Fail';
         return redirect()->route('admin.brand.index')->with('message', $message);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $brand = DB::table('brands')->find($id);
         return view('admin.pages.brand.detail', ['brand' => $brand]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
-        //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(StoreBrandRequest $request, string $id)
     {
         $brand = DB::table('brands')->find($id);
@@ -98,45 +78,21 @@ class BrandController extends Controller
             "updated_at" => Carbon::now()
         ]);
 
-
-        $message = $check ? 'Tao san pham thanh cong' : 'Tao san pham that bai';
+        $message = $check ? 'Updated Brand Success' : 'Updated Brand Fail';
         return redirect()->route('admin.brand.index')->with('message', $message);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        // $account = DB::table('brands')->find($id);
-        // $image = $account->image;
-        // if (!is_null($image) && file_exists('images/' . $image)) {
-        //     unlink('images/' . $image);
-        // }
-
-        // $result = DB::table('brands')->delete($id);
-        // $message = $result ? 'Deleted successfully' : 'Delete failure';
-        // return redirect()->route('admin.brand.index')->with('message', $message);
-
-
         $brandData = Brand::find($id);
         $brandData->delete();
-        return redirect()->route('admin.brand.index')->with('message', 'xoa san pham thanh cong');
+        return redirect()->route('admin.brand.index')->with('message', 'Deleted Brand Success');
     }
-
-
-
-
 
     public function restore(string $id)
     {
-        //Eloquent
         $brandData = Brand::withTrashed()->find($id);
-        // dd($id);
-
-
         $brandData->restore();
-
-        return redirect()->route('admin.brand.index')->with('message', 'khoi phuc san pham thanh cong');
+        return redirect()->route('admin.brand.index')->with('message', 'Restored Brand Success');
     }
 }

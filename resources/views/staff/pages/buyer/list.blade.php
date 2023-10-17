@@ -29,6 +29,7 @@
                                 <th scope="col">Type</th>
 
                                 <th scope="col">Status</th>
+                                <th scope="col">Car Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -45,32 +46,57 @@
                                     <td>{{ $buyer->car_name }}</td>
                                     <td>{{ $buyer->type ? 'Buy' : 'Rent' }}</td>
 
+
+
+
                                     <td>
                                         <div class="{{ $buyer->status ? 'btn btn-success m-2 ' : 'btn btn-danger m-2 ' }} ">
                                             {{ $buyer->status ? 'Checked' : 'Uncheck' }}
                                         </div>
                                     </td>
+
+                                    <td>
+                                        {{-- <div
+                                            class="{{ $buyer->car_status ? 'btn btn-success m-2 ' : 'btn btn-danger m-2 ' }} ">
+                                            {{ $buyer->car_status ? 'Available' : 'Unavailable' }}
+                                        </div> --}}
+
+
+                                        @if ($buyer->car_status === 0 && $buyer->send === 0)
+                                            <div class="btn btn-danger m-2">Unavailable</div>
+                                        @endif
+
+
+                                    </td>
                                     <td style="display: flex;">
                                         <a class="btn btn-info m-2"
                                             href="{{ route('staff.buyer.show', ['buyer' => $buyer->id]) }}">Edit
                                         </a>
+
+
                                         {{-- <form action="{{ route('staff.buyer.destroy', ['buyer' => $buyer->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger m-2" type="submit" name="delete"
                                                 onclick="return confirm('Are you sure?')">
-                                                Delete
+                                                Car is not found
                                             </button>
                                         </form> --}}
                                         {{-- {{ dd(route('staff.buyer.send_to_order', ['id' => $buyer->id])) }} --}}
 
-                                        @if ($buyer->send === 0)
+                                        @if ($buyer->send === 0 && $buyer->car_status === 1)
                                             <a class="btn btn-info m-2"
                                                 href="{{ route('staff.buyer.send_to_order', ['id' => $buyer->id]) }}">Send
                                                 to order
                                             </a>
                                         @endif
+
+
+
+
+
+
 
 
                                     </td>

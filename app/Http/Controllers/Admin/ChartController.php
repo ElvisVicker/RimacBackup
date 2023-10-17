@@ -16,8 +16,6 @@ class ChartController extends Controller
             ->selectRaw('status, count(status) as number')
             ->groupBy('status')
             ->get();
-
-
         $totalAcc = 0;
         foreach ($accountNumber as $data) {
             $totalAcc += $data->number;
@@ -28,12 +26,11 @@ class ChartController extends Controller
             ->selectRaw('status, count(status) as number')
             ->groupBy('status')
             ->get();
-
-
         $totalCar = 0;
         foreach ($carNumber as $data) {
             $totalCar += $data->number;
         };
+
 
         $labelArrayCategory = [];
         $dataArrayCategory = [];
@@ -48,7 +45,6 @@ class ChartController extends Controller
         }
 
 
-
         $labelArrayBrand = [];
         $dataArrayBrand = [];
         $carDatasBrand = DB::table('cars')->where('cars.status', '=', 1)
@@ -56,30 +52,10 @@ class ChartController extends Controller
             ->selectRaw('brands.name, count(cars.brand_id) as number ')
             ->groupBy('brands.name')
             ->get();
-
-
         foreach ($carDatasBrand as $data) {
             $labelArrayBrand[] = [$data->name];
             $dataArrayBrand[] = [$data->number];
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         return view(

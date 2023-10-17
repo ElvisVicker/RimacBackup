@@ -13,9 +13,25 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
+
+        {{-- {{ dd(auth()->user()->image) }} --}}
+        <div>
+            <img rounded-circle flex-shrink-0 src="{{ 'images/' . auth()->user()->image }}" alt="" srcset=""
+                style="width: 50px; height: 50px">
+        </div>
+
+        <div>
+            <x-input-label for="image" :value="__('Image')" />
+            <x-text-input id="image" name="image" type="file" class="mt-1 block w-full" :value="old('image', $user->image)"
+                autofocus autocomplete="image" />
+            <x-input-error class="mt-2" :messages="$errors->get('image')" />
+        </div>
+
+
+
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -23,6 +39,8 @@
                 required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
+
+
 
         <div>
             <x-input-label for="last_name" :value="__('Last Name')" />
@@ -32,10 +50,11 @@
         </div>
 
 
+
         <div>
             <x-input-label for="middle_name" :value="__('Middle Name')" />
-            <x-text-input id="middle_name" name="middle_name" type="text" class="mt-1 block w-full" :value="old('middle_name', $user->middle_name)"
-                autofocus autocomplete="middle_name" />
+            <x-text-input id="middle_name" name="middle_name" type="text" class="mt-1 block w-full"
+                :value="old('middle_name', $user->middle_name)" autofocus autocomplete="middle_name" />
             <x-input-error class="mt-2" :messages="$errors->get('middle_name')" />
         </div>
 
@@ -47,12 +66,16 @@
             <x-input-error class="mt-2" :messages="$errors->get('gender')" />
         </div>
 
+
+
         <div>
             <x-input-label for="phone_number" :value="__('Phone')" />
             <x-text-input id="phone_number" name="phone_number" type="text" class="mt-1 block w-full"
                 :value="old('phone_number', $user->phone_number)" required autofocus autocomplete="phone_number" />
             <x-input-error class="mt-2" :messages="$errors->get('phone_number')" />
         </div>
+
+
 
         <div>
             <x-input-label for="address" :value="__('Address')" />

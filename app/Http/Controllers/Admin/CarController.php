@@ -12,9 +12,6 @@ use Illuminate\Support\Str;
 
 class CarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $cars = DB::table('cars')
@@ -31,30 +28,9 @@ class CarController extends Controller
             ->leftJoin('car_images', 'car_images.car_id', '=', 'cars.id')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
-
-
-
-
-
-        // $cars = DB::table('cars')->get();
-        // dd($cars);
-
-        // dd($cars);
-
-
-        // $cars = DB::table('cars')
-        //     ->select('cars.*', 'car_categories.name as car_category_name', 'car_categories.rent_price as car_category_rent_price', 'brands.name as brand_name', 'brands.image as brand_image')
-        //     ->leftJoin('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
-        //     ->leftJoin('brands', 'cars.car_category_id', '=', 'brands.id')
-        //     ->orderBy('created_at', 'desc')
-        //     ->paginate(10);
-
         return view('admin.pages.car.list', ['cars' => $cars]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $carCategories = DB::table('car_categories')->whereNull('deleted_at')->where('status', '=', 1)->get();
@@ -63,19 +39,8 @@ class CarController extends Controller
         return view('admin.pages.car.create', ['carCategories' => $carCategories, 'brands' => $brands]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreCarRequest $request)
     {
-        // if ($request->hasFile('image')) {
-        //     $fileOriginalName =  $request->file('image')->getClientOriginalName();
-        //     $fileName = pathinfo($fileOriginalName, PATHINFO_FILENAME);
-        //     $fileName .= '_' . time() . '.' . $request->file('image')->getClientOriginalExtension();
-        //     $request->file('image')->move(public_path('images'),  $fileName);
-        // }
-        // dd($request->all());
-
         $check = DB::table('cars')->insert([
             "name" => $request->name,
             "slug" => $request->slug,
@@ -108,37 +73,24 @@ class CarController extends Controller
             "updated_at" => Carbon::now()
         ]);
 
-        $message = $check ? 'Tao san pham thanh cong' : 'Tao san pham that bai';
+        $message = $check ? 'Created Car Success' : 'Created Car Fail';
         return redirect()->route('admin.car.index')->with('message', $message);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $car = DB::table('cars')->find($id);
         $carCategories = DB::table('car_categories')->whereNull('deleted_at')->where('status', '=', 1)->get();
-
         $brands = DB::table('brands')->whereNull('deleted_at')->where('status', '=', 1)->get();
-
         return view('admin.pages.car.detail', ['car' => $car, 'carCategories' => $carCategories, 'brands' => $brands]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(StoreCarRequest $request, string $id)
     {
-        // dd($request->all());
         $check = DB::table('cars')->where('id', '=', $id)->update([
             "name" => $request->name,
             "slug" => $request->slug,
@@ -169,28 +121,23 @@ class CarController extends Controller
             "car_category_id" => $request->car_category_id,
             "updated_at" => Carbon::now()
         ]);
-        $message = $check ? 'Tao san pham thanh cong' : 'Tao san pham that bai';
+        $message = $check ? 'Updated Car Success' : 'Updated Car Fail';
         return redirect()->route('admin.car.index')->with('message', $message);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $carData = Car::find($id);
         $carData->delete();
-        return redirect()->route('admin.car.index')->with('message', 'xoa san pham thanh cong');
+        return redirect()->route('admin.car.index')->with('message', 'Deleted Car Success');
     }
 
     public function restore(string $id)
     {
-        //Eloquent
         $carData = Car::withTrashed()->find($id);
         $carData->restore();
-        return redirect()->route('admin.car.index')->with('message', 'khoi phuc san pham thanh cong');
+        return redirect()->route('admin.car.index')->with('message', 'Restored Car Success');
     }
-
 
     public function createSlug(Request $request)
     {

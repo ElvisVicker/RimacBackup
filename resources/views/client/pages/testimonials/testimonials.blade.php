@@ -10,7 +10,8 @@
                         <br>
                         <br>
                         <h2>Read our <em>Testimonials</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <p>No matter where you are in the world – our Customer Service will help you with any questions or
+                            requests relating to Rimac.</p>
                     </div>
                 </div>
             </div>
@@ -28,22 +29,31 @@
                     <ul class="features-items">
                         <li class="feature-item">
                             <div class="left-icon">
-                                <img src="{{ asset('assets/client/images/features-first-icon.png') }}" alt="First One">
+                                <img src="{{ asset('assets/client/images/cus1.jpg') }}" alt="First One"
+                                    style="object-fit: cover; width:100px; height:100px; border-radius:10px;">
                             </div>
                             <div class="right-content">
-                                <h4>John Doe</h4>
-                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime
-                                        voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
+                                <h4>
+                                    SCOTT WELLS</h4>
+                                <p><em>"Just picked up my new A5. Thank you to everyone at Rimac for your outstanding
+                                        service and Leon for a great welcome and chilled out buying experience. What a top
+                                        team Rimac. Cheers Guys"</em>
+                                </p>
                             </div>
                         </li>
                         <li class="feature-item">
                             <div class="left-icon">
-                                <img src="{{ asset('assets/client/images/features-first-icon.png') }}" alt="second one">
+
+
+                                <img src=" {{ asset('assets/client/images/cus2.jpg') }}" alt="second one"
+                                    style="object-fit: cover; width:100px; height:100px; border-radius:10px;">
                             </div>
                             <div class="right-content">
-                                <h4>John Doe</h4>
-                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime
-                                        voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
+                                <h4>
+                                    MICHAEL TATHAM</h4>
+                                <p><em>"I absolutely love my new car - thank you Leon and Rimac, excellent service and
+                                        very quick turnaround. 5 star service and would highly recommend."</em>
+                                </p>
                             </div>
                         </li>
                     </ul>
@@ -52,22 +62,28 @@
                     <ul class="features-items">
                         <li class="feature-item">
                             <div class="left-icon">
-                                <img src="{{ asset('assets/client/images/features-first-icon.png') }}" alt="fourth muscle">
+                                <img src="{{ asset('assets/client/images/cus3.jpg') }}" alt="fourth muscle"
+                                    style="object-fit: cover; width:100px; height:100px; border-radius:10px;">
                             </div>
                             <div class="right-content">
-                                <h4>John Doe</h4>
-                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime
-                                        voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
+                                <h4>
+                                    CRAIG BICKERS</h4>
+                                <p><em>"Would like to say a massive thank you to Leon and the team at Rimac for our new
+                                        Audi! Would definitely
+                                        use Rimac again in the future and would highly recommend to anyone!"</em>
+                                </p>
                             </div>
                         </li>
                         <li class="feature-item">
                             <div class="left-icon">
-                                <img src="{{ asset('assets/client/images/features-first-icon.png') }}" alt="training fifth">
+                                <img src="{{ asset('assets/client/images/cus4.jpg') }}" alt="training fifth"
+                                    style="object-fit: cover; width:100px; height:100px; border-radius:10px;">
                             </div>
                             <div class="right-content">
-                                <h4>John Doe</h4>
-                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime
-                                        voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
+                                <h4>LIAM WEBSTER</h4>
+                                <p><em>"Really professional service , you certainly aren't pressured into anything and Leon
+                                        is a sound bloke"</em>
+                                </p>
                             </div>
                         </li>
                     </ul>

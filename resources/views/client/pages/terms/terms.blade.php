@@ -10,7 +10,8 @@
                         <br>
                         <br>
                         <h2>Read our <em>Terms</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <p>Our dealership provides you with a safe, no-hassle method of researching, shopping, and
+                            purchasing a vehicle.</p>
                     </div>
                 </div>
             </div>
@@ -26,30 +27,43 @@
 
             <section class='tabs-content'>
                 <article>
-                    <h4>1. Lorem ipsum dolor sit amet</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel aspernatur natus dignissimos eos quod,
-                        odio.</p>
+                    <h4>Revised: 10/15/2023</h4>
+                    <p>Our dealership is committed to respecting the privacy rights of our customers and all visitors to our
+                        web site. We take this matter very seriously and have instituted many policies and procedures to
+                        ensure that your privacy rights are safeguarded. The following outlines Our dealership's privacy
+                        policies and details the measures we have taken to protect your privacy, while providing you with a
+                        unique and rewarding online shopping experience.</p>
 
                     <br>
 
-                    <h4>2. Lorem ipsum dolor sit amet, consectetur.</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cupiditate ullam exercitationem
-                        molestiae illum? Nam magni, saepe sint maiores vitae!</p>
+                    <h4>What information does our dealership collect?</h4>
+                    <p>As part of the vehicle research and purchase process, information such as your e-mail address, name,
+                        and contact telephone numbers will be requested. This information will be used solely as described
+                        below. When entering information on this website, it is transferred automatically to our lead
+                        management system (LMS). The LMS system will automatically record the information and send it to an
+                        associate so that your inquiry may be answered promptly by a qualified representative near you.</p>
+                    <br>
+
+                    <h4>Sharing of Information among affiliates</h4>
+                    <p>Our affiliates are other companies in the AutoNation, Inc. corporate family. In addition to using
+                        affiliates to perform services, we may share your information among our affiliates.</p>
 
                     <br>
 
-                    <h4>3. Laudantium dolores vitae consequatur, magnam porro repellat excepturi rerum</h4>
-                    <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed
-                        suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida
-                        aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
+                    <h4>Does our dealership provide a way to update or remove personal information?</h4>
+                    <p>A customer wishing to change, or update, personal information may do so by contacting the dealership
+                        by email or telephone and stating their wishes at any time.</p>
+                    <br>
+                    <h4>Why are we telling you all this?</h4>
+                    <p>Because our dealership is a firm believer and active participant in consumer privacy, we maintain
+                        these policies that give our visitors full disclosure. Our dealership believes in improving the
+                        customer's online shopping experience through the responsible and secure collection and usage of
+                        customer data.</p>
 
                     <br>
-
-                    <h4>4. Laudantium dolores vitae consequatur, magnam porro repellat excepturi rerum</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi suscipit commodi impedit unde
-                        accusantium nam incidunt tenetur, libero maiores enim! Nisi ex odit, totam nihil doloribus. Nemo ut,
-                        eos consequatur libero aut quas dolorum ipsa, quidem, totam dicta id possimus dolores distinctio
-                        laboriosam doloribus voluptates tenetur consectetur inventore aliquid dolorem?</p>
+                    <h4>How This Policy Applies to You</h4>
+                    <p>This Privacy Policy applies to our website users and this Privacy Policy replaces our previous
+                        disclosures to you about our information practices.</p>
                 </article>
             </section>
         </div>

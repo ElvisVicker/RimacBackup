@@ -9,42 +9,13 @@ use Illuminate\Support\Facades\DB;
 
 class CarController extends Controller
 {
-    // public function index()
-    // {
-    //     $carCategories = DB::table('car_categories')->get();
-    //     $brands = DB::table('brands')->get();
-    //     $colors = DB::table('cars')->distinct()->get('color');
-    //     $fueltypies = DB::table('cars')->distinct()->get('fueltype');
-    //     $years = DB::table('cars')->distinct()->get('year');
-
-    //     $cars = DB::table('cars')
-    //         ->select('cars.*', 'car_categories.name as car_category_name', 'car_categories.rent_price as car_category_rent_price', 'brands.name as brand_name', 'brands.image as brand_image', 'car_images.name as car_image')
-    //         ->join('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
-    //         ->join('brands', 'cars.brand_id', '=', 'brands.id')
-    //         ->leftJoin('car_images', 'car_images.car_id', '=', 'cars.id')
-    //         // ->where('brands.name', 'like', $brands)
-    //         ->orderBy('created_at', 'desc')
-    //         ->paginate(6);
-
-    //     return view('client.pages.cars.cars', [
-    //         'cars' => $cars,
-    //         'carCategories' => $carCategories,
-    //         'brands' => $brands,
-    //         'colors' => $colors,
-    //         'fueltypies' => $fueltypies,
-    //         'years' => $years
-    //     ]);
-    // }
-
     public function index(Request $request)
     {
-
         $carCategories = DB::table('car_categories')->get();
         $brands = DB::table('brands')->get();
         $colors = DB::table('cars')->distinct()->get('color');
         $fueltypies = DB::table('cars')->distinct()->get('fueltype');
         $years = DB::table('cars')->distinct()->get('year');
-
         $cars = DB::table('cars')->where('cars.status', '=', 1)
             ->select('cars.*', 'car_categories.name as car_category_name', 'car_categories.rent_price as car_category_rent_price', 'brands.name as brand_name', 'brands.image as brand_image', 'car_images.name as car_image')
             ->join('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
@@ -91,20 +62,8 @@ class CarController extends Controller
             }, function ($query) {
                 $query->where('price', '<>', null);
             })
-
-
-
             ->orderBy('created_at', 'desc')
             ->paginate(6);
-
-
-
-
-        // dd($cars);
-        // dd($request->price);
-
-
-
 
         return view('client.pages.cars.cars', [
             'cars' => $cars,
@@ -116,16 +75,16 @@ class CarController extends Controller
         ]);
     }
 
-    public function detail(string $id)
+    public function detail(string $id, string $slug)
     {
-
         $car = DB::table('cars')
             ->select('cars.*', 'car_categories.name as car_category_name', 'car_categories.rent_price as car_category_rent_price', 'brands.name as brand_name', 'brands.image as brand_image', 'car_images.name as car_image')
             ->join('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
             ->join('brands', 'cars.brand_id', '=', 'brands.id')
             ->leftJoin('car_images', 'car_images.car_id', '=', 'cars.id')
-            ->where('cars.id', $id)
+            ->where('cars.id', $id)->where('cars.slug', $slug)
             ->get();
+
         return view('client.pages.car_detail.car_detail', ['car' => $car]);
     }
 }

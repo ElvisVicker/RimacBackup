@@ -59,7 +59,7 @@
 
                                         <div
                                             class="{{ $car->status ? 'btn btn-success m-2 Show' : 'btn btn-danger m-2 Hide' }}">
-                                            {{ $car->status ? 'Show' : 'Hide' }}</div>
+                                            {{ $car->status ? 'Available' : 'Unavailable' }}</div>
 
 
 

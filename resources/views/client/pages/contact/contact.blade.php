@@ -10,7 +10,8 @@
                         <br>
                         <br>
                         <h2>Feel free to <em>Contact Us</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <p>We collect and process, which includes scanning and analyzing, information you provide in the
+                            context of composing, sending, or receiving messages</p>
                     </div>
                 </div>
             </div>
@@ -43,7 +44,7 @@
                         <i class="fa fa-envelope"></i>
                     </div>
 
-                    <h5><a href="#">contact@company.com</a></h5>
+                    <h5><a href="#">contact@rimac.com</a></h5>
 
                     <br>
                 </div>
@@ -68,8 +69,11 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div id="map">
-                        <iframe
+                        {{-- <iframe
                             src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            width="100%" height="530px" frameborder="0" style="border:0" allowfullscreen></iframe> --}}
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d504.2973572498496!2d106.68075281637816!3d10.770841978517531!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316c1f9beeef96bf%3A0xd8d4cf92c5d8ad9a!2zU8OgaSBHw7JuIEZvcmQgQ2FvIFRo4bqvbmc!5e0!3m2!1svi!2s!4v1697553858068!5m2!1svi!2s"
                             width="100%" height="530px" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>

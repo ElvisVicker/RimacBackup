@@ -20,6 +20,7 @@ use App\Http\Controllers\Staff\BuyerController as StaffBuyerController;
 use App\Http\Controllers\Staff\BuyOrderController;
 use App\Http\Controllers\Staff\ContactController as StaffContactController;
 use App\Http\Controllers\Staff\RentOrderController;
+use App\Models\Car;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -113,7 +114,7 @@ Route::prefix('admin')->middleware('auth.admin')->name('admin.')->group(function
 
 // ->middleware('auth.staff')
 
-Route::prefix('staff')->name('staff.')->group(function () {
+Route::prefix('staff')->middleware('auth.staff')->name('staff.')->group(function () {
     Route::resource('buyer', StaffBuyerController::class);
     Route::get('buyer/send_to_order/{id}', [StaffBuyerController::class, 'sendToOrder'])->name('buyer.send_to_order');
     Route::resource('contact', StaffContactController::class);
@@ -128,7 +129,11 @@ Route::prefix('client')->name('client.')->group(function () {
     // Route::post('cars/filteredIndex', [ClientCarController::class, 'filteredIndex'])->name('cars.filteredIndex');
     Route::get('cars', [ClientCarController::class, 'index'])->name('cars');
     Route::post('cars', [ClientCarController::class, 'index'])->name('cars');
-    Route::get('detail/{id}', [ClientCarController::class, 'detail'])->name('detail');
+    Route::get('detail/{id?}/{slug}', [ClientCarController::class, 'detail'])->name('detail');
+
+
+
+
     Route::post('detail/{id}/store', [BuyController::class, 'store'])->name('detail.store');
     Route::get('contact', [ClientContactController::class, 'index'])->name('contact');
     Route::post('contact', [ClientContactController::class, 'store'])->name('contact.store');

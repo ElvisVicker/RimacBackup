@@ -14,7 +14,8 @@
                         <br>
                         <br>
                         <h2>Our <em>Cars</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <p>From the very outset Rimac Cars has been a brand for people who care about the world we live in
+                            and the people around us.</p>
                     </div>
                 </div>
             </div>
@@ -172,8 +173,14 @@
                                 </p>
 
                                 <ul class="social-icons">
-                                    <li><a href="{{ route('client.detail', ['id' => $car->id]) }}">+ View Car</a>
+                                    {{-- <li><a href="{{ route('client.detail', ['id' => $car->id]) }}">+ View Car</a>
+                                    </li> --}}
+                                    {{-- {{ dd($car) }} --}}
+                                    <li><a href="{{ route('client.detail', ['id' => $car->id, 'slug' => $car->slug]) }}">+
+                                            View Car</a>
                                     </li>
+
+
                                 </ul>
                             </div>
                         </div>

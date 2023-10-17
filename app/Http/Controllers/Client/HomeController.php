@@ -18,9 +18,6 @@ class HomeController extends Controller
             ->leftJoin('car_images', 'car_images.car_id', '=', 'cars.id')
             ->orderBy('created_at', 'desc')->limit(3)->get();
 
-
-
-
         return view('client.pages.home.home', ['cars' => $cars]);
     }
 }

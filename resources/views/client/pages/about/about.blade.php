@@ -10,7 +10,8 @@
                         <br>
                         <br>
                         <h2>Learn more <em>About Us</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <p>Rimac is a leading digital marketplace and solutions provider for the automotive industry that
+                            connects car shoppers with sellers.</p>
                     </div>
                 </div>
             </div>
@@ -38,55 +39,65 @@
                             <img src="    {{ asset('assets/client/images/about-image-1-940x460.jpg') }}" alt="">
                             <h4>Our Goals</h4>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel aspernatur natus dignissimos
-                                eos quod, odio.</p>
+                            <p>With content marketing, you can promote your dealership using extremely valuable information
+                                that prospects appreciate, at a relatively low cost.</p>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cupiditate ullam exercitationem
-                                molestiae illum? Nam magni, saepe sint maiores vitae!</p>
+                            <p>Deliver in-depth content created using intense research to your audience. Deliver valuable
+                                content at regular intervals, to make your audience revisit your auto dealer website again
+                                and again.</p>
 
-                            <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend
-                                hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem
-                                tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut,
-                                accumsan diam.</p>
+                            <p>Make it a point to provide something that your competitors do not.</p>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi suscipit commodi impedit unde
-                                accusantium nam incidunt tenetur, libero maiores enim! Nisi ex odit, totam nihil doloribus.
-                                Nemo ut, eos consequatur libero aut quas dolorum ipsa, quidem, totam dicta id possimus
-                                dolores distinctio laboriosam doloribus voluptates tenetur consectetur inventore aliquid
-                                dolorem?</p>
+                            <p>Virtually no one prefers content that has a serious corporate tone. Instead, a dynamic
+                                story-telling pitch will engage more people. A conversational tone works much better and has
+                                a better impact on the minds of your readers.</p>
                         </article>
                         <article id='tabs-2'>
                             <img src="   {{ asset('assets/client/images/about-image-2-940x460.jpg') }}" alt="">
                             <h4>Our Work</h4>
-                            <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a
-                                velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh,
-                                ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque
-                                penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque ut accusantium cum! Ad
-                                quisquam, aut praesentium magni pariatur ipsa! Soluta deserunt accusantium repellendus
-                                ratione quam hic facere, cupiditate iste obcaecati a, officiis ipsum aspernatur in?</p>
+                            <p>Staying active on social media can help dealerships connect with potential new customers and
+                                current of past customers, too. Dealerships can think of social media as yet another
+                                outreach tool. Posts or content don’t have to just be business. They can be fun, they can be
+                                supportive, and they can even be humorous.</p>
+                            <p>Dealerships might be active on all social media sites, and they might even have a designated
+                                marketing team or professional whose job is to manage all of the accounts. Other dealerships
+                                might have a smaller staff and just post when they have the time. Maybe the owner has the
+                                responsibility for managing the accounts.</p>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla a necessitatibus eos vitae
-                                quibusdam quo sunt officiis rerum voluptatibus non natus eius placeat officia vel quaerat,
-                                reprehenderit obcaecati, eaque? Repudiandae ad facere culpa accusamus aliquam ab assumenda
-                                reiciendis corrupti cum nemo, cumque molestiae corporis deserunt!</p>
+                            <p>Even posting something short and sweet to wish followers “happy holidays” or saying thank you
+                                to veterans can be impactful. Posts don’t have to be long. On Twitter, for example, tweets
+                                are limited to a certain number of characters. Brevity is everyone’s friend!</p>
                         </article>
                         <article id='tabs-3'>
                             <img src=" {{ asset('assets/client/images/about-image-3-940x460.jpg') }}" alt="">
                             <h4>Our Passion</h4>
-                            <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit
-                                amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque
-                                felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.
-                            </p>
+                            <p>As a salesperson, you’ll need to be passionate about what you’re selling in order to convince
+                                customers that they should buy a product. With cars, it’s no different, but this might be
+                                easy for you if you already love cars. Being a car salesperson allows you to go on and on
+                                about all things cars, and customers will appreciate and respond to a salesperson who is
+                                knowledgeable about what they’re selling. Starting your automotive sales training can help
+                                you to channel your passion for cars into sales strategies that will help your customers
+                                find their dream car. Oh, and the commission doesn’t hurt either. </p>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aut beatae commodi
-                                repudiandae distinctio, magnam blanditiis reiciendis vitae velit voluptatum natus, fugit
-                                quis eos dolores!</p>
+                            <p>If you’re self-motivated, there’s no better career than a car salesperson. In addition to a
+                                base salary, auto sales professionals also earn commission based on the kinds and amounts of
+                                cars you sell. The auto sales industry is competitive, and how much income you make is
+                                determined by you and you only. Being a successful salesperson in the auto industry comes
+                                with several perks besides just salary. If you’re excelling in your automotive sales career,
+                                you can become extremely marketable, meaning that as a car salesperson, you don’t have to be
+                                tied down by your job. Car dealerships are always looking for talented salespeople who will
+                                bring in income, so know that if you’re working in car sales, chances are you’ll have some
+                                options for mobility. </p>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic adipisci reiciendis quaerat qui
-                                earum aut, atque esse quisquam quis exercitationem sapiente, dolorum consequatur
-                                consequuntur voluptatibus ipsam, fuga magnam beatae optio nam. Recusandae ut aliquid,
-                                eligendi.</p>
+                            <p>As a car salesperson, not only are you working with cars on a daily basis, but you also will
+                                have the opportunity to test drive and learn about brand new models. It’s part of the job!
+                                Additionally, depending on the dealership you work for, you might be able to drive a free
+                                “demo” car every once in a while, and you will also benefit from a multitude of price
+                                reductions available to staff. Lastly, a big benefit to working in auto sales is the fact
+                                that at the end of the day, you are ensuring that people find the car that is right for
+                                them. So, helping people, talking about and driving cars all day, and getting paid for it?
+                                If this sounds like something you’d be interested in, a career as a car salesperson might be
+                                for you.</p>
                         </article>
                     </section>
                 </div>
@@ -103,8 +114,8 @@
                 <div class="col-lg-10 offset-lg-1">
                     <div class="cta-content">
                         <h2>Send us a <em>message</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula, sit amet dapibus odio
-                            augue eget libero. Morbi tempus mauris a nisi luctus imperdiet.</p>
+                        <p>We collect and process, which includes scanning and analyzing, information you provide in the
+                            context of composing, sending, or receiving messages</p>
                         <div class="main-button">
                             <a href="{{ route('client.contact') }}">Contact us</a>
                         </div>

@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class CarImagesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $carImages = DB::table('car_images')
@@ -23,34 +20,13 @@ class CarImagesController extends Controller
         return view('admin.pages.car_images.list', ['carImages' => $carImages]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-
-
-        $carImage = DB::table('car_images')->get('car_id');
-
-
-
-        // dd($carImage);
-
-
-        // $cars = DB::select('select * from cars where status = 1');
-
-
+        // $carImage = DB::table('car_images')->get('car_id');
         $cars = DB::table('cars')->where('status', '=', 1)->get();
-
-
-
-
         return view('admin.pages.car_images.create', ['cars' => $cars]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreCarImagesRequest $request)
     {
         $carImages = [];
@@ -68,10 +44,6 @@ class CarImagesController extends Controller
         }
         $strImage = implode(', ', $carImages);
 
-
-
-
-
         $check = DB::table('car_images')->insert([
             'name' => $strImage,
             "car_id" => $request->car_id,
@@ -79,13 +51,10 @@ class CarImagesController extends Controller
             "updated_at" => Carbon::now()
         ]);
 
-        $message = $check ? 'Tao san pham thanh cong' : 'Tao san pham that bai';
+        $message = $check ? 'Created Image Success' : 'Created Image Fail';
         return redirect()->route('admin.car_images.index')->with('message', $message);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $carImage = DB::table('car_images')->find($id);
@@ -93,17 +62,10 @@ class CarImagesController extends Controller
         return view('admin.pages.car_images.detail', ['carImage' => $carImage, 'cars' => $cars]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(StoreCarImagesRequest $request, string $id)
     {
         $carImage = DB::table('car_images')->find($id);
@@ -135,22 +97,15 @@ class CarImagesController extends Controller
             }
         }
 
-
-
-
-
         $check = DB::table('car_images')->where('id', '=', $id)->update([
             'name' =>  $strImage ?? '',
             "car_id" => $request->car_id,
             "updated_at" => Carbon::now()
         ]);
-        $message = $check ? 'Tao san pham thanh cong' : 'Tao san pham that bai';
+        $message = $check ? 'Updated Image Success' : 'Updated Image Fail';
         return redirect()->route('admin.car_images.index')->with('message', $message);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $carImage = DB::table('car_images')->find($id);
@@ -164,7 +119,7 @@ class CarImagesController extends Controller
         }
 
         $result = DB::table('car_images')->delete($id);
-        $message = $result ? 'Xoa thanh cong' : 'Xoa that bai';
+        $message = $result ? 'Deleted Image Success' : 'Deleted Image Fail';
         return redirect()->route('admin.car_images.index')->with('message', $message);
     }
 }

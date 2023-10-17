@@ -70,7 +70,8 @@
                                 </p>
 
                                 <ul class="social-icons">
-                                    <li><a href="{{ route('client.detail', ['id' => $car->id]) }}">+ View Car</a></li>
+                                    <li><a href="{{ route('client.detail', ['id' => $car->id, 'slug' => $car->slug]) }}">+
+                                            View Car</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -193,20 +194,21 @@
                     <div class="section-heading">
                         <h2>Read our <em>Blog</em></h2>
                         <img src="assets/images/line-dec.png" alt="">
-                        <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor,
-                            ultricies fermentum massa consequat eu.</p>
+                        <p>For life. We want to provide you with the freedom to move in a personal, sustainable and safe
+                            way.</p>
                     </div>
                 </div>
             </div>
             <div class="row" id="tabs">
                 <div class="col-lg-4">
                     <ul>
-                        <li><a href='#tabs-1'>Lorem ipsum dolor sit amet, consectetur adipisicing.</a></li>
-                        <li><a href='#tabs-2'>Aspernatur excepturi magni, placeat rerum nobis magnam libero!
-                                Soluta.</a>
+                        <li><a href='#tabs-1'>Rimac has an award-winning brand, leadership team, and the best and
+                                brightest employees in the industry.</a></li>
+                        <li><a href='#tabs-2'>Rimac is a leading digital marketplace and solutions provider for the
+                                automotive industry that connects car shoppers with sellers.</a>
                         </li>
-                        <li><a href='#tabs-3'>Sunt hic recusandae vitae explicabo quidem laudantium corrupti non
-                                adipisci nihil.</a></li>
+                        <li><a href='#tabs-3'>Rimac acquired Dealer Inspire®, an innovative technology company building
+                                solutions.</a></li>
                         <div class="main-rounded-button"><a href="{{ route('client.blog') }}">Read More</a></div>
                     </ul>
                 </div>
@@ -216,15 +218,15 @@
                     <section class='tabs-content'>
                         <article id='tabs-1'>
                             <img src=" {{ asset('assets/client/images/blog-image-1-940x460.jpg') }}" alt="">
-                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
+                            <h4>Rimac has an award-winning brand, leadership team, and the best and
+                                brightest employees in the industry.</h4>
 
-                            <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
-                                27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i> 15 comments</p>
+                            <p><i class="fa fa-user"></i> John Wick &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
+                                27.07.2023 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i> 15 comments</p>
 
-                            <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend
-                                hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem
-                                tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut,
-                                accumsan diam.</p>
+                            <p>From the very outset Rimac Cars has been a brand for people who care about the world we live
+                                in and the people around us. We have made it our mission to make life easier, better and
+                                safer for everyone.</p>
                             <div class="main-button">
                                 <a href="{{ route('client.blog_detail') }}">Continue Reading</a>
                             </div>
@@ -233,26 +235,27 @@
 
                         <article id='tabs-2'>
                             <img src="{{ asset('assets/client/images/blog-image-2-940x460.jpg') }}" alt="">
-                            <h4>Aspernatur excepturi magni, placeat rerum nobis magnam libero! Soluta.</h4>
-                            <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
-                                27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i> 15 comments</p>
-                            <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a
-                                velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus
-                                nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius
-                                natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                            <h4>Rimac is a leading digital marketplace and solutions provider for the
+                                automotive industry that connects car shoppers with sellers.</h4>
+                            <p><i class="fa fa-user"></i> Scott Wells &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
+                                28.07.2023 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i> 15 comments</p>
+                            <p>We want to disrupt the auto industry and be a leader in safety, sustainability, online
+                                business and set a new global people standard. Our mid-decade ambitions set a clear path for
+                                us as we rise to meet our – and society’s – challenges.</p>
                             <div class="main-button">
                                 <a href="{{ route('client.blog_detail') }}">Continue Reading</a>
                             </div>
                         </article>
                         <article id='tabs-3'>
                             <img src="{{ asset('assets/client/images/blog-image-3-940x460.jpg') }}" alt="">
-                            <h4>Sunt hic recusandae vitae explicabo quidem laudantium corrupti non adipisci nihil.</h4>
-                            <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
-                                27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i> 15 comments</p>
-                            <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit
-                                amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id
-                                scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel,
-                                accumsan a neque.</p>
+                            <h4>Rimac acquired Dealer Inspire®, an innovative technology company building
+                                solutions.</h4>
+                            <p><i class="fa fa-user"></i> Barry Allen &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
+                                07.09.2023 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i> 15 comments</p>
+                            <p>Since 2021, Rimac Cars has been publicly listed on the Nasdaq Stockholm stock exchange. Our
+                                group structure includes Rimac Cars, software company Zenseact and mobility company Rimac On
+                                Demand.
+                            </p>
                             <div class="main-button">
                                 <a href="{{ route('client.blog_detail') }}">Continue Reading</a>
                             </div>
@@ -273,8 +276,9 @@
                 <div class="col-lg-10 offset-lg-1">
                     <div class="cta-content">
                         <h2>Send us a <em>message</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula, sit amet dapibus
-                            odio augue eget libero. Morbi tempus mauris a nisi luctus imperdiet.</p>
+                        <p>Please feel free to browse our online used vehicles stock list for full details of our latest
+                            range. Our stock is updated regularly - for further details on any of our vehicles or the
+                            services we provide, please contact us.</p>
                         <div class="main-button">
                             <a href="{{ route('client.contact') }}">Contact us</a>
                         </div>
@@ -295,20 +299,23 @@
 
                         <h2>Read our <em>Testimonials</em></h2>
                         <img src="{{ asset('assets/client/images/line-dec.png') }}" alt="waves">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem incidunt alias minima
-                            tenetur nemo necessitatibus?</p>
+                        <p>No matter where you are in the world – our Customer Service will help you with any questions or
+                            requests relating to Rimac. Our employees will be happy to assist you.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <ul class="features-items">
                         <li class="feature-item">
                             <div class="left-icon">
-                                <img src="{{ asset('assets/client/images/features-first-icon.png') }}" alt="First One">
+                                <img src="{{ asset('assets/client/images/cus1.jpg') }}" alt="First One"
+                                    style="object-fit: cover; width:100px; height:100px; border-radius:10px;">
                             </div>
                             <div class="right-content">
-                                <h4>John Doe</h4>
-                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime
-                                        voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em>
+                                <h4>
+                                    SCOTT WELLS</h4>
+                                <p><em>"Just picked up my new A5. Thank you to everyone at Rimac for your outstanding
+                                        service and Leon for a great welcome and chilled out buying experience. What a top
+                                        team Rimac. Cheers Guys"</em>
                                 </p>
                             </div>
                         </li>
@@ -316,12 +323,14 @@
                             <div class="left-icon">
 
 
-                                <img src=" {{ asset('assets/client/images/features-first-icon.png') }}" alt="second one">
+                                <img src=" {{ asset('assets/client/images/cus2.jpg') }}" alt="second one"
+                                    style="object-fit: cover; width:100px; height:100px; border-radius:10px;">
                             </div>
                             <div class="right-content">
-                                <h4>John Doe</h4>
-                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime
-                                        voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em>
+                                <h4>
+                                    MICHAEL TATHAM</h4>
+                                <p><em>"I absolutely love my new car - thank you Leon and Rimac, excellent service and
+                                        very quick turnaround. 5 star service and would highly recommend."</em>
                                 </p>
                             </div>
                         </li>
@@ -331,25 +340,27 @@
                     <ul class="features-items">
                         <li class="feature-item">
                             <div class="left-icon">
-                                <img src="{{ asset('assets/client/images/features-first-icon.png') }}"
-                                    alt="fourth muscle">
+                                <img src="{{ asset('assets/client/images/cus3.jpg') }}" alt="fourth muscle"
+                                    style="object-fit: cover; width:100px; height:100px; border-radius:10px;">
                             </div>
                             <div class="right-content">
-                                <h4>John Doe</h4>
-                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime
-                                        voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em>
+                                <h4>
+                                    CRAIG BICKERS</h4>
+                                <p><em>"Would like to say a massive thank you to Leon and the team at Rimac for our new
+                                        Audi! Would definitely
+                                        use Rimac again in the future and would highly recommend to anyone!"</em>
                                 </p>
                             </div>
                         </li>
                         <li class="feature-item">
                             <div class="left-icon">
-                                <img src="{{ asset('assets/client/images/features-first-icon.png') }}"
-                                    alt="training fifth">
+                                <img src="{{ asset('assets/client/images/cus4.jpg') }}" alt="training fifth"
+                                    style="object-fit: cover; width:100px; height:100px; border-radius:10px;">
                             </div>
                             <div class="right-content">
-                                <h4>John Doe</h4>
-                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime
-                                        voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em>
+                                <h4>LIAM WEBSTER</h4>
+                                <p><em>"Really professional service , you certainly aren't pressured into anything and Leon
+                                        is a sound bloke"</em>
                                 </p>
                             </div>
                         </li>

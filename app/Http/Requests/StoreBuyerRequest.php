@@ -23,11 +23,16 @@ class StoreBuyerRequest extends FormRequest
     {
         return [
             'first_name' => 'required|min:2|max:255',
+            'middle_name' => 'min:0|max:255',
             'last_name' => 'required|min:2|max:255',
             'gender' => 'required',
             'email' => 'required|min:3|max:255|email',
-            'phone_number' => 'required|min:9|max:11'
+            'address' => 'required',
+            'phone_number' => 'required|numeric|min_digits:9|max_digits:11',
 
+
+
+            'type' => 'required'
         ];
     }
 }

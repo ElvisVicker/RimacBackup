@@ -10,7 +10,8 @@
                         <br>
                         <br>
                         <h2>Single <em>blog post</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <p>For life. We want to provide you with the freedom to move in a personal, sustainable and safe
+                            way.</p>
                     </div>
                 </div>
             </div>
@@ -24,33 +25,30 @@
             <br>
             <section class='tabs-content'>
                 <article>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
+                    <h4>Rimac has an award-winning brand, leadership team, and the best and
+                        brightest employees in the industry.</h4>
 
-                    <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10
-                        &nbsp;|&nbsp; <i class="fa fa-comments"></i> 15 comments</p>
+                    <p><i class="fa fa-user"></i> John Wick &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10
+                        &nbsp;|&nbsp; <i class="fa fa-comments"></i> </p>
 
                     <div><img src="assets/images/blog-image-fullscren-1-1920x700.jpg" alt=""></div>
 
                     <br>
 
-                    <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed
-                        suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida
-                        aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
+                    <p>From the very outset Rimac Cars has been a brand for people who care about the world we live
+                        in and the people around us. We have made it our mission to make life easier, better and
+                        safer for everyone.</p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam nihil magnam magni perferendis
-                        sit, inventore maxime architecto ab officia illum vitae veritatis asperiores laborum quaerat ratione
-                        omnis, possimus, sunt quae?</p>
+                    <p>We want to disrupt the auto industry and be a leader in safety, sustainability, online
+                        business and set a new global people standard. Our mid-decade ambitions set a clear path for
+                        us as we rise to meet our – and society’s – challenges.</p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus amet, corporis corrupti quod
-                        illum id autem assumenda nostrum quo, odio libero dolorum. Expedita, enim non voluptatibus qui
-                        veritatis iste ad? Voluptates natus dolor, minus culpa magnam! Iusto blanditiis beatae laudantium.
+                    <p>Since 2021, Rimac Cars has been publicly listed on the Nasdaq Stockholm stock exchange. Our
+                        group structure includes Rimac Cars, software company Zenseact and mobility company Rimac On
+                        Demand.
                     </p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolor nemo optio facere impedit
-                        fugiat obcaecati blanditiis tempora inventore sapiente beatae aspernatur vitae fuga totam possimus
-                        eveniet, praesentium maiores! Dolorum illum voluptates ipsum aspernatur explicabo numquam, aliquid a
-                        amet, deleniti eos suscipit totam laudantium excepturi voluptatum fugiat eum nesciunt minus iste,
-                        expedita provident temporibus, alias possimus veritatis aut fugit? Eaque.</p>
+
 
                     <ul class="social-icons">
                         <li>Share this:</li>
@@ -78,10 +76,12 @@
                                             alt="First One">
                                     </div>
                                     <div class="right-content">
-                                        <h4>John Doe <small>27.07.2020 10:10</small></h4>
-                                        <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam
-                                                maxime voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id
-                                                et!"</em></p>
+                                        <h4>John Doe <small>27.07.2023 10:10</small></h4>
+                                        <p><em>From the very outset Rimac Cars has been a brand for people who care about
+                                                the world we live
+                                                in and the people around us. We have made it our mission to make life
+                                                easier, better and
+                                                safer for everyone.</em></p>
                                     </div>
                                 </div>
 
@@ -92,10 +92,12 @@
                                                 alt="First One">
                                         </div>
                                         <div class="right-content">
-                                            <h4>John Doe <small>27.07.2020 11:10</small></h4>
-                                            <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam
-                                                    maxime voluptatibus, impedit sed! Necessitatibus repellendus sed
-                                                    deleniti id et!"</em></p>
+                                            <h4> Scott Wells <small>28.07.2024 11:10</small></h4>
+                                            <p><em>We want to disrupt the auto industry and be a leader in safety,
+                                                    sustainability, online
+                                                    business and set a new global people standard. Our mid-decade ambitions
+                                                    set a clear path for
+                                                    us as we rise to meet our – and society’s – challenges.</em></p>
                                         </div>
                                     </div>
                                 </div>
@@ -105,9 +107,12 @@
                                     <img src="{{ asset('assets/client/images/features-first-icon.png') }}" alt="second one">
                                 </div>
                                 <div class="right-content">
-                                    <h4>John Doe <small>27.07.2020 12:10</small></h4>
-                                    <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime
-                                            voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em>
+                                    <h4>Barry Allen <small>07.09.2023 12:10</small></h4>
+                                    <p><em>Since 2021, Rimac Cars has been publicly listed on the Nasdaq Stockholm stock
+                                            exchange. Our
+                                            group structure includes Rimac Cars, software company Zenseact and mobility
+                                            company Rimac On
+                                            Demand.</em>
                                     </p>
                                 </div>
                             </li>

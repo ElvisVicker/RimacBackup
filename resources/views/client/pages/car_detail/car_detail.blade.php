@@ -10,6 +10,10 @@
                     <div class="cta-content">
                         <br>
                         <br>
+
+
+
+
                         <h2> <em>${{ $car[0]->price + (15 / 100) * $car[0]->price }}</em></h2>
                     </div>
                 </div>
@@ -326,31 +330,31 @@
                                 <div class="col-sm-6">
                                     <label>Rent Price</label>
 
-                                    <p>{{ $car[0]->car_category_rent_price }}</p>
+                                    <p>{{ $car[0]->car_category_rent_price }} USD/day</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>Width</label>
 
-                                    <p>{{ $car[0]->width }}</p>
+                                    <p>{{ $car[0]->width }} mm</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>Height</label>
 
-                                    <p>{{ $car[0]->height }}</p>
+                                    <p>{{ $car[0]->height }} mm</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>Length</label>
 
-                                    <p>{{ $car[0]->length }}</p>
+                                    <p>{{ $car[0]->length }} mm</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>Wheelbase</label>
 
-                                    <p>{{ $car[0]->wheelbase }}</p>
+                                    <p>{{ $car[0]->wheelbase }} mm</p>
                                 </div>
 
                                 <div class="col-sm-6">
@@ -368,49 +372,49 @@
                                 <div class="col-sm-6">
                                     <label>EC Combined</label>
 
-                                    <p>{{ $car[0]->combined }}</p>
+                                    <p>{{ $car[0]->combined }} L/100km</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>EC Motor Way</label>
 
-                                    <p>{{ $car[0]->motorway }}</p>
+                                    <p>{{ $car[0]->motorway }} L/100km</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>EC Urban</label>
 
-                                    <p>{{ $car[0]->urban }}</p>
+                                    <p>{{ $car[0]->urban }} L/100km</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>CO2</label>
 
-                                    <p>{{ $car[0]->emission_co2 }}</p>
+                                    <p>{{ $car[0]->emission_co2 }} g/km</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>Engine Size</label>
 
-                                    <p>{{ $car[0]->engine_size }}</p>
+                                    <p>{{ $car[0]->engine_size }} L</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>Engine Capacity</label>
 
-                                    <p>{{ $car[0]->maxKw }}</p>
+                                    <p>{{ $car[0]->maxKw }} Kw</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>Engine Power</label>
 
-                                    <p>{{ $car[0]->maxHp }}</p>
+                                    <p>{{ $car[0]->maxHp }} HP</p>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label>0 to 100 km</label>
 
-                                    <p>{{ $car[0]->acceleration }}</p>
+                                    <p>{{ $car[0]->acceleration }} sec</p>
                                 </div>
 
                                 <div class="col-sm-6">
@@ -442,7 +446,7 @@
                                 voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
                                 cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                             </p> --}}
-                            <a target="_blank" href="{{ $car[0]->video ?? '#' }}">Watch it</a>
+                            {{-- <a target="_blank" href="{{ $car[0]->video ?? '#' }}">Watch it</a> --}}
 
 
                         </article>
@@ -506,46 +510,75 @@
                                             <div class="col-md-6 col-sm-12 mb-4">
                                                 <fieldset>
                                                     <input class="buyInput" name="first_name" type="text" id="first_name"
-                                                        placeholder="First Name" required="">
+                                                        value="{{ old('first_name') }}" placeholder="First Name"
+                                                        required="">
                                                 </fieldset>
                                             </div>
+                                            @error('first_name')
+                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                            @enderror
+
+
+
 
                                             <div class="col-md-6 col-sm-12 mb-4">
                                                 <fieldset>
                                                     <input class="buyInput" name="middle_name" type="text"
-                                                        id="middle_name" placeholder="Middle Name(Optional)">
+                                                        value="{{ old('middle_name') }}" id="middle_name"
+                                                        placeholder="Middle Name(Optional)">
                                                 </fieldset>
                                             </div>
+                                            @error('middle_name')
+                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                            @enderror
+
 
                                             <div class="col-md-6 col-sm-12 mb-4">
                                                 <fieldset>
                                                     <input class="buyInput" name="last_name" type="text" id="last_name"
-                                                        placeholder="Last Name*" required="">
+                                                        value="{{ old('last_name') }}" placeholder="Last Name*"
+                                                        required="">
                                                 </fieldset>
                                             </div>
+                                            @error('last_name')
+                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                            @enderror
+
+
                                             <div class="col-md-6 col-sm-12 mb-4">
                                                 <fieldset>
                                                     <input class="buyInput" name="phone_number" type="text"
-                                                        id="phone_number" placeholder="Phone Number" required="">
+                                                        value="{{ old('phone_number') }}" id="phone_number"
+                                                        placeholder="Phone Number" required="">
                                                 </fieldset>
                                             </div>
+                                            @error('phone_number')
+                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                            @enderror
 
 
                                             <div class="col-md-12 col-sm-12 mb-4">
                                                 <fieldset>
                                                     <input class="buyInput" name="address" type="address" id="address"
-                                                        placeholder="Address" required="">
+                                                        value="{{ old('address') }}" placeholder="Address"
+                                                        required="">
                                                 </fieldset>
                                             </div>
+                                            @error('address')
+                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                            @enderror
 
 
 
                                             <div class="col-md-12 col-sm-12 mb-4">
                                                 <fieldset>
                                                     <input class="buyInput" name="email" type="email" id="email"
-                                                        placeholder="Email" required="">
+                                                        value="{{ old('email') }}" placeholder="Email" required="">
                                                 </fieldset>
                                             </div>
+                                            @error('email')
+                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                            @enderror
 
 
                                             <div class="checkForm col-md-6 col-sm-12">
@@ -562,7 +595,9 @@
                                                     <label class="" for="">Female</label>
                                                 </div>
                                             </div>
-
+                                            @error('gender')
+                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                            @enderror
 
                                             <div class="checkForm col-md-6 col-sm-12">
                                                 <div class="">
@@ -578,6 +613,9 @@
                                                     <label class="" for="">Rent</label>
                                                 </div>
                                             </div>
+                                            @error('type')
+                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                            @enderror
 
 
 

@@ -10,7 +10,8 @@
                         <br>
                         <br>
                         <h2>Meet our <em>Team</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <p>Rimac has an award-winning brand, leadership team, and the best and brightest employees in the
+                            industry</p>
                     </div>
                 </div>
             </div>
@@ -30,9 +31,11 @@
                         </div>
                         <div class="down-content">
                             <span>CEO</span>
-                            <h4>John Doe</h4>
-                            <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar
-                                imperdiet. Nunc consectetur.</p>
+                            <h4>Alex Vetter</h4>
+                            <p>Alex Vetter serves as the chief executive officer of Rimac Inc. (Rimac). As one of the
+                                founding members of Rimac, Alex has helped shape the Company from its initial concept into
+                                a leading digital marketplace and platform powering innovative solutions and frictionless
+                                omni-channel experiences for the automotive industry.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -49,10 +52,12 @@
                             <img src=" {{ asset('assets/client/images/team-image-2-646x680.jpg') }}" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Customer Support</span>
-                            <h4>Jane Smith</h4>
-                            <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar
-                                imperdiet. Nunc consectetur.</p>
+                            <span>Chief Legal Officer</span>
+                            <h4>Angelique Strong Marks</h4>
+                            <p>Angelique was appointed Chief Legal Officer of Rimac Inc. (Rimac) in April 2022. As Chief
+                                Legal Officer, she is responsible for the legal, information security, compliance, corporate
+                                governance and intellectual property matters for CARS’ enterprise, including its marketplace
+                                and brands.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -69,10 +74,11 @@
                             <img src=" {{ asset('assets/client/images/team-image-3-646x680.jpg') }}" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Customer Support</span>
-                            <h4>Kate Johnson</h4>
-                            <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar
-                                imperdiet. Nunc consectetur.</p>
+                            <span>Chief Marketing Officer</span>
+                            <h4>Jennifer Vianello</h4>
+                            <p>Jennifer was appointed as Chief Marketing Officer of Rimac Inc. (Rimac) in July 2022. In
+                                this position, she leads the strategy for all design and marketing functions to create a
+                                seamless experience for our shoppers and sellers.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -90,10 +96,12 @@
                             <img src=" {{ asset('assets/client/images/team-image-4-646x680.jpg') }}" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Customer Support</span>
-                            <h4>Mark Green</h4>
-                            <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar
-                                imperdiet. Nunc consectetur.</p>
+                            <span>Chief Product Officer</span>
+                            <h4>Matthew Crawford</h4>
+                            <p>Matthew has served as Chief Product Officer at Rimac Inc. (Rimac) since January 2022. He
+                                oversees the Company’s product, design and research organizations. In this role, Matthew is
+                                focused on delivering CARS’ platform strategy by providing the best experience for car
+                                buying and selling.</p>
                             <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
