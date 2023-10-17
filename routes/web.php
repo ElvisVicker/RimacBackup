@@ -20,7 +20,9 @@ use App\Http\Controllers\Staff\BuyerController as StaffBuyerController;
 use App\Http\Controllers\Staff\BuyOrderController;
 use App\Http\Controllers\Staff\ContactController as StaffContactController;
 use App\Http\Controllers\Staff\RentOrderController;
+use App\Mail\MailToCustomer;
 use App\Models\Car;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -144,4 +146,12 @@ Route::prefix('client')->name('client.')->group(function () {
     Route::get('testimonials', [PageController::class, 'toTestimonials'])->name('testimonials');
     Route::get('faq', [PageController::class, 'toFaq'])->name('faq');
     Route::get('terms', [PageController::class, 'toTerms'])->name('terms');
+});
+
+
+Route::get('test-send-mail', function () {
+    //use Illuminate\Support\Facades\Mail;
+
+
+    // Mail::to('thn963852741321@gmail.com')->send(new MailToCustomer);
 });

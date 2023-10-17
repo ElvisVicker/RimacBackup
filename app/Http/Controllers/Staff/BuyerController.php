@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBuyerRequest;
+use App\Mail\MailToCustomer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Buyer;
 
 class BuyerController extends Controller
 {
@@ -73,6 +76,20 @@ class BuyerController extends Controller
             ->join('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
             ->get();
 
+
+
+        $customer_email = $buyer[0]->email;
+
+
+        // Mail::to('thn963852741321@gmail.com')->send(new MailToCustomer($order));
+        // $buyer = Buyer::join('cars', 'cars.id', '=', 'car_id');
+        // ->get();
+        // $buyer = Buyer::where('id', '=', $id);
+        // $buyer->where('buyer.id', '=', $id);
+
+        // $buyer->role_id = Roles::where('role', 'customer')->first()->id;
+        // dd($buyer->join('cars', 'cars.id', '=', 'car_id'));
+
         if ($buyer[0]->status === 1) {
             if ($buyer[0]->type === 1) {
                 DB::table('buy_orders')->insert([
@@ -89,6 +106,12 @@ class BuyerController extends Controller
                     "send" => 1,
                     "updated_at" => Carbon::now()
                 ]);
+
+
+                $buyer = new Buyer;
+                Mail::to($customer_email)->send(new MailToCustomer($buyer, $id));
+
+
                 return redirect()->route('staff.buyer.index')->with('message', 'Sent Successfully');
             } else if ($buyer[0]->type === 0) {
                 DB::table('rent_orders')->insert([
