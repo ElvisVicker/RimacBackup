@@ -16,11 +16,13 @@ class MailToCustomer extends Mailable
 
     public $buyer;
     public $id;
-    public function __construct(Buyer $buyer, $id)
+    public $buy_order;
+    public function __construct(Buyer $buyer, $id,  $buy_order)
     {
         $this->buyer =  $buyer->where('buyers.id', '=', $id)
             ->select('buyers.*', 'cars.id as car_id', 'cars.name as car_name', 'cars.price as price')
             ->join('cars', 'cars.id', '=', 'car_id')->get();
+        $this->buy_order =  $buy_order->where('buyer_id', '=', $id)->get();
     }
     public function envelope(): Envelope
     {
@@ -33,7 +35,7 @@ class MailToCustomer extends Mailable
     {
         return new Content(
             view: 'mail.mail_to_customer',
-            with: ['buyer' => $this->buyer]
+            with: ['buyer' => $this->buyer, 'buy_order' => $this->buy_order]
         );
     }
 

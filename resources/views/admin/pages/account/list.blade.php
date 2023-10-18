@@ -61,8 +61,8 @@
 
 
                                     <td style="display: flex;">
-                                        <a class="btn btn-info m-2"
-                                            href="{{ route('admin.account.show', ['account' => $account->id]) }}">Edit</a>
+                                        {{-- <a class="btn btn-info m-2"
+                                            href="{{ route('admin.account.show', ['account' => $account->id]) }}">Edit</a> --}}
                                         {{-- <form action="{{ route('admin.account.destroy', ['account' => $account->id]) }}"
                                             method="post">
                                             @csrf

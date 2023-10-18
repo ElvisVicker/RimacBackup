@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Buyer;
+use App\Models\BuyOrder;
 
 class BuyerController extends Controller
 {
@@ -108,8 +109,12 @@ class BuyerController extends Controller
                 ]);
 
 
+
+                $buy_order = new BuyOrder;
+                // dd($buy_order->all());
+
                 $buyer = new Buyer;
-                Mail::to($customer_email)->send(new MailToCustomer($buyer, $id));
+                Mail::to($customer_email)->send(new MailToCustomer($buyer, $id, $buy_order));
 
 
                 return redirect()->route('staff.buyer.index')->with('message', 'Sent Successfully');

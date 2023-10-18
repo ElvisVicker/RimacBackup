@@ -18,7 +18,7 @@
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img class="rounded-circle me-lg-2" src="{{ asset('images/' . auth()->user()->image) }}" alt=""
-                    style="width: 40px; height: 40px;">
+                    style="width: 40px; height: 40px; object-fit:cover;">
                 <span class="d-none d-lg-inline-flex">{{ auth()->user()->name }} {{ auth()->user()->last_name }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
