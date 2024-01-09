@@ -30,6 +30,103 @@
 
 
 
+    <style>
+        .imgCus {
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .imgContainer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newLabel {
+            font-size: 18px;
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            transform: rotate(45deg);
+            width: fit-content;
+            height: fit-content;
+            padding: 5px 40px;
+            font-weight: 500;
+            color: #fff;
+            background-color: #ed563b;
+        }
+
+        .subInfo {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .infoCustom {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btnViewCar {
+            width: fit-content;
+            height: fit-content;
+            background-color: #ed563b;
+            color: #fff !important;
+            padding: 6px 30px;
+            transition: 0.3s;
+            border-radius: 2px;
+            border: 1px solid #fff;
+            align-self: end;
+        }
+
+        .btnViewCar:hover {
+            width: fit-content;
+            height: fit-content;
+            background-color: #fff;
+            color: #ed563b !important;
+            border: 1px solid #ed563b;
+
+        }
+
+
+
+        @media (max-width: 990px) {
+            .imgCus {
+                height: 400px;
+                object-fit: cover;
+            }
+
+
+
+            .newLabel {
+                font-size: 20px;
+                top: 38px;
+                right: -44px;
+                padding: 5px 80px;
+                font-weight: 500;
+            }
+
+
+        }
+
+
+        @media (max-width: 765px) {
+            .imgCus {
+                height: 300px;
+                object-fit: cover;
+            }
+
+            .newLabel {
+                font-size: 20px;
+                top: 24px;
+                right: -38px;
+                padding: 5px 60px;
+                font-weight: 500;
+            }
+        }
+    </style>
+
+
+
     <!-- ***** Cars Starts ***** -->
     <section class="section" id="trainers">
         <div class="container">
@@ -44,103 +141,113 @@
                     </div>
                 </div>
             </div>
+
+
+
             <div class="row">
                 @foreach ($cars as $car)
                     <div class="col-lg-4">
                         <div class="trainer-item">
                             <div class="image-thumb">
                                 @php
-                                    $firstCarImage = explode(',', $car->car_image)[0];
-                                    $imagesLink = is_null($firstCarImage) || !file_exists('images/' . $firstCarImage) ? 'https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg' : asset('images/' . $firstCarImage);
+                                    $firstCarImage = explode(',', $car->image)[0];
+                                    $imagesLink = $firstCarImage == '' || !file_exists('images/' . $firstCarImage) ? 'https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg' : asset('images/' . $firstCarImage);
                                 @endphp
-                                <img src="{{ $imagesLink }}" alt="" srcset="">
+                                <img src="{{ $imagesLink }}" alt="" class="imgCus" srcset="">
                                 {{-- <img src="assets/images/product-1-720x480.jpg" alt=""> --}}
+
+
                             </div>
-                            <div class="down-content">
-                                <span>
-                                    &nbsp; <sup>$</sup> {{ $car->price + (15 / 100) * $car->price }}
-                                </span>
+                            <div class="down-content infoCustom">
 
-                                <h4>{{ $car->name }}</h4>
+                                <div
+                                    style="display: flex; align-items:center; justify-content:space-between; padding:20px 0px;">
 
-                                <p>
-                                    <i class="fa fa-dashboard"></i>{{ $car->color }} &nbsp;&nbsp;&nbsp;
-                                    <i class="fa fa-cube"></i>{{ $car->engine_size }} &nbsp;&nbsp;&nbsp;
-                                    <i class="fa fa-cog"></i> {{ $car->transmission_type }} &nbsp;&nbsp;&nbsp;
-                                </p>
+                                    <div style="font-weight: 600; font-size:20px">{{ $car->name }}</div>
+                                    <div style="color: #ed563b; font-weight:600;">
+                                        {{ number_format($car->price + (15 / 100) * $car->price, 2) }} $
+                                    </div>
+                                </div>
 
-                                <ul class="social-icons">
-                                    <li><a href="{{ route('client.detail', ['id' => $car->id, 'slug' => $car->slug]) }}">+
-                                            View Car</a></li>
-                                </ul>
+
+                                <div class="subInfo">
+                                    <div>Color: {{ $car->color }}</div>
+                                    <div>Engine size: {{ $car->engine_size }}L</div>
+                                    <div>Transmission: {{ $car->transmission_type }}</div>
+                                </div>
+                                <a class="btnViewCar"
+                                    href="{{ route('client.detail', ['id' => $car->id, 'slug' => $car->slug]) }}">
+                                    Buy Now
+                                </a>
                             </div>
                         </div>
                     </div>
                 @endforeach
+            </div>
 
-
-
-                {{-- <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="assets/images/product-2-720x480.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>
-                                <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                            </p>
-
-                            <ul class="social-icons">
-                                <li><a href="car-details.html">+ View Car</a></li>
-                            </ul>
-                        </div>
+            <div class="row" style="margin-top: -50px ;">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>New <em>Arrivals</em></h2>
+                        <img src="assets/images/line-dec.png" alt="">
                     </div>
                 </div>
+            </div>
+            <div class="row" style="margin-top: -90px ;">
+                @foreach ($carsNew as $car)
+                    <div class="col-lg-4">
+                        <div class="trainer-item">
+                            <div class="image-thumb imgContainer">
+                                @php
+                                    $firstCarImage = explode(',', $car->image)[0];
+                                    $imagesLink = $firstCarImage == '' || !file_exists('images/' . $firstCarImage) ? 'https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg' : asset('images/' . $firstCarImage);
+                                @endphp
+                                <img src="{{ $imagesLink }}" alt="" class="imgCus" srcset="">
+                                {{-- <img src="assets/images/product-1-720x480.jpg" alt=""> --}}
 
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="assets/images/product-3-720x480.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
 
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
+                                <div class="newLabel">New</div>
 
-                            <p>
-                                <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                            </p>
+                            </div>
+                            <div class="down-content infoCustom">
 
-                            <ul class="social-icons">
-                                <li><a href="car-details.html">+ View Car</a></li>
-                            </ul>
+                                <div
+                                    style="display: flex; align-items:center; justify-content:space-between; padding:20px 0px;">
+
+                                    <div style="font-weight: 600; font-size:20px">{{ $car->name }}</div>
+                                    <div style="color: #ed563b;font-weight: 600;">
+                                        {{ number_format($car->price + (15 / 100) * $car->price, 2) }} $
+                                    </div>
+                                </div>
+
+
+                                <div class="subInfo">
+                                    <div>Color: {{ $car->color }}</div>
+                                    <div>Engine size: {{ $car->engine_size }}L</div>
+                                    <div>Transmission: {{ $car->transmission_type }}</div>
+                                </div>
+
+
+
+
+
+                                <a class="btnViewCar"
+                                    href="{{ route('client.detail', ['id' => $car->id, 'slug' => $car->slug]) }}">
+                                    Buy Now
+                                </a>
+
+
+
+                            </div>
                         </div>
                     </div>
-                </div> --}}
-
-
-
-
-
-
+                @endforeach
             </div>
 
             <br>
 
             <div class="main-button text-center">
-                <a href="{{ route('client.cars') }}">View Cars</a>
+                <a href="{{ route('client.cars') }}">View All Cars</a>
             </div>
         </div>
     </section>
@@ -159,11 +266,6 @@
 
                         </p>
                     </div>
-
-
-
-
-
 
                 </div>
             </div>
@@ -358,7 +460,7 @@
                                     style="object-fit: cover; width:100px; height:100px; border-radius:10px;">
                             </div>
                             <div class="right-content">
-                                <h4>LIAM WEBSTER</h4>
+                                <h4>ERIK TENHAG</h4>
                                 <p><em>"Really professional service , you certainly aren't pressured into anything and Leon
                                         is a sound bloke"</em>
                                 </p>

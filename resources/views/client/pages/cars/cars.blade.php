@@ -23,132 +23,246 @@
     </section>
     <!-- ***** Call to Action End ***** -->
 
+
+
+    <style>
+        .imgCus {
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .subInfo {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .infoCustom {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btnViewCar {
+            width: fit-content;
+            height: fit-content;
+            background-color: #ed563b;
+            color: #fff !important;
+            padding: 6px 30px;
+            transition: 0.3s;
+            border-radius: 2px;
+            border: 1px solid #fff;
+            align-self: end;
+        }
+
+        .btnViewCar:hover {
+            width: fit-content;
+            height: fit-content;
+            background-color: #fff;
+            color: #ed563b !important;
+            border: 1px solid #ed563b;
+
+        }
+
+
+
+        @media (max-width: 990px) {
+            .imgCus {
+                height: 200px;
+                object-fit: cover;
+            }
+        }
+
+        @media (max-width: 765px) {
+            .imgCus {
+                height: 150px;
+                object-fit: cover;
+            }
+
+            .newLabel {
+                font-size: 20px;
+                top: 24px;
+                right: -38px;
+                padding: 5px 60px;
+                font-weight: 500;
+            }
+        }
+    </style>
+
+
     <!-- ***** Fleet Starts ***** -->
     <section class="section" id="trainers">
         <div class="container">
             <br>
             <br>
-            <div class="contact-form">
-                {{-- {{ route('client.cars.filterdIndex') }} --}}
-
-                <form action=" {{ route('client.cars') }}" id="contact" method="post">
-                    @csrf
-                    @method('post')
-
-
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Category</label>
-
-                                <select name="category">
-                                    <option value="">--All--</option>
-                                    @foreach ($carCategories as $carCategory)
-                                        <option value="{{ $carCategory->id }}">{{ $carCategory->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Brands</label>
-
-                                <select name="brand">
-                                    <option value="">--All--</option>
-                                    @foreach ($brands as $brand)
-                                        <option value="{{ $brand->id }}">{{ $brand->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Color</label>
-
-                                <select name="color">
-                                    <option value="">--All--</option>
-                                    @foreach ($colors as $color)
-                                        <option value="{{ $color->color }}">{{ $color->color }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Fuel Type</label>
-
-                                <select name="fueltype">
-                                    <option value="">--All--</option>
-                                    @foreach ($fueltypies as $fueltype)
-                                        <option value="{{ $fueltype->fueltype }}">{{ $fueltype->fueltype }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Year</label>
-
-                                <select name="year">
-                                    <option value="">--All--</option>
-                                    @foreach ($years as $year)
-                                        <option value="{{ $year->year }}">{{ $year->year }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Price</label>
-
-                                <select name="price">
-                                    <option value="">--All--</option>
-                                    <option value="1">0-49.999</option>
-                                    <option value="2">50.000-99.999</option>
-                                    <option value="3"> > 100.000</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-
-
-
-                    </div>
-                    <div class="col-sm-4 offset-sm-4">
-
-
-
-
-
-                        <div class="main-button text-center">
-
-                            <button type="submit">Search</button>
-                        </div>
-
-                    </div>
-                    <br>
-                    <br>
-                </form>
-            </div>
 
             <div class="row">
+                <div class="contact-form col-lg-3 col-md-4 col-sm-4">
+                    <form action=" {{ route('client.cars') }}" id="contact" method="post">
+                        @csrf
+                        @method('post')
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select name="category">
+                                        <option value="">--All--</option>
+                                        {{-- {{ session()->get('category') ? 'selected' : '' }} --}}
 
-                @foreach ($cars as $car)
+                                        @foreach ($carCategories as $carCategory)
+                                            <option value="{{ $carCategory->id }}"
+                                                {{ session()->get('category') == $carCategory->id ? 'selected' : '' }}>
+                                                {{ $carCategory->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- @php
+                            if (session()->get('brand') == $brands) {
+                                echo '<div>test</div>';
+                            } else {
+                                echo '<div>test1</div>';
+                            }
+                        @endphp --}}
+
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Brands</label>
+
+                                    <select name="brand">
+                                        <option value="">--All--</option>
+                                        @foreach ($brands as $brand)
+                                            <option value="{{ $brand->id }}"
+                                                {{ session()->get('brand') == $brand->id ? 'selected' : '' }}>
+                                                {{ $brand->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Color</label>
+
+                                    <select name="color">
+                                        <option value="">--All--</option>
+                                        @foreach ($colors as $color)
+                                            <option value="{{ $color->color }}"
+                                                {{ session()->get('color') == $color->color ? 'selected' : '' }}>
+                                                {{ $color->color }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Fuel Type</label>
+
+                                    <select name="fueltype">
+                                        <option value="">--All--</option>
+                                        @foreach ($fueltypies as $fueltype)
+                                            <option value="{{ $fueltype->fueltype }}"
+                                                {{ session()->get('fueltype') == $fueltype->fueltype ? 'selected' : '' }}>
+                                                {{ $fueltype->fueltype }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Year</label>
+
+                                    <select name="year">
+                                        <option value="">--All--</option>
+                                        @foreach ($years as $year)
+                                            <option value="{{ $year->year }}"
+                                                {{ session()->get('year') == $year->year ? 'selected' : '' }}>
+                                                {{ $year->year }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Price</label>
+
+                                    <select name="price">
+                                        <option value="">--All--</option>
+                                        <option value="1">0-49.999</option>
+                                        <option value="2">50.000-99.999</option>
+                                        <option value="3"> > 100.000</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="main-button text-center">
+                                <button type="submit">Search</button>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                    </form>
+                </div>
+                {{-- {{ dd(session()->get('brand')) }} --}}
+
+
+
+
+                <div class="row col-lg-9 col-md-8 col-sm-8">
+                    @foreach ($cars as $car)
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="trainer-item">
+                                <div class="image-thumb">
+                                    @php
+                                        $firstCarImage = explode(',', $car->image)[0];
+                                        $imagesLink = $firstCarImage == '' || !file_exists('images/' . $firstCarImage) ? 'https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg' : asset('images/' . $firstCarImage);
+                                    @endphp
+                                    <img src="{{ $imagesLink }}" alt="" class="imgCus" srcset="">
+                                    {{-- <img src="assets/images/product-1-720x480.jpg" alt=""> --}}
+                                </div>
+                                <div class="down-content infoCustom">
+
+                                    <div
+                                        style="display: flex; align-items:center; justify-content:space-between; padding:20px 0px;">
+
+                                        <div style="font-weight: 600; font-size:20px">{{ $car->name }}</div>
+                                        <div style="color: #ed563b;  font-weight:600;">
+                                            {{ number_format($car->price + (15 / 100) * $car->price, 2) }} $
+                                        </div>
+                                    </div>
+
+
+                                    <div class="subInfo">
+                                        <div>Color: {{ $car->color }}</div>
+                                        <div>Engine size: {{ $car->engine_size }}L</div>
+                                        <div>Transmission: {{ $car->transmission_type }}</div>
+                                    </div>
+
+
+
+
+
+                                    <a class="btnViewCar"
+                                        href="{{ route('client.detail', ['id' => $car->id, 'slug' => $car->slug]) }}">
+                                        Buy Now
+                                    </a>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+
+                {{-- @foreach ($cars as $car)
                     <div class="col-lg-4">
                         <div class="trainer-item">
                             <div class="image-thumb">
@@ -157,7 +271,6 @@
                                     $imagesLink = is_null($firstCarImage) || !file_exists('images/' . $firstCarImage) ? 'https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg' : asset('images/' . $firstCarImage);
                                 @endphp
                                 <img src="{{ $imagesLink }}" alt="" srcset="">
-                                {{-- <img src="assets/images/product-1-720x480.jpg" alt=""> --}}
                             </div>
                             <div class="down-content">
                                 <span>
@@ -173,43 +286,24 @@
                                 </p>
 
                                 <ul class="social-icons">
-                                    {{-- <li><a href="{{ route('client.detail', ['id' => $car->id]) }}">+ View Car</a>
-                                    </li> --}}
-                                    {{-- {{ dd($car) }} --}}
                                     <li><a href="{{ route('client.detail', ['id' => $car->id, 'slug' => $car->slug]) }}">+
                                             View Car</a>
                                     </li>
-
-
                                 </ul>
                             </div>
                         </div>
                     </div>
-                @endforeach
-                {{-- <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="assets/images/product-1-720x480.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
+                @endforeach --}}
 
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
 
-                            <p>
-                                <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                            </p>
 
-                            <ul class="social-icons">
-                                <li><a href="car-details.html">+ View Car</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> --}}
+
+
+
+
+
+
+
             </div>
             <br>
             <nav>

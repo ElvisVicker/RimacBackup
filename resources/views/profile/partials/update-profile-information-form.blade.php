@@ -20,13 +20,12 @@
         {{-- {{ dd(auth()->user()->image) }} --}}
         <div>
             <img rounded-circle flex-shrink-0 src="{{ 'images/' . auth()->user()->image }}" alt="" srcset=""
-                style="width: 50px; height: 50px">
+                style="width: 100px; height: 100px;border-radius:500px; object-fit:cover;">
         </div>
 
         <div>
             <x-input-label for="image" :value="__('Image')" />
-            <x-text-input id="image" name="image" type="file" class="mt-1 block w-full" :value="old('image', $user->image)"
-                autofocus autocomplete="image" />
+            <x-text-input id="image" name="image" type="file" class="mt-1 block w-full" :value="old('image', $user->image)" />
             <x-input-error class="mt-2" :messages="$errors->get('image')" />
         </div>
 
@@ -60,7 +59,7 @@
 
 
         <div>
-            <x-input-label for="gender" :value="__('Gender')" />
+            <x-input-label for="gender" :value="__('Gender (1: Male | 0: Female)')" />
             <x-text-input id="gender" name="gender" type="text" class="mt-1 block w-full" :value="old('gender', $user->gender)"
                 required autofocus autocomplete="gender" />
             <x-input-error class="mt-2" :messages="$errors->get('gender')" />

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('color');
             $table->string('fueltype');
             $table->integer('year');
-            $table->string('video')->nullable();
+            $table->string('image')->nullable();
             $table->integer('sittingfor');
             $table->string('transmission_type');
             $table->float('width');

@@ -21,13 +21,16 @@ class CarController extends Controller
                 'car_categories.rent_price as car_category_rent_price',
                 'brands.name as brand_name',
                 'brands.image as brand_image',
-                'car_images.name as car_image'
+
             )
             ->join('car_categories', 'cars.car_category_id', '=', 'car_categories.id')
             ->join('brands', 'cars.brand_id', '=', 'brands.id')
-            ->leftJoin('car_images', 'car_images.car_id', '=', 'cars.id')
+
             ->orderBy('created_at', 'desc')
             ->paginate(10);
+
+
+        // dd($cars);
         return view('admin.pages.car.list', ['cars' => $cars]);
     }
 
@@ -41,6 +44,25 @@ class CarController extends Controller
 
     public function store(StoreCarRequest $request)
     {
+
+        // dd($request->all());
+        $carImages = [];
+        if ($request->has('images')) {
+
+            foreach ($request->file('images') as $image) {
+                $fileOriginalName = $image->getClientOriginalName();
+                $fileName = pathinfo($fileOriginalName, PATHINFO_FILENAME);
+                $fileName .= '_' . time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'),  $fileName);
+                $carImages[] = $fileName;
+            }
+        } else {
+            $carImages = [];
+        }
+        $strImage = implode(', ', $carImages);
+
+
+
         $check = DB::table('cars')->insert([
             "name" => $request->name,
             "slug" => $request->slug,
@@ -50,7 +72,7 @@ class CarController extends Controller
             "color" => $request->color,
             "fueltype" => $request->fueltype,
             "year" => $request->year,
-            "video" => $request->video,
+            "image" => $strImage,
             "sittingfor" => $request->sittingfor,
             "transmission_type" => $request->transmission_type,
             "width" => $request->width,
@@ -65,7 +87,7 @@ class CarController extends Controller
             "maxKw" => $request->maxKw,
             "maxHp" => $request->maxHp,
             "acceleration" => $request->acceleration,
-            "status" => $request->status,
+            "status" => 1,
             "extra_equipment" => $request->extra_equipment,
             "brand_id" => $request->brand_id,
             "car_category_id" => $request->car_category_id,
@@ -91,6 +113,31 @@ class CarController extends Controller
 
     public function update(StoreCarRequest $request, string $id)
     {
+
+        $uCarImage = DB::table('cars')->find($id);
+        $oldImageFileName[] = $uCarImage->image;
+        $carImages = [];
+        if ($request->has('images')) {
+            foreach ($request->file('images') as $image) {
+                $fileOriginalName = $image->getClientOriginalName();
+                $fileName = pathinfo($fileOriginalName, PATHINFO_FILENAME);
+                $fileName .= '_' . time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'),  $fileName);
+                $carImages[] = $fileName;
+                foreach (explode(', ', implode(', ', $oldImageFileName)) as $oldImage) {
+                    if (!is_null($oldImage) && file_exists('images/' . $oldImage)) {
+                        if ($oldImage != '') {
+                            unlink('images/' . $oldImage);
+                        }
+                    }
+                }
+            }
+        } else {
+            $carImages = $oldImageFileName;
+        }
+        $strImage = implode(', ', $carImages);
+
+        // dd($strImage);
         $check = DB::table('cars')->where('id', '=', $id)->update([
             "name" => $request->name,
             "slug" => $request->slug,
@@ -100,7 +147,7 @@ class CarController extends Controller
             "color" => $request->color,
             "fueltype" => $request->fueltype,
             "year" => $request->year,
-            "video" => $request->video,
+            "image" => $strImage,
             "sittingfor" => $request->sittingfor,
             "transmission_type" => $request->transmission_type,
             "width" => $request->width,
@@ -115,7 +162,6 @@ class CarController extends Controller
             "maxKw" => $request->maxKw,
             "maxHp" => $request->maxHp,
             "acceleration" => $request->acceleration,
-            "status" => $request->status,
             "extra_equipment" => $request->extra_equipment,
             "brand_id" => $request->brand_id,
             "car_category_id" => $request->car_category_id,
@@ -128,6 +174,25 @@ class CarController extends Controller
     public function destroy(string $id)
     {
         $carData = Car::find($id);
+        $dCarImage = DB::table('cars')->find($id);
+        $oldImageFileName[] = $dCarImage->image;
+        foreach (explode(', ', implode(', ', $oldImageFileName)) as $oldImage) {
+            if (!is_null($oldImage) && file_exists('images/' . $oldImage)) {
+                if ($oldImage != '') {
+                    unlink('images/' . $oldImage);
+                }
+            }
+        }
+
+
+
+        DB::table('cars')->where('id', '=', $id)->update([
+            "status" => 0,
+            "image" => null
+        ]);
+
+
+
         $carData->delete();
         return redirect()->route('admin.car.index')->with('message', 'Deleted Car Success');
     }
@@ -136,6 +201,10 @@ class CarController extends Controller
     {
         $carData = Car::withTrashed()->find($id);
         $carData->restore();
+        DB::table('cars')->where('id', '=', $id)->update([
+            "status" => 1
+        ]);
+
         return redirect()->route('admin.car.index')->with('message', 'Restored Car Success');
     }
 

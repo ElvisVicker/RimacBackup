@@ -30,6 +30,6 @@ class BuyController extends Controller
             "updated_at" => Carbon::now()
         ]);
         $message = $check ? 'Created Buyer Success' : 'Created Buyer Fail';
-        return redirect()->route('client.home')->with('message', $message);
+        return redirect()->route('client.cars')->with('message', $message);
     }
 }

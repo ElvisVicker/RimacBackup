@@ -28,8 +28,8 @@ class CarCategoryController extends Controller
         $check = DB::table('car_categories')->insert([
             "name" => $request->name,
             "description" => $request->description,
-            "rent_price" => $request->rent_price,
-            "status" => $request->status,
+            "rent_price" => 1,
+            "status" => 1,
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now()
         ]);
@@ -53,8 +53,8 @@ class CarCategoryController extends Controller
         $check = DB::table('car_categories')->where('id', '=', $id)->update([
             "name" => $request->name,
             "description" => $request->description,
-            "rent_price" => $request->rent_price,
-            "status" => $request->status,
+            // "rent_price" => 1,
+            // "status" => 1,
             "updated_at" => Carbon::now()
         ]);
 
@@ -64,6 +64,10 @@ class CarCategoryController extends Controller
 
     public function destroy(string $id)
     {
+        DB::table('car_categories')->where('id', '=', $id)->update([
+            "status" => 0
+        ]);
+
         $carCategoryData = CarCategory::find($id);
         $carCategoryData->delete();
         return redirect()->route('admin.car_category.index')->with('message', 'Deleted Category Success');
@@ -74,6 +78,10 @@ class CarCategoryController extends Controller
     {
         $carCategoryData = CarCategory::withTrashed()->find($id);
         $carCategoryData->restore();
+        DB::table('car_categories')->where('id', '=', $id)->update([
+            "status" => 1
+        ]);
+
         return redirect()->route('admin.car_category.index')->with('message', 'Restored Category Success');
     }
 }

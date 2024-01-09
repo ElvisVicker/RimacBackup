@@ -34,7 +34,7 @@ class BrandController extends Controller
         $check = DB::table('brands')->insert([
             "name" => $request->name,
             "description" => $request->description,
-            "status" => $request->status,
+            "status" => 1,
             "image" => $fileName ?? null,
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now()
@@ -57,6 +57,8 @@ class BrandController extends Controller
 
     public function update(StoreBrandRequest $request, string $id)
     {
+
+        // dd($request->all());
         $brand = DB::table('brands')->find($id);
         $oldImageFileName = $brand->image;
         if ($request->hasFile('image')) {
@@ -73,7 +75,7 @@ class BrandController extends Controller
         $check = DB::table('brands')->where('id', '=', $id)->update([
             "name" => $request->name,
             "description" => $request->description,
-            "status" => $request->status,
+            "status" => 1,
             "image" => $fileName ?? $oldImageFileName,
             "updated_at" => Carbon::now()
         ]);
@@ -84,6 +86,15 @@ class BrandController extends Controller
 
     public function destroy(string $id)
     {
+        $brand = DB::table('brands')->find($id);
+        $image = $brand->image;
+        if (!is_null($image) && file_exists('images/' . $image)) {
+            unlink('images/' . $image);
+        }
+        DB::table('brands')->where('id', '=', $id)->update([
+            "status" => 0,
+            "image" => null
+        ]);
         $brandData = Brand::find($id);
         $brandData->delete();
         return redirect()->route('admin.brand.index')->with('message', 'Deleted Brand Success');
@@ -93,6 +104,9 @@ class BrandController extends Controller
     {
         $brandData = Brand::withTrashed()->find($id);
         $brandData->restore();
+        DB::table('brands')->where('id', '=', $id)->update([
+            "status" => 1
+        ]);
         return redirect()->route('admin.brand.index')->with('message', 'Restored Brand Success');
     }
 }

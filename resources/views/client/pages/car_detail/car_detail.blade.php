@@ -12,9 +12,9 @@
                         <br>
 
 
+                        <h1 style="color: #ed563b; font-weight:600;">{{ $car[0]->name }}</h1>
 
 
-                        <h2> <em>${{ $car[0]->price + (15 / 100) * $car[0]->price }}</em></h2>
                     </div>
                 </div>
             </div>
@@ -110,8 +110,8 @@
                     }
 
                     .imageCustom {
-                        width: 70%;
-                        height: auto;
+                        width: 80%;
+                        height: 420px;
                         object-fit: cover;
                     }
 
@@ -162,19 +162,55 @@
                     .opacityCus {
                         opacity: 0;
                     }
-                </style>
 
+
+                    .labelCustom {
+                        font-size: 22px;
+                        font-weight: 600;
+                    }
+
+                    .paraCustom,
+                    .paraCustom p {
+                        font-size: 18px !important;
+                        color: #181818 !important;
+                    }
+
+
+
+                    @media (max-width: 990px) {
+                        .slider {
+                            height: 26rem;
+                        }
+
+                        .imageCustom {
+                            width: 80%;
+                            height: 340px;
+
+                        }
+                    }
+
+                    @media (max-width: 765px) {
+                        .slider {
+                            height: 20rem;
+                        }
+
+                        .imageCustom {
+                            width: 70%;
+                            height: 200px;
+
+                        }
+
+                    }
+                </style>
 
                 <div class="slider">
                     @foreach ($car as $item)
-                        @foreach (explode(', ', $item->car_image) as $image)
+                        @foreach (explode(', ', $item->image) as $image)
                             <div class="slide">
                                 <img class="imageCustom" src="{{ asset('images/' . $image) }}" alt="">
                             </div>
                         @endforeach
                     @endforeach
-
-
                     <button class="slider__btn slider__btn--left">&larr;</button>
                     <button class="slider__btn slider__btn--right">&rarr;</button>
                     <div class="dots"></div>
@@ -264,8 +300,6 @@
                             }
                         });
 
-
-
                         let autoSlide = function() {
                             nextSlide()
                         }
@@ -292,151 +326,155 @@
                         <article id='tabs-1'>
                             <h4>Vehicle Specs</h4>
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <label>Name</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Name</label>
 
-                                    <p>{{ $car[0]->name }}</p>
+                                    <p class="paraCustom">{{ $car[0]->name }}</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Brand</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Price</label>
+
+                                    <p class="paraCustom" style="color: #ed563b  !important; font-weight:600;">
+                                        {{ number_format($car[0]->price + (15 / 100) * $car[0]->price, 2) }}$</p>
+                                </div>
+
+
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Brand</label>
                                     <div>
 
                                         <img height="50" src="{{ asset('images/' . $car[0]->brand_image) }}"
                                             alt=""> <span>
-                                            <p>{{ $car[0]->brand_name }}</p>
+                                            {{-- <p class="paraCustom">{{ $car[0]->brand_name }}</p> --}}
                                         </span>
                                     </div>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Model</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Model</label>
 
-                                    <p>{{ $car[0]->model }}</p>
+                                    <p class="paraCustom">{{ $car[0]->model }}</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Type</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Type</label>
 
-                                    <p>{{ $car[0]->car_category_name }}</p>
+                                    <p class="paraCustom">{{ $car[0]->car_category_name }}</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label> Color</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom"> Color</label>
 
-                                    <p>{{ $car[0]->color }}</p>
+                                    <p class="paraCustom">{{ $car[0]->color }}</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Rent Price</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Rent Price</label>
 
-                                    <p>{{ $car[0]->car_category_rent_price }} USD/day</p>
+                                    <p class="paraCustom">{{ $car[0]->car_category_rent_price }} USD/day</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Width</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Width</label>
 
-                                    <p>{{ $car[0]->width }} mm</p>
+                                    <p class="paraCustom">{{ $car[0]->width }} mm</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Height</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Height</label>
 
-                                    <p>{{ $car[0]->height }} mm</p>
+                                    <p class="paraCustom">{{ $car[0]->height }} mm</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Length</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Length</label>
 
-                                    <p>{{ $car[0]->length }} mm</p>
+                                    <p class="paraCustom">{{ $car[0]->length }} mm</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Wheelbase</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Wheelbase</label>
 
-                                    <p>{{ $car[0]->wheelbase }} mm</p>
+                                    <p class="paraCustom">{{ $car[0]->wheelbase }} mm</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Seats</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Seats</label>
 
-                                    <p>{{ $car[0]->sittingfor }}</p>
+                                    <p class="paraCustom">{{ $car[0]->sittingfor }}</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Gearbox</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Gearbox</label>
 
-                                    <p>{{ $car[0]->transmission_type }}</p>
+                                    <p class="paraCustom">{{ $car[0]->transmission_type }}</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>EC Combined</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">EC Combined</label>
 
-                                    <p>{{ $car[0]->combined }} L/100km</p>
+                                    <p class="paraCustom">{{ $car[0]->combined }} L/100km</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>EC Motor Way</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">EC Motor Way</label>
 
-                                    <p>{{ $car[0]->motorway }} L/100km</p>
+                                    <p class="paraCustom">{{ $car[0]->motorway }} L/100km</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>EC Urban</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">EC Urban</label>
 
-                                    <p>{{ $car[0]->urban }} L/100km</p>
+                                    <p class="paraCustom">{{ $car[0]->urban }} L/100km</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>CO2</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">CO2</label>
 
-                                    <p>{{ $car[0]->emission_co2 }} g/km</p>
+                                    <p class="paraCustom">{{ $car[0]->emission_co2 }} g/km</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Engine Size</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Engine Size</label>
 
-                                    <p>{{ $car[0]->engine_size }} L</p>
+                                    <p class="paraCustom">{{ $car[0]->engine_size }} L</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Engine Capacity</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Engine Capacity</label>
 
-                                    <p>{{ $car[0]->maxKw }} Kw</p>
+                                    <p class="paraCustom">{{ $car[0]->maxKw }} Kw</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Engine Power</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Engine Power</label>
 
-                                    <p>{{ $car[0]->maxHp }} HP</p>
+                                    <p class="paraCustom">{{ $car[0]->maxHp }} HP</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>0 to 100 km</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">0 to 100 km</label>
 
-                                    <p>{{ $car[0]->acceleration }} sec</p>
+                                    <p class="paraCustom">{{ $car[0]->acceleration }} sec</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Fuel</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Fuel</label>
 
-                                    <p>{{ $car[0]->fueltype }}</p>
+                                    <p class="paraCustom">{{ $car[0]->fueltype }}</p>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <label>Year</label>
+                                <div class="col-sm-6 mb-4">
+                                    <label class="labelCustom">Year</label>
 
-                                    <p>{{ $car[0]->year }}</p>
+                                    <p class="paraCustom">{{ $car[0]->year }}</p>
                                 </div>
-
-
-
-
                             </div>
                         </article>
-                        <article id='tabs-2'>
+                        <article id='tabs-2' class="paraCustom">
                             <h4>Vehicle Description</h4>
-                            <p>{!! $car[0]->description !!}</p>
+                            {!! $car[0]->description !!}
                             {{-- <p>- Colour coded bumpers <br> - Tinted glass <br> - Immobiliser <br> - Central locking - remote
                                 <br> - Passenger airbag <br> - Electric windows <br> - Rear head rests <br> - Radio <br> -
                                 CD player <br> - Ideal first car <br> - Warranty <br> - High level brake light <br> Lorem
@@ -456,7 +494,7 @@
                                 @foreach ($car as $item)
                                     @foreach (explode(', ', $item->extra_equipment) as $equipment)
                                         <div class="col-sm-6">
-                                            <p>{{ $equipment }}</p>
+                                            <p class="paraCustom">{{ $equipment }}</p>
                                         </div>
                                     @endforeach
                                 @endforeach
@@ -502,16 +540,17 @@
 
                             <div class="col-lg-12 col-md-12 col-xs-12 p-3 buy-form">
                                 <div class="custom-buy-form">
-                                    <form id="buy" action="{{ route('client.detail.store', ['id' => $car[0]->id]) }}"
+                                    <form id="buy"
+                                        action="{{ route('client.detail.store', ['id' => $car[0]->id]) }}"
                                         method="post">
                                         @csrf
 
                                         <div class="row">
                                             <div class="col-md-6 col-sm-12 mb-4">
                                                 <fieldset>
-                                                    <input class="buyInput" name="first_name" type="text" id="first_name"
-                                                        value="{{ old('first_name') }}" placeholder="First Name"
-                                                        required="">
+                                                    <input class="buyInput" name="first_name" type="text"
+                                                        id="first_name" value="{{ old('first_name') }}"
+                                                        placeholder="First Name">
                                                 </fieldset>
                                             </div>
                                             @error('first_name')
@@ -535,9 +574,9 @@
 
                                             <div class="col-md-6 col-sm-12 mb-4">
                                                 <fieldset>
-                                                    <input class="buyInput" name="last_name" type="text" id="last_name"
-                                                        value="{{ old('last_name') }}" placeholder="Last Name*"
-                                                        required="">
+                                                    <input class="buyInput" name="last_name" type="text"
+                                                        id="last_name" value="{{ old('last_name') }}"
+                                                        placeholder="Last Name*">
                                                 </fieldset>
                                             </div>
                                             @error('last_name')
@@ -549,7 +588,7 @@
                                                 <fieldset>
                                                     <input class="buyInput" name="phone_number" type="text"
                                                         value="{{ old('phone_number') }}" id="phone_number"
-                                                        placeholder="Phone Number" required="">
+                                                        placeholder="Phone Number">
                                                 </fieldset>
                                             </div>
                                             @error('phone_number')
@@ -560,8 +599,7 @@
                                             <div class="col-md-12 col-sm-12 mb-4">
                                                 <fieldset>
                                                     <input class="buyInput" name="address" type="address" id="address"
-                                                        value="{{ old('address') }}" placeholder="Address"
-                                                        required="">
+                                                        value="{{ old('address') }}" placeholder="Address">
                                                 </fieldset>
                                             </div>
                                             @error('address')
@@ -573,7 +611,7 @@
                                             <div class="col-md-12 col-sm-12 mb-4">
                                                 <fieldset>
                                                     <input class="buyInput" name="email" type="email" id="email"
-                                                        value="{{ old('email') }}" placeholder="Email" required="">
+                                                        value="{{ old('email') }}" placeholder="Email">
                                                 </fieldset>
                                             </div>
                                             @error('email')
@@ -584,14 +622,12 @@
                                             <div class="checkForm col-md-6 col-sm-12">
                                                 <div class="">
                                                     <input class="" type="radio" name="gender" id="gender"
-                                                        required value="1"
-                                                        {{ old('gender') == '1' ? 'checked' : '' }}>
+                                                        value="1" {{ old('gender') == '1' ? 'checked' : '' }}>
                                                     <label class="" for="">Male</label>
                                                 </div>
                                                 <div class="">
                                                     <input class="" type="radio" name="gender" id="gender"
-                                                        required value="0"
-                                                        {{ old('gender') == '0' ? 'checked' : '' }}>
+                                                        value="0" {{ old('gender') == '0' ? 'checked' : '' }}>
                                                     <label class="" for="">Female</label>
                                                 </div>
                                             </div>
@@ -602,13 +638,13 @@
                                             <div class="checkForm col-md-6 col-sm-12">
                                                 <div class="">
                                                     <input class="btnCheck buyCheck" type="radio" name="type"
-                                                        required id="type" value="1"
+                                                        id="type" value="1"
                                                         {{ old('type') == '1' ? 'checked' : '' }}>
                                                     <label class="" for="">Buy</label>
                                                 </div>
                                                 <div class="">
                                                     <input class="btnCheck rentCheck" type="radio" name="type"
-                                                        required id="type" value="0"
+                                                        id="type" value="0"
                                                         {{ old('type') == '0' ? 'checked' : '' }}>
                                                     <label class="" for="">Rent</label>
                                                 </div>

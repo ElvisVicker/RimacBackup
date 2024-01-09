@@ -60,8 +60,8 @@ require __DIR__ . '/auth.php';
 // });
 
 
-
-Route::prefix('admin')->middleware('auth.admin')->name('admin.')->group(function () {
+// 
+Route::prefix('')->middleware('auth.admin')->name('admin.')->group(function () {
     //user
     // Route::get('user', [UserController::class, 'index'])->name('user.list');
     // //product category
@@ -98,7 +98,7 @@ Route::prefix('admin')->middleware('auth.admin')->name('admin.')->group(function
     Route::post('car/slug', [CarController::class, 'createSlug'])->name('car.create.slug');
 
     // Car Images
-    Route::resource('car_images', CarImagesController::class);
+    // Route::resource('car_images', CarImagesController::class);
 
     // Contact
     Route::resource('contact', ContactController::class);
@@ -107,7 +107,7 @@ Route::prefix('admin')->middleware('auth.admin')->name('admin.')->group(function
     Route::resource('buy_order', AdminBuyOrderController::class);
 
     //Rent Order
-    Route::resource('rent_order', AdminRentOrderController::class);
+    // Route::resource('rent_order', AdminRentOrderController::class);
 
     //Dashboard
     Route::get('chart', [ChartController::class, 'index'])->name('chart');
@@ -121,7 +121,7 @@ Route::prefix('staff')->middleware('auth.staff')->name('staff.')->group(function
     Route::get('buyer/send_to_order/{id}', [StaffBuyerController::class, 'sendToOrder'])->name('buyer.send_to_order');
     Route::resource('contact', StaffContactController::class);
     Route::resource('buy_order', BuyOrderController::class);
-    Route::resource('rent_order', RentOrderController::class);
+    // Route::resource('rent_order', RentOrderController::class);
 });
 
 
@@ -146,12 +146,4 @@ Route::prefix('client')->name('client.')->group(function () {
     Route::get('testimonials', [PageController::class, 'toTestimonials'])->name('testimonials');
     Route::get('faq', [PageController::class, 'toFaq'])->name('faq');
     Route::get('terms', [PageController::class, 'toTerms'])->name('terms');
-});
-
-
-Route::get('test-send-mail', function () {
-    //use Illuminate\Support\Facades\Mail;
-
-
-    // Mail::to('thn963852741321@gmail.com')->send(new MailToCustomer);
 });

@@ -43,7 +43,7 @@ class StoreCarRequest extends FormRequest
             'maxHp' => 'required|numeric|min:1|max:5000',
             'acceleration' => 'required|numeric|min:1|max:5000',
 
-            'status' => 'required',
+            // 'status' => 'required',
             'brand_id' => 'required',
             'car_category_id' => 'required'
         ];

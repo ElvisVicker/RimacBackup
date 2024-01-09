@@ -1,6 +1,53 @@
 @extends('admin.layout.master')
 
 @section('content')
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox">
+                <div class="ibox-head">
+                    <div class="ibox-title">Create Category</div>
+                    <div class="ibox-tools">
+                        <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                        <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+
+                <div class="ibox-body">
+                    <form form method="post" action="{{ route('admin.car_category.store') }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <br>
+                        <h4>Your Brand</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label style="font-weight:bold;">Category Name</label>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    value="{{ old('name') }}" placeholder="Category Name">
+                                @error('name')
+                                    <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="formFile" class="form-label" style="font-weight:bold;">Description</label>
+                                <textarea class="form-control" type="text" name="description" id="description" rows="10"> </textarea>
+                                @error('description')
+                                    <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit" style="cursor: pointer;">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+
+
+{{-- @section('content')
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
@@ -31,7 +78,6 @@
 
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Description" name="description" id="description">{{ old('description') }}</textarea>
-                        {{-- <label for="description">Description</label> --}}
                     </div>
                     @error('description')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
@@ -57,11 +103,11 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection --}}
 
 
 
-@section('js-custom')
+{{-- @section('js-custom')
     <script>
         ClassicEditor
             .create(document.querySelector('#description'))
@@ -69,4 +115,4 @@
                 console.error(error);
             });
     </script>
-@endsection
+@endsection --}}

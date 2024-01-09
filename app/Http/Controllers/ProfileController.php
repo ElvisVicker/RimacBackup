@@ -55,7 +55,6 @@ class ProfileController extends Controller
         $request->user()->phone_number =  $request->phone_number;
         $request->user()->address =  $request->address;
 
-
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
@@ -69,16 +68,14 @@ class ProfileController extends Controller
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
-
         $user = $request->user();
-
+        DB::table('users')->where('id', '=', $user->id)->update([
+            "status" => 0
+        ]);
         Auth::logout();
-
         $user->delete();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+        return Redirect::to('/login');
     }
 }
