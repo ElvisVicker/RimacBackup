@@ -322,7 +322,8 @@
                 </style>
 
                 {{ $cars->links('pagination::bootstrap-5') }}
-
+  
+  
                 {{-- <ul class="pagination pagination-lg justify-content-center">
                     <li class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
