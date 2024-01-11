@@ -81,16 +81,16 @@
                     @enderror
 
 
-                    <div class="form-floating mb-3">
+                    {{-- <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="day" name="day" readonly
                             value="{{ $buyer->type == '0' ? $buyer->day : 'None' }}" placeholder="day">
                         <label for="floatingInput">Rental Days</label>
                     </div>
                     @error('day')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                    @enderror
+                    @enderror --}}
 
-                    <div class="form-floating mb-3">
+                    {{-- <div class="form-floating mb-3">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="type" id="type" value="1"
                                 readonly {{ $buyer->type == '1' ? 'checked' : '' }}>
@@ -104,18 +104,18 @@
                     </div>
                     @error('type')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                    @enderror
+                    @enderror --}}
 
                     @if ($buyer->send === 0)
                         <div class="form-floating mb-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="status"
-                                    value="1" {{ $buyer->status == '1' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="status" id="status" value="1"
+                                    {{ $buyer->status == '1' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="inlineRadio1">Check</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="status"
-                                    value="0" {{ $buyer->status == '0' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="status" id="status" value="0"
+                                    {{ $buyer->status == '0' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="inlineRadio2">Uncheck</label>
                             </div>
                         </div>

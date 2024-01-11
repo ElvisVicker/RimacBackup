@@ -81,16 +81,16 @@
                     @enderror
 
 
-                    <div class="form-floating mb-3">
+                    {{-- <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="day" name="day" readonly
                             value="{{ $buyer->type == '0' ? $buyer->day : 'None' }}" placeholder="day">
                         <label for="floatingInput">Rental Days</label>
                     </div>
                     @error('day')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                    @enderror
+                    @enderror --}}
 
-                    <div class="form-floating mb-3">
+                    {{-- <div class="form-floating mb-3">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="type" id="type" value="1"
                                 readonly {{ $buyer->type == '1' ? 'checked' : '' }}>
@@ -104,7 +104,7 @@
                     </div>
                     @error('type')
                         <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                    @enderror
+                    @enderror --}}
 
 
                     {{-- {{ dd($buyer->send) }} --}}

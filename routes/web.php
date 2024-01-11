@@ -15,6 +15,7 @@ use App\Http\Controllers\Client\CarController as ClientCarController;
 use App\Http\Controllers\Client\ContactController as ClientContactController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\PageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Staff\BuyerController as StaffBuyerController;
 use App\Http\Controllers\Staff\BuyOrderController;
@@ -147,3 +148,4 @@ Route::prefix('client')->name('client.')->group(function () {
     Route::get('faq', [PageController::class, 'toFaq'])->name('faq');
     Route::get('terms', [PageController::class, 'toTerms'])->name('terms');
 });
+Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment']);

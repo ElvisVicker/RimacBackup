@@ -12,7 +12,9 @@ class BuyController extends Controller
 {
     public function store(StoreBuyerRequest $request, string $id)
     {
+
         $car = DB::table('cars')->where('id', $id)->get();
+
         $check = DB::table('buyers')->insert([
             "first_name" => $request->first_name,
             "middle_name" => $request->middle_name,
@@ -23,13 +25,11 @@ class BuyController extends Controller
             "gender" => $request->gender,
             "status" => '0',
             "car_id" => $car[0]->id,
-            // 0 = Buy, 1 = Rent
-            "type" => $request->type,
-            "day" => $request->day ?? 0,
+
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now()
         ]);
-        $message = $check ? 'Created Buyer Success' : 'Created Buyer Fail';
+        $message = $check ? 'Order Success' : 'Order Fail';
         return redirect()->route('client.cars')->with('message', $message);
     }
 }

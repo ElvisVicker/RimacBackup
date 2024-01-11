@@ -32,7 +32,7 @@ class StoreBuyerRequest extends FormRequest
 
 
 
-            'type' => 'required'
+            // 'type' => 'required'
         ];
     }
 }

@@ -137,7 +137,6 @@
                     .btnContainer {
                         display: flex;
                         justify-content: right;
-
                         width: 100%;
                         /* background-color: #000; */
                     }
@@ -551,11 +550,10 @@
                                                     <input class="buyInput" name="first_name" type="text"
                                                         id="first_name" value="{{ old('first_name') }}"
                                                         placeholder="First Name">
-                                                </fieldset>
+                                                </fieldset> @error('first_name')
+                                                    <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('first_name')
-                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                                            @enderror
 
 
 
@@ -566,10 +564,11 @@
                                                         value="{{ old('middle_name') }}" id="middle_name"
                                                         placeholder="Middle Name(Optional)">
                                                 </fieldset>
+                                                @error('middle_name')
+                                                    <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                                @enderror
+
                                             </div>
-                                            @error('middle_name')
-                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                                            @enderror
 
 
                                             <div class="col-md-6 col-sm-12 mb-4">
@@ -577,11 +576,11 @@
                                                     <input class="buyInput" name="last_name" type="text"
                                                         id="last_name" value="{{ old('last_name') }}"
                                                         placeholder="Last Name*">
-                                                </fieldset>
+                                                </fieldset> @error('last_name')
+                                                    <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('last_name')
-                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                                            @enderror
+
 
 
                                             <div class="col-md-6 col-sm-12 mb-4">
@@ -589,11 +588,11 @@
                                                     <input class="buyInput" name="phone_number" type="text"
                                                         value="{{ old('phone_number') }}" id="phone_number"
                                                         placeholder="Phone Number">
-                                                </fieldset>
+                                                </fieldset> @error('phone_number')
+                                                    <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                                @enderror
+
                                             </div>
-                                            @error('phone_number')
-                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                                            @enderror
 
 
                                             <div class="col-md-12 col-sm-12 mb-4">
@@ -601,10 +600,11 @@
                                                     <input class="buyInput" name="address" type="address" id="address"
                                                         value="{{ old('address') }}" placeholder="Address">
                                                 </fieldset>
+                                                @error('address')
+                                                    <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('address')
-                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                                            @enderror
+
 
 
 
@@ -613,10 +613,11 @@
                                                     <input class="buyInput" name="email" type="email" id="email"
                                                         value="{{ old('email') }}" placeholder="Email">
                                                 </fieldset>
+                                                @error('email')
+                                                    <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('email')
-                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                                            @enderror
+
 
 
                                             <div class="checkForm col-md-6 col-sm-12">
@@ -630,12 +631,13 @@
                                                         value="0" {{ old('gender') == '0' ? 'checked' : '' }}>
                                                     <label class="" for="">Female</label>
                                                 </div>
-                                            </div>
-                                            @error('gender')
-                                                <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                                            @enderror
+                                                @error('gender')
+                                                    <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
+                                                @enderror
 
-                                            <div class="checkForm col-md-6 col-sm-12">
+                                            </div>
+
+                                            {{-- <div class="checkForm col-md-6 col-sm-12">
                                                 <div class="">
                                                     <input class="btnCheck buyCheck" type="radio" name="type"
                                                         id="type" value="1"
@@ -651,11 +653,11 @@
                                             </div>
                                             @error('type')
                                                 <div class="p-2 mb-4 bg-danger text-white">{{ $message }}</div>
-                                            @enderror
+                                            @enderror --}}
 
 
 
-                                            <div class="checkForm col-md-6 col-sm-12 dayCus opacityCus">
+                                            {{-- <div class="checkForm col-md-6 col-sm-12 dayCus opacityCus">
                                                 <div class="">
                                                     <input class="dayCheckInput" type="radio" name="day"
                                                         id="" value="1"
@@ -674,13 +676,50 @@
                                                         {{ old('day') == '7' ? 'checked' : '' }}>
                                                     <label class="" for="">7</label>
                                                 </div>
-                                            </div>
+                                            </div> --}}
+
+
+
+
                                             <div class="btnContainer">
-                                                <button type="submit" id="form-submit " class=" buySumbit">Submit
-                                                </button>
+
+                                                {{-- <button type="submit" id="form-submit " class=" buySumbit">
+                                                    Submit
+                                                </button> --}}
+
+
+                                                <a href="#tabs-4">
+
+
+                                                    {{-- <form action="{{ url('/client/vnpay_payment') }}" method="post">
+                                                        @csrf
+                                                        @method('POST')
+                                                        <input class=" btn btn-primary" type="submit" value="Submit"
+                                                            style="cursor: pointer;">
+
+                                                    </form> --}}
+                                                </a>
+
                                             </div>
+
+
+
+                                            {{-- <input class=" btn btn-primary" type="submit" value="Submit"
+                                                style="cursor: pointer;"> --}}
+
+
+
+
                                         </div>
                                     </form>
+
+
+
+                                    <form action="{{ url('/vnpay_payment') }}" method="POST">
+                                        @csrf
+                                        <button name="redirect" type="submit">VNPAY</button>
+                                    </form>
+
                                 </div>
                             </div>
                         </article>
@@ -689,7 +728,7 @@
             </div>
         </div>
     </section>
-    <script>
+    {{-- <script>
         const dayCus = document.querySelector('.dayCus')
         const dayCheckInput = document.querySelectorAll('.dayCheckInput')
         const btnCheck = document.querySelectorAll('.btnCheck')
@@ -709,7 +748,7 @@
                 }
             });
         }
-    </script>
+    </script> --}}
 
     <!-- ***** Fleet Ends ***** -->
 @endsection

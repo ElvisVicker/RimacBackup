@@ -26,7 +26,7 @@
 
                                 <th scope="col">Car ID</th>
                                 <th scope="col">Car Name</th>
-                                <th scope="col">Type</th>
+                                {{-- <th scope="col">Type</th> --}}
 
                                 <th scope="col">Status</th>
                                 <th scope="col">Car Status</th>
@@ -44,7 +44,7 @@
 
                                     <td>{{ $buyer->car_id }}</td>
                                     <td>{{ $buyer->car_name }}</td>
-                                    <td>{{ $buyer->type ? 'Buy' : 'Rent' }}</td>
+                                    {{-- <td>{{ $buyer->type ? 'Buy' : 'Rent' }}</td> --}}
 
                                     <td>
                                         <div class="{{ $buyer->status ? 'btn btn-success m-2 ' : 'btn btn-danger m-2 ' }} ">
